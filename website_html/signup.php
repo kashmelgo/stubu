@@ -8,13 +8,20 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
  
+<<<<<<< HEAD:website_html/signup.html
 
     <div class ="main-container">
         <div class = "col-md-4" id ="rowLogSign">
+=======
+<div class = "main-container">
+    <div class ="row" id="rowLogSign">
+        <div class = "col-md-4" id ="leftSide">
+>>>>>>> f4526bcbb8b671773d0ccfd936a27e20f85d7f76:website_html/signup.php
             <div class="container">   
                 <h1> StuBu</h1>
                 <h2> A Forum-based System</h2>
@@ -41,8 +48,8 @@
             </div>
         </div>
     </div>
-
-
+</div>
+    
 
 </body>
 </html>
