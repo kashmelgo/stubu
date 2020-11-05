@@ -26,3 +26,9 @@ body{
   height: 100%;
   position: absolute;
 }
+#leftoSide{
+  padding-top: 190px;
+  text-align: center;
+  font-family: 'Oleo Script', cursive;
+  color: white;
+}
