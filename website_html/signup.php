@@ -12,10 +12,7 @@
 </head>
 <body>
 
- 
-<div class = "main-container">
-    <div class ="row" id="rowLogSign">
-    <?php
+<?php
         $conn = new mysqli("localhost","root","");
         $select = $conn->select_db("Stubu_Database");
         if(!$select){
@@ -35,6 +32,10 @@
             }
         }
     ?>
+ 
+<div class = "main-container">
+    <div class ="row" id="rowLogSign">
+    
 
     <div class ="row">
         <div class = "col-md-4" id ="leftSide">
