@@ -21,3 +21,8 @@ body{
   height: 100%;
   position: absolute;
 }
+#leftoSide{
+	text-align: center;
+	padding-top: 200px;
+	color: white;
+}
