@@ -33,11 +33,33 @@ body{
   color: white;
 }
 #leftoSide h1{
-  font-family: 'Oleo Script', cursive;
+  
+  font-family: Oleo Script;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 72px;
+  line-height: 100px;
+  
+  color: #FFFFFF;
 }
 #leftoSide h2{
-  font-family: 'Open Sans', sans-serif;
+
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 38px;
+
+  color: #FFFFFF;
 }
 #leftoSide h3{
- font-family: 'Roboto', sans-serif;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  
+  color: #FFFFFF;
 }
