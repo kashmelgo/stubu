@@ -19,7 +19,7 @@
                     Profile_picture VARCHAR(100) NOT NULL,
                     First_Name VARCHAR(50) NOT NULL,
                     Last_Name VARCHAR(50) NOT NULL,
-                    Mobile_Number INT NOT NULL,
+                    Mobile_Number VARCHAR(14) NOT NULL,
                     Date_Created DATE NOT NULL,
                     Last_online DATE NOT NULL,
                     User_level INT NOT NULL
