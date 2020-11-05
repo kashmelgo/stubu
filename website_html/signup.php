@@ -21,7 +21,6 @@
         if(!$select){
             echo "<br>Error in Connecting Database";
         }else{
-            echo "<br>Database connected Successfully!";
             if (isset($_POST['user'])){
                 $username = $_POST['user_name'];  
                 $firstname = $_POST['first_name'];
@@ -33,7 +32,6 @@
                 $mobileNumber = $_POST['mobile_number'];
                 $sql = "INSERT INTO User VALUES ('','$username','$password','$email','defaultPic','$firstname','$lastname','$mobileNumber','$datecreated','$lastlogin','0')";
                 $conn->query($sql);                                     // Connect inputted data to database
-                echo "<br>User Successfully Added";
             }
         }
     ?>
