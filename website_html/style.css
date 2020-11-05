@@ -29,6 +29,15 @@ body{
 #leftoSide{
   padding-top: 190px;
   text-align: center;
-  font-family: 'Oleo Script', cursive;
+ 
   color: white;
+}
+#leftoSide h1{
+  font-family: 'Oleo Script', cursive;
+}
+#leftoSide h2{
+  font-family: 'Open Sans', sans-serif;
+}
+#leftoSide h3{
+ font-family: 'Roboto', sans-serif;
 }
