@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Login Page</title>
+	<title>Signup Page</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -12,18 +12,36 @@
 <body>
 
  
-  <div class="container">
-      <div class ="row">
-            <div class = "col-4" id ="leftSide">
-              <h1> StuBu</h1>
-              <h2> A Forum-based System</h2>
-              <h3> A system where Carolinians can ask questions</h3>
+
+    <div class ="row">
+        <div class = "col-md-4" id ="leftSide">
+            <div class="container">   
+                <h1> StuBu</h1>
+                <h2> A Forum-based System</h2>
+                <h3> A system where Carolinians can ask questions</h3>
             </div>
-            <div class = "col-8" id ="rightSide">
-                <!-- insert form here -->
+        </div>
+        <div class = "col-md-8" id ="rightSide">
+            <div class = "container">
+                <form onsubmit="" action="index.html">
+                    <p>USERNAME</p>
+                    <input type="text" id="username" placeholder="Enter Username">
+                    <p>FIRST NAME</p>
+                    <input type="text" id="firstname" placeholder="John">
+                    <p>LAST NAME</p>
+                    <input type="text" id="lastname" placeholder="Doe">
+                    <p>PASSWORD</p>
+                    <input type="password" id="password" placeholder="Enter Password">
+                    <p>CONFIRM PASSWORD</p>
+                    <input type="password" id="confirmpassword" placeholder="Confirm Password">
+                    <p>EMAIL</p>
+                    <input type="email" id="email" placeholder="juandelacruz@gmail.com">
+                    <button  type="submit" class="button">Confirm</button>
+                    </form>
             </div>
-      </div>
-  </div>
+        </div>
+    </div>
+
 
 
 </body>
