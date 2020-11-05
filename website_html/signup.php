@@ -34,9 +34,12 @@
  
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <div class = "main-container">
     <div class ="row" id="rowLogSign">
     
+=======
+>>>>>>> parent of af84277... Fixed the Divs
 =======
 >>>>>>> parent of af84277... Fixed the Divs
 =======

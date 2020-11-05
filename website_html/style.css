@@ -4,6 +4,7 @@
 }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 .row {
   height: 100%;
@@ -20,6 +21,11 @@
 	color: white;
 	font-family: 'Oleo Script', cursive;
 }
+=======
+body{
+	background-color: #DCF0F2;
+}
+>>>>>>> parent of af84277... Fixed the Divs
 =======
 body{
 	background-color: #DCF0F2;
