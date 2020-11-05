@@ -1,10 +1,21 @@
+
   *{
     margin: 0;
     padding: 0;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+body{
+	background-color: #DCF0F2;
+  height: 100%;
+}
+
+#leftSide{
+  background: #00789E;
+  height: 100%;
+}
+
+#rowLogSign{
+ height: 100%;
+}
 
 .row {
   height: 100%;
@@ -15,24 +26,3 @@
   height: 100%;
   position: absolute;
 }
-#leftoSide{
-	text-align: center;
-	padding-top: 200px;
-	color: white;
-	font-family: 'Oleo Script', cursive;
-}
-=======
-body{
-	background-color: #DCF0F2;
-}
->>>>>>> parent of af84277... Fixed the Divs
-=======
-body{
-	background-color: #DCF0F2;
-}
->>>>>>> parent of af84277... Fixed the Divs
-=======
-body{
-	background-color: #DCF0F2;
-}
->>>>>>> parent of af84277... Fixed the Divs

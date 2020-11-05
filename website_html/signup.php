@@ -8,10 +8,14 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
-<?php
+ 
+<div class = "main-container">
+    <div class ="row" id="rowLogSign">
+    <?php
         $conn = new mysqli("localhost","root","");
         $select = $conn->select_db("Stubu_Database");
         if(!$select){
@@ -31,23 +35,6 @@
             }
         }
     ?>
- 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<div class = "main-container">
-    <div class ="row" id="rowLogSign">
-    
-=======
->>>>>>> parent of af84277... Fixed the Divs
-=======
->>>>>>> parent of af84277... Fixed the Divs
-=======
-=======
->>>>>>> parent of af84277... Fixed the Divs
-
-    <div class ="row">
         <div class = "col-md-4" id ="leftSide">
             <div class="container">   
                 <h1> StuBu</h1>
@@ -77,8 +64,8 @@
             </div>
         </div>
     </div>
-
-
+</div>
+    
 
 </body>
 </html>
