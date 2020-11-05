@@ -12,11 +12,9 @@
 </head>
 <body>
 
-<<<<<<< Updated upstream
  
 <div class = "main-container">
     <div class ="row" id="rowLogSign">
-=======
     <?php
         $conn = new mysqli("localhost","root","");
         $select = $conn->select_db("Stubu_Database");
@@ -41,7 +39,6 @@
     ?>
 
     <div class ="row">
->>>>>>> Stashed changes
         <div class = "col-md-4" id ="leftSide">
             <div class="container">   
                 <h1> StuBu</h1>
