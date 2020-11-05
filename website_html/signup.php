@@ -8,7 +8,6 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
@@ -33,9 +32,12 @@
         }
     ?>
  
+<<<<<<< HEAD
 <div class = "main-container">
     <div class ="row" id="rowLogSign">
     
+=======
+>>>>>>> parent of af84277... Fixed the Divs
 
     <div class ="row">
         <div class = "col-md-4" id ="leftSide">
@@ -67,8 +69,8 @@
             </div>
         </div>
     </div>
-</div>
-    
+
+
 
 </body>
 </html>

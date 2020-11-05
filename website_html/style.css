@@ -1,16 +1,8 @@
-body{
-  background-color: #DCF0F2;
-  height: 100%;
+  *{
+    margin: 0;
+    padding: 0;
 }
-
-#leftSide{
-  background: #00789E;
-  height: 100%;
-}
-
-#rowLogSign{
- height: 100%;
-}
+<<<<<<< HEAD
 
 .row {
   height: 100%;
@@ -27,3 +19,8 @@ body{
 	color: white;
 	font-family: 'Oleo Script', cursive;
 }
+=======
+body{
+	background-color: #DCF0F2;
+}
+>>>>>>> parent of af84277... Fixed the Divs
