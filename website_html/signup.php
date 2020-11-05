@@ -11,8 +11,6 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-
-<<<<<<< Updated upstream
  
 <<<<<<< HEAD:website_html/signup.html
 
@@ -21,14 +19,12 @@
 =======
 <div class = "main-container">
     <div class ="row" id="rowLogSign">
-=======
     <?php
         $conn = new mysqli("localhost","root","");
         $select = $conn->select_db("Stubu_Database");
         if(!$select){
             echo "<br>Error in Connecting Database";
         }else{
-            echo "<br>Database connected Successfully!";
             if (isset($_POST['user'])){
                 $username = $_POST['user_name'];  
                 $firstname = $_POST['first_name'];
@@ -40,13 +36,11 @@
                 $mobileNumber = $_POST['mobile_number'];
                 $sql = "INSERT INTO User VALUES ('','$username','$password','$email','defaultPic','$firstname','$lastname','$mobileNumber','$datecreated','$lastlogin','0')";
                 $conn->query($sql);                                     // Connect inputted data to database
-                echo "<br>User Successfully Added";
             }
         }
     ?>
 
     <div class ="row">
->>>>>>> Stashed changes
         <div class = "col-md-4" id ="leftSide">
 >>>>>>> f4526bcbb8b671773d0ccfd936a27e20f85d7f76:website_html/signup.php
             <div class="container">   
