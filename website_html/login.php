@@ -84,7 +84,8 @@
             			<div class="col-md-12 col-md-offset-1">
                     		<p>PASSWORD</p>
                     		<input type="text" class="form-control" id="firstname" name="pass_word"placeholder="Enter Password"><br>
-                    		<button type="submit" class="btn btn-primary">Submit</button>
+                    		<button type="submit" class="btn btn-primary">Sign Up</button>
+                    		<button type="submit" class="btn btn-primary" id="submit">Submit</button>
                     	</div>
                 	</div>
                     </form>
