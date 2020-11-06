@@ -48,6 +48,7 @@ body{
 
   color: #FFFFFF;
 }
+
 #leftoSide h3{
 
   font-family: Roboto;
@@ -58,4 +59,8 @@ body{
   text-align: center;
   
   color: #FFFFFF;
+}
+
+*{
+  font-family: 'Roboto Condensed', sans-serif;
 }
