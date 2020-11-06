@@ -74,11 +74,19 @@
         <div class = "col-md-8" id ="rightSide">
             <div class = "container">
                 <form onsubmit="" method="POST" action="">
-                    <p>USERNAME</p>
-                    <input type="text" id="username" name="user_name"placeholder="Enter Username">
-                    <p>PASSWORD</p>
-                    <input type="text" id="firstname" name="pass_word"placeholder="Enter Password">
-                    <input type="submit" name="login" value="Login">
+                	<div class="form-row"> 
+               			 <div class="col-md-12">
+                    		<p>USERNAME</p>
+                   			 <input type="text" id="username" name="user_name"placeholder="Enter Username">
+                		</div>
+            		</div>
+            		<div class="form-row">
+            			<div class="col-md-12">
+                    		<p>PASSWORD</p>
+                    		<input type="text" id="firstname" name="pass_word"placeholder="Enter Password"><br><br>
+                    		<input type="submit" name="login" value="Login">
+                    	</div>
+                	</div>
                     </form>
             </div>
         </div>

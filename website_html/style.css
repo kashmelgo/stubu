@@ -63,3 +63,11 @@ body{
   color: #FFFFFF;
 }
 
+#rightSide{
+  left: 200px;
+}
+
+*{
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
