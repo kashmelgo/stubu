@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Signup Page</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Signup Page</title>
 
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
- 
-<div class = "main-container">
-    <div class ="row" id="rowLogSign">
     <?php
         $conn = new mysqli("localhost","root","");
         $select = $conn->select_db("Stubu_Database");
@@ -35,8 +38,9 @@
             }
         }
     ?>
+<div class ="main-container">
         <div class = "col-md-4" id ="leftSide">
-            <div class="container">   
+            <div id="leftoSide">   
                 <h1> StuBu</h1>
                 <h2> A Forum-based System</h2>
                 <h3> A system where Carolinians can ask questions</h3>
@@ -44,7 +48,7 @@
         </div>
         <div class = "col-md-8" id ="rightSide">
             <div class = "container">
-                <form action="" method="POST">
+                <form onsubmit="" method="POST" action="">
                     <p>USERNAME</p>
                     <input type="text" id="username" name="user_name" placeholder="Enter Username">
                     <p>FIRST NAME</p>
@@ -60,12 +64,9 @@
                     <p>MOBILE NUMBER</p>
                     <input type="text" id="mobile" name="mobile_number" placeholder="123456789"><br><br>
                     <input  type="submit" class="button" name="user" value="Confirm">
-                    </form>
+                </form>
             </div>
         </div>
     </div>
-</div>
-    
-
 </body>
 </html>
