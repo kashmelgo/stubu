@@ -25,7 +25,7 @@
         $conn = new mysqli("localhost","root","");
         $select = $conn->select_db("Stubu_Database");
         if(!$select){
-            echo "<br>Error in Connecting Database";
+            // echo "<br>Error in Connecting Database";
         }else{
             if(isset($_POST['login'])){
                 $username = $_POST['user_name'];
@@ -71,20 +71,20 @@
                 <h3> A system where Carolinians can ask questions</h3>
             </div>
         </div>
-        <div class = "col-md-8" id ="rightSide">
+        <div class = "col-md-8" id ="rightSide-login">
             <div class = "container">
                 <form onsubmit="" method="POST" action="">
                 	<div class="form-row"> 
-               			 <div class="col-md-12">
+               			 <div class="col-md-12  col-md-offset-1">
                     		<p>USERNAME</p>
-                   			 <input type="text" id="username" name="user_name"placeholder="Enter Username">
+                   			 <input type="text" class="form-control" id="username" name="user_name"placeholder="Enter Username"><br>
                 		</div>
             		</div>
             		<div class="form-row">
-            			<div class="col-md-12">
+            			<div class="col-md-12 col-md-offset-1">
                     		<p>PASSWORD</p>
-                    		<input type="text" id="firstname" name="pass_word"placeholder="Enter Password"><br><br>
-                    		<input type="submit" name="login" value="Login">
+                    		<input type="text" class="form-control" id="firstname" name="pass_word"placeholder="Enter Password"><br>
+                    		<button type="submit" class="btn btn-primary">Submit</button>
                     	</div>
                 	</div>
                     </form>
