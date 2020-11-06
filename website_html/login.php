@@ -18,50 +18,7 @@
 
 </head>
 <body>
-
-    <?php
-        session_start();
-
-        $conn = new mysqli("localhost","root","");
-        $select = $conn->select_db("Stubu_Database");
-        if(!$select){
-            echo "<br>Error in Connecting Database";
-        }else{
-            if(isset($_POST['login'])){
-                $username = $_POST['user_name'];
-                $password = $_POST['pass_word'];
-
-                $result = $conn->query("SELECT * FROM User WHERE Username = '$username'");
-                if($row = $result->fetch_assoc()){
-                    if($row['Password'] == $password){
-                        $_SESSION['user_id'] = $row['User_ID'];
-                        $_SESSION['username'] = $row['Username'];
-                        $_SESSION['password'] = $row['Password'];
-                        $_SESSION['email'] = $row['Email_address'];
-                        $_SESSION['profile_picture'] = $row['Profile_picture'];
-                        $_SESSION['first_name'] = $row['First_Name'];
-                        $_SESSION['last_name'] = $row['Last_Name'];
-                        $_SESSION['mobile_number'] = $row['Mobile_Number'];
-                        $_SESSION['date_created'] = $row['Date_Created'];
-                        $_SESSION['last_online'] = $row['Last_online'];
-                        $_SESSION['user_level'] = $row['User_level'];
-
-                        // header("Location: index.html"); -----> Connect to Hompage
-
-                        //Kani lang sa display2 sa Login Page gud ha?? HAHAHAH
-
-                        echo "<br>Hello ".$_SESSION['username']."!";
-
-                    }else{
-                        $errorpass = "Password Incorrect!";
-                    } 
-                }else{
-                    $erroruser = "Username Doesnt Exist!";
-                    $username = "";
-                }
-            }
-        }
-    ?>
+ 
 
     <div class ="main-container">
         <div class = "col-md-4" id ="leftSide">
@@ -73,15 +30,19 @@
         </div>
         <div class = "col-md-8" id ="rightSide">
             <div class = "container">
-                <form onsubmit="" method="POST" action="">
+                <form onsubmit="" action="index.html">
                     <p>USERNAME</p>
-                    <input type="text" id="username" name="user_name"placeholder="Enter Username">
+                    <input type="text" id="username" placeholder="Enter Username">
                     <p>PASSWORD</p>
-                    <input type="text" id="firstname" name="pass_word"placeholder="Enter Password">
-                    <input type="submit" name="login" value="Login">
+                    <input type="text" id="firstname" placeholder="Enter Password">
+                    <button  type="submit" class="button">Confirm</button>
                     </form>
             </div>
         </div>
     </div>
+
+
+
+
 </body>
 </html>
