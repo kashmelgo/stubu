@@ -10,11 +10,12 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
 
 </head>
 <body>
@@ -47,57 +48,62 @@
             <h3> A system where Carolinians can ask questions</h3>
         </div>
     </div>
-    <div class = "col-md-8" id ="rightSide">
-        <div class = "container">
-            <form onsubmit="" method="POST" action="">
-                <div class="form-row">  
-                    <div class="col-md-12">
-                        <p>USERNAME</p>
-                        <input type="text" id="username" name="user_name" placeholder="Enter Username">
-                    </div>   
-                </div>
-                <div class="form-row">
-                    <div class="col-md-6">
-                        <p>FIRST NAME</p>
-                        <input type="text" id="firstname" name="first_name" placeholder="John">
+    <div class = "col-md-8" id ="rightSide-login">
+            <div class = "container">
+                <form onsubmit="" method="POST" action="">
+                	<div class="form-row"> 
+               			 <div class="col-md-12  col-md-offset-1">
+                    		<p>USERNAME</p>
+                   			 <input type="text" class="form-control" id="username" name="user_name"placeholder="Enter Username"><br>
+                		</div>
+            		</div>
+            		<div class="form-row">
+            			<div class="col-md-5 col-md-offset-1">
+                    		<p>FIRST NAME</p>
+                    		<input type="text" class="form-control" id="firstname" name="first_name"placeholder="Enter First Name"><br>
+                        </div>
+                        <div class="col-md-5 col-md-offset-1">
+                            <p>LAST NAME</p>
+                            <input type="text" class="form-control" id="lastname" name="last_name" placeholder="Enter Last Name"><br>
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <p>LAST NAME</p>
-                        <input type="text" id="lastname" name="last_name" placeholder="Doe">
+                    <div class="form-row"> 
+               			 <div class="col-md-12  col-md-offset-1">
+                    		<p>PASSWORD</p>
+                   			 <input type="text" class="form-control" id="password" name="pass_word"placeholder="Enter Password"><br>
+                		</div>
                     </div>
-                </div>
-                <div class = "form-row">
-                    <div class="col-md-12">
-                        <p>PASSWORD</p>
-                        <input type="password" id="password" name="pass_word" placeholder="Enter Password">
+                    <div class="form-row"> 
+               			 <div class="col-md-12  col-md-offset-1">
+                    		<p>CONFIRM PASSWORD</p>
+                   			 <input type="text" class="form-control" id="confirmpassword" name="confirm_password"placeholder="Confirm Password"><br>
+                		</div>
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-md-12">
-                        <p>CONFIRM PASSWORD</p>
-                        <input type="password" id="confirmpassword" name="confirm_password" placeholder="Confirm Password">
+                    <div class="form-row"> 
+               			 <div class="col-md-12  col-md-offset-1">
+                    		<p>EMAIL</p>
+                            <input type="email" class= "form-control" id="email" name="email_address" placeholder="example@email.com"> <br>
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-md-12">
-                    <p>EMAIL</p>
-                        <input type="email" id="email" name="email_address" placeholder="juandelacruz@gmail.com">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-md-12">
-                        <p>MOBILE NUMBER</p>
-                        <input type="text" id="mobile" name="mobile_number" placeholder="123456789"><br><br>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-md-12">
-                        <input  type="submit" class="button" name="user" value="Confirm">
-                    </div>    
-                </div>  
-            </form>
+                    <div class="form-row"> 
+               			 <div class="col-md-12  col-md-offset-1">
+                    		<p>MOBILE NUMBER</p>
+                            <input type="text" class="form-control" id="mobile" name="mobile_number" placeholder="123456789"><br><br>
+            		</div>
+                    <div class="form-row">
+            			<div class="col-md-12 col-md-offset-1">
+                    		<button type="submit" class="btn btn-primary">Sign Up</button>
+                    		<button type="submit" class="btn btn-primary" id="submit">Submit</button>
+                    	</div>
+                	</div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
+
+    
+    
 </body>
 </html>
+
+

@@ -1,5 +1,5 @@
 
-  *{
+*{
     margin: 0;
     padding: 0;
 }
@@ -60,7 +60,6 @@ body{
   font-size: 18px;
   line-height: 21px;
   text-align: center;
-  
   color: #FFFFFF;
 }
 
@@ -76,8 +75,11 @@ body{
 #rightSide-login{
   top: 200px;
 }
+
 #submit{
   margin-left: 250px;
 }
 
-
+.form-control{
+  border-radius: 100px;
+}
