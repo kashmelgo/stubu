@@ -86,11 +86,13 @@
                			 <div class="col-md-12  col-md-offset-1">
                     		<p>EMAIL</p>
                             <input type="email" class= "form-control" id="email" name="email_address" placeholder="example@email.com"> <br>
+                        </div>
                     </div>
                     <div class="form-row"> 
                			 <div class="col-md-12  col-md-offset-1">
                     		<p>MOBILE NUMBER</p>
                             <input type="text" class="form-control" id="mobile" name="mobile_number" placeholder="123456789"><br><br>
+                        </div>
             		</div>
                     <div class="form-row">
             			<div class="col-md-12 col-md-offset-1">
