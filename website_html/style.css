@@ -33,7 +33,7 @@ body{
 
 #leftoSide h1{
   
-  font-family: Oleo Script;
+  font-family: 'Oleo Script';
   font-style: normal;
   font-weight: normal;
   font-size: 72px;
@@ -43,7 +43,7 @@ body{
 }
 #leftoSide h2{
 
-  font-family: Open Sans;
+  font-family: 'Open Sans';
   font-style: normal;
   font-weight: normal;
   font-size: 28px;
@@ -54,7 +54,7 @@ body{
 
 #leftoSide h3{
 
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -63,7 +63,17 @@ body{
   color: #FFFFFF;
 }
 
-#rightSide-login p{
+#signup p{
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+#signup{
+  padding-top: 10%;
+}
+
+#login p{
   font-family: 'Roboto Condensed', sans-serif;
   font-weight: bold;
   font-size: 15px;
@@ -72,8 +82,8 @@ body{
 .form-control{
   width:400px;
 }
-#rightSide-login{
-  top: 200px;
+#login{
+  top: 33%;
 }
 
 #submit{
@@ -83,8 +93,4 @@ body{
 .form-control{
   border-radius: 100px;
 }
-#rightSide-signup p{
-  font-family: 'Roboto Condensed', sans-serif;
-  font-weight: bold;
-  font-size: 15px;
-}
+

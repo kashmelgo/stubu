@@ -71,7 +71,7 @@
                 <h3> A system where Carolinians can ask questions</h3>
             </div>
         </div>
-        <div class = "col-md-8" id ="rightSide-login">
+        <div class = "col-md-8" id ="login">
             <div class = "container">
                 <form onsubmit="" method="POST" action="">
                 	<div class="form-row"> 
