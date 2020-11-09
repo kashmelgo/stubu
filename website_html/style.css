@@ -83,3 +83,8 @@ body{
 .form-control{
   border-radius: 100px;
 }
+#rightSide-signup p{
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+}

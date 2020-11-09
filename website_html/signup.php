@@ -24,7 +24,7 @@
         $conn = new mysqli("localhost","root","");
         $select = $conn->select_db("Stubu_Database");
         if(!$select){
-            echo "<br>Error in Connecting Database";
+            // echo "<br>Error in Connecting Database";
         }else{
             if (isset($_POST['user'])){
                 $username = $_POST['user_name'];  
@@ -39,6 +39,9 @@
                 $conn->query($sql);                                     // Connect inputted data to database
             }
         }
+         if(isset($_POST['login'])){
+                header('Location: login.php');
+            }
     ?>
 <div class ="main-container">
     <div class = "col-md-4" id ="leftSide">
@@ -48,7 +51,7 @@
             <h3> A system where Carolinians can ask questions</h3>
         </div>
     </div>
-    <div class = "col-md-8" id ="rightSide-login">
+    <div class = "col-md-8" id ="rightSide-signup">
             <div class = "container">
                 <form onsubmit="" method="POST" action="">
                 	<div class="form-row"> 
@@ -92,7 +95,7 @@
                     <div class="form-row">
             			<div class="col-md-12 col-md-offset-1">
                     		<button type="submit" class="btn btn-primary">Sign Up</button>
-                    		<button type="submit" class="btn btn-primary" id="submit">Submit</button>
+                    		<button type="submit" class="btn btn-primary" id="submit" name="login">Login</button>
                     	</div>
                 	</div>
                 </form>
@@ -100,8 +103,8 @@
         </div>
     </div>
 </div>
+ 
 
-    
     
 </body>
 </html>
