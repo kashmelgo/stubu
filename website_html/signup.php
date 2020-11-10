@@ -73,13 +73,13 @@
                     <div class="form-row"> 
                			 <div class="col-md-12  col-md-offset-1">
                     		<p>PASSWORD</p>
-                   			 <input type="text" class="form-control" id="password" name="pass_word"placeholder="Enter Password"><br>
+                   			 <input type="password" class="form-control" id="password" name="pass_word"placeholder="Enter Password"><br>
                 		</div>
                     </div>
                     <div class="form-row"> 
                			 <div class="col-md-12  col-md-offset-1">
                     		<p>CONFIRM PASSWORD</p>
-                   			 <input type="text" class="form-control" id="confirmpassword" name="confirm_password"placeholder="Confirm Password"><br>
+                   			 <input type="password" class="form-control" id="confirmpassword" name="confirm_password"placeholder="Confirm Password"><br>
                 		</div>
                     </div>
                     <div class="form-row"> 
