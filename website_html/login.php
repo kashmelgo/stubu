@@ -79,7 +79,7 @@
             		<div class="form-row">
             			<div class="col-md-12 col-md-offset-1">
                     		<p>PASSWORD</p>
-                    		<input type="text" class="form-control" id="firstname" name="pass_word"placeholder="Enter Password"><br>
+                    		<input type="password" class="form-control" id="firstname" name="pass_word"placeholder="Enter Password"><br>
                     		<button onclick="signup()" type="submit" class="btn btn-primary" name="signup">Sign Up</button>
                             <input type="submit" class=" btn btn-primary" id="submit" value="Login" name="login">
                     	</div>
