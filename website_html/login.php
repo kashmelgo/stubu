@@ -21,7 +21,8 @@
 
     <?php
         session_start();
-
+        $errormessage = "";
+        $username = "Enter Username";
         $conn = new mysqli("localhost","root","");
         $select = $conn->select_db("Stubu_Database");
         if(!$select){
@@ -46,18 +47,13 @@
                         $_SESSION['last_online'] = $row['Last_online'];
                         $_SESSION['user_level'] = $row['User_level'];
 
-                        // header("Location: index.html"); -----> Connect to Hompage
-
-                        //Kani lang sa display2 sa Login Page gud ha?? HAHAHAH
-
-                        echo "<br>Hello ".$_SESSION['username']."!";
+                        header("Location: displayProfile.php");
 
                     }else{
-                        $errorpass = "Password Incorrect!";
+                        $errormessage = "Username or Password Incorrect";;
                     } 
                 }else{
-                    $erroruser = "Username Doesnt Exist!";
-                    $username = "";
+                    $errormessage = "Username or Password Incorrect";
                 }
             }
         }
@@ -76,8 +72,8 @@
                 <form onsubmit="" method="POST" action="">
                 	<div class="form-row"> 
                			 <div class="col-md-12  col-md-offset-1">
-                    		<p>USERNAME</p>
-                   			 <input type="text" class="form-control" id="username" name="user_name"placeholder="Enter Username"><br>
+                    		<?php echo "<p>USERNAME<i style='color:red'>".$errormessage."</i></p>"?>
+                   			<input type="text" class="form-control" id="username" name="user_name"placeholder="Enter Username"><br>
                 		</div>
             		</div>
             		<div class="form-row">
@@ -85,7 +81,7 @@
                     		<p>PASSWORD</p>
                     		<input type="text" class="form-control" id="firstname" name="pass_word"placeholder="Enter Password"><br>
                     		<button onclick="signup()" type="submit" class="btn btn-primary" name="signup">Sign Up</button>
-                    		<button type="submit" class="btn btn-primary" id="submit">Submit</button>
+                            <input type="submit" class=" btn btn-primary" id="submit" value="Login" name="login">
                     	</div>
                 	</div>
                 </form>
@@ -94,10 +90,9 @@
     </div>
 
     <?php
-    		if(isset($_POST['signup'])){
-    			header('Location: signup.php');
-    		}
-
+    	if(isset($_POST['signup'])){
+    		header('Location: signup.php');
+    	}
      ?>
 </body>
 </html>
