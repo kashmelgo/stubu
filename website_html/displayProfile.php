@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Signup Page</title>
-
+    <title>User Profile</title>
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -47,35 +47,30 @@
         <div class = "container">
         	<div class="form-row"> 
               	<div class="col-md-12  col-md-offset-1">
-                   	<p>USERNAME</p>
-                	<?php echo $_SESSION['username'];?><br>
+                   	<img src="defaultpic.png" width="150px" height="150px"> 
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-5 col-md-offset-1">
+                    <p><?php echo $_SESSION['first_name'];?>  <?php echo $_SESSION['last_name'];?></p><br>
                 </div>
             </div>
             <div class="form-row"> 
             	<div class="col-md-12  col-md-offset-1">
                    	<p>USERNAME</p>
-               		<?php echo $_SESSION['username'];?><br>
+               		<p><?php echo $_SESSION['username'];?></p><br>
                 </div>
             </div>
-            <div class="form-row">
-              	<div class="col-md-5 col-md-offset-1">
-                    <p>FIRST NAME</p>
-                    <?php echo $_SESSION['first_name'];?><br>
-                </div>
-                <div class="col-md-5 col-md-offset-1">
-                    <p>LAST NAME</p>
-                    <?php echo $_SESSION['last_name'];?><br>
-                </div>
-            </div>
+            
             <div class="form-row"> 
               	<div class="col-md-12  col-md-offset-1">
                     <p>EMAIL</p>
-                    <?php echo $_SESSION['email'];?><br>
+                    <p><?php echo $_SESSION['email'];?></p><br>
                 </div>
                 <div class="form-row"> 
               		<div class="col-md-12  col-md-offset-1">
             	       	<p>MOBILE NUMBER</p>
-                	    <?php echo $_SESSION['mobile_number'];?><br>
+                	    <p><?php echo $_SESSION['mobile_number'];?></p><br>
               		</div>
                 </div>
             </div>
