@@ -21,6 +21,7 @@
 <body>
 
     <?php
+        session_start();
         $conn = new mysqli("localhost","root","");
         $select = $conn->select_db("Stubu_Database");
         if(!$select){
@@ -36,12 +37,25 @@
                 $lastlogin = date("Y-m-d");
                 $mobileNumber = $_POST['mobile_number'];
                 $sql = "INSERT INTO User VALUES ('','$username','$password','$email','defaultPic','$firstname','$lastname','$mobileNumber','$datecreated','$lastlogin','0')";
-                $conn->query($sql);                                     // Connect inputted data to database
+                $conn->query($sql);                                  // Connect inputted data to database
+
+                $result = $conn->query("SELECT * FROM User WHERE Username = '$username'");
+                if($row = $result->fetch_assoc()){  
+                    $_SESSION['user_id'] = $row['User_ID'];
+                    $_SESSION['username'] = $row['Username'];
+                    $_SESSION['password'] = $row['Password'];
+                    $_SESSION['email'] = $row['Email_address'];
+                    $_SESSION['profile_picture'] = $row['Profile_picture'];
+                    $_SESSION['first_name'] = $row['First_Name'];
+                    $_SESSION['last_name'] = $row['Last_Name'];
+                    $_SESSION['mobile_number'] = $row['Mobile_Number'];
+                    $_SESSION['date_created'] = $row['Date_Created'];
+                    $_SESSION['last_online'] = $row['Last_online'];
+                    $_SESSION['user_level'] = $row['User_level'];
+                    header("Location: displayProfile.php");
+                }    
             }
         }
-         if(isset($_POST['login'])){
-                header('Location: login.php');
-            }
     ?>
 <div class ="main-container">
     <div class = "col-md-4" id ="leftSide">
@@ -96,8 +110,8 @@
             		</div>
                     <div class="form-row">
             			<div class="col-md-12 col-md-offset-1">
-                    		<button type="submit" class="btn btn-primary">Sign Up</button>
-                    		<button type="submit" class="btn btn-primary" id="submit" name="login">Login</button>
+                            <a href="login.php">Already Have an Account? Click here to Log in!</a>
+                    		<input type="submit" class="btn btn-primary" id="submit" name="user" value="Sign Up">
                     	</div>
                 	</div>
                 </form>

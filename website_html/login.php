@@ -80,7 +80,7 @@
             			<div class="col-md-12 col-md-offset-1">
                     		<p>PASSWORD</p>
                     		<input type="password" class="form-control" id="firstname" name="pass_word"placeholder="Enter Password"><br>
-                    		<button onclick="signup()" type="submit" class="btn btn-primary" name="signup">Sign Up</button>
+                    		<a href="signup.php">Don't Have an Account? Click here to Sign Up</a>
                             <input type="submit" class=" btn btn-primary" id="submit" value="Login" name="login">
                     	</div>
                 	</div>
@@ -88,11 +88,5 @@
             </div>
         </div>
     </div>
-
-    <?php
-    	if(isset($_POST['signup'])){
-    		header('Location: signup.php');
-    	}
-     ?>
 </body>
 </html>
