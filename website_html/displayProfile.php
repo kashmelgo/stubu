@@ -112,17 +112,15 @@
 
 			<div class="col-sm-6">
 				<h1><?php echo $_SESSION['first_name'];?> <?php echo $_SESSION['last_name'];?></h1>
-                <p><?php echo $_SESSION['email']?></p>
-                <p><?php echo $_SESSION['mobile_number']?></p>
+                <p>Email Address: <?php echo $_SESSION['email']?></p>
+                <p>Mobile Number: <?php echo $_SESSION['mobile_number']?></p>
                 <p>Last Online: a few seconds ago</p>
                 <p>Date Created: <?php echo $_SESSION['date_created']?></p>
 				<p> Good day!</p>
 				<p>Nunc ut neque eget ante pretium scelerisque vitae id mauris. Etiam lacinia tristique nisi, sed vehicula tellus iaculis nec. Maecenas maximus metus hendrerit, finibus magna sed, tempor nulla. Pellentesque quam tortor, iaculis in ullamcorper at, imperdiet eu risus. Pellentesque bibendum ipsum eu volutpat facilisis. Vivamus justo nisi, vestibulum ut pellentesque eget, maximus sed nisi. Morbi quam orci, auctor vitae ullamcorper sit amet, tristique at diam. Pellentesque volutpat, neque quis euismod tempus, magna ex lobortis sapien, nec fringilla eros dui eget mi. Donec posuere viverra elit, sed pharetra quam auctor eget. Vestibulum pellentesque. </p>	
 			</div>
 		</div>
-	</div>
-    
-    
+	</div>   
 </body>
 </html>
 
