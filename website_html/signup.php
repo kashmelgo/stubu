@@ -22,12 +22,57 @@
 
     <?php
         session_start();
+        $erroruser = $errorpassword = $erroremail = "";
         $conn = new mysqli("localhost","root","");
         $select = $conn->select_db("Stubu_Database");
         if(!$select){
             // echo "<br>Error in Connecting Database";
         }else{
             if (isset($_POST['user'])){
+                $username = $_POST['user_name'];
+                $result = $conn->query("SELECT * FROM User WHERE Username = '$username'");
+                if($row = $result->fetch_assoc()){
+                    $erroruser = "Username already Exist";
+                }else{
+                    if($_POST['pass_word'] != $_POST['confirm_password']){
+                        $errorpassword = "Password does not Match!";
+                    }else{
+                        $email = $_POST['email_address'];
+                        $result = $conn->query("SELECT * FROM User WHERE Email_address = '$email'");
+                        if($row = $result->fetch_assoc()){
+                            $erroremail = "Email Address already has an existing account";
+                        }else{
+                            $username = $_POST['user_name'];  
+                            $firstname = $_POST['first_name'];
+                            $lastname = $_POST['last_name'];
+                            $password = $_POST['pass_word'];  
+                            $email = $_POST['email_address'];
+                            $datecreated = date("Y-m-d");
+                            $lastlogin = date("Y-m-d");
+                            $mobileNumber = $_POST['mobile_number'];
+                            $sql = "INSERT INTO User VALUES ('','$username','$password','$email','defaultPic','$firstname','$lastname','$mobileNumber','$datecreated','$lastlogin','0')";
+                            $conn->query($sql);                                  // Connect inputted data to database
+
+                            $result = $conn->query("SELECT * FROM User WHERE Username = '$username'");
+                            if($row = $result->fetch_assoc()){  
+                                $_SESSION['user_id'] = $row['User_ID'];
+                                $_SESSION['username'] = $row['Username'];
+                                $_SESSION['password'] = $row['Password'];
+                                $_SESSION['email'] = $row['Email_address'];
+                                $_SESSION['profile_picture'] = $row['Profile_picture'];
+                                $_SESSION['first_name'] = $row['First_Name'];
+                                $_SESSION['last_name'] = $row['Last_Name'];
+                                $_SESSION['mobile_number'] = $row['Mobile_Number'];
+                                $_SESSION['date_created'] = $row['Date_Created'];
+                                $_SESSION['last_online'] = $row['Last_online'];
+                                $_SESSION['user_level'] = $row['User_level'];
+                                header("Location: displayProfile.php");
+                            }   
+                        }
+                    }
+                }
+
+                /*
                 $username = $_POST['user_name'];  
                 $firstname = $_POST['first_name'];
                 $lastname = $_POST['last_name'];
@@ -53,7 +98,8 @@
                     $_SESSION['last_online'] = $row['Last_online'];
                     $_SESSION['user_level'] = $row['User_level'];
                     header("Location: displayProfile.php");
-                }    
+                } 
+                */  
             }
         }
     ?>
@@ -68,16 +114,16 @@
     <div class = "col-md-8" id ="signup">
             <div class = "container">
                 <form onsubmit="" method="POST" action="">
-                	<div class="form-row"> 
-               			 <div class="col-md-12  col-md-offset-1">
-                    		<p>USERNAME</p>
-                   			 <input type="text" class="form-control" id="username" name="user_name"placeholder="Enter Username"><br>
-                		</div>
-            		</div>
-            		<div class="form-row">
-            			<div class="col-md-5 col-md-offset-1">
-                    		<p>FIRST NAME</p>
-                    		<input type="text" class="form-control" id="firstname" name="first_name"placeholder="Enter First Name"><br>
+                    <div class="form-row"> 
+                         <div class="col-md-12  col-md-offset-1">
+                            <p>USERNAME <p style="color: red"><?php echo $erroruser; ?></p></p>
+                             <input type="text" class="form-control" id="username" name="user_name"placeholder="Enter Username"><br>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-5 col-md-offset-1">
+                            <p>FIRST NAME</p>
+                            <input type="text" class="form-control" id="firstname" name="first_name"placeholder="Enter First Name"><br>
                         </div>
                         <div class="col-md-5 col-md-offset-1">
                             <p>LAST NAME</p>
@@ -85,43 +131,40 @@
                         </div>
                     </div>
                     <div class="form-row"> 
-               			 <div class="col-md-12  col-md-offset-1">
-                    		<p>PASSWORD</p>
-                   			 <input type="password" class="form-control" id="password" name="pass_word"placeholder="Enter Password"><br>
-                		</div>
+                         <div class="col-md-12  col-md-offset-1">
+                            <p>PASSWORD</p>
+                             <input type="password" class="form-control" id="password" name="pass_word"placeholder="Enter Password"><br>
+                        </div>
                     </div>
                     <div class="form-row"> 
-               			 <div class="col-md-12  col-md-offset-1">
-                    		<p>CONFIRM PASSWORD</p>
-                   			 <input type="password" class="form-control" id="confirmpassword" name="confirm_password"placeholder="Confirm Password"><br>
-                		</div>
+                         <div class="col-md-12  col-md-offset-1">
+                            <p>CONFIRM PASSWORD<p style="color: red"><?php echo $errorpassword?></p></p>
+                             <input type="password" class="form-control" id="confirmpassword" name="confirm_password"placeholder="Confirm Password"><br>
+                        </div>
                     </div>
                     <div class="form-row"> 
-               			 <div class="col-md-12  col-md-offset-1">
-                    		<p>EMAIL</p>
+                         <div class="col-md-12  col-md-offset-1">
+                            <p>EMAIL <p style="color: red"><?php echo $erroremail;?></p></p>
                             <input type="email" class= "form-control" id="email" name="email_address" placeholder="example@email.com"> <br>
                         </div>
                     </div>
                     <div class="form-row"> 
-               			 <div class="col-md-12  col-md-offset-1">
-                    		<p>MOBILE NUMBER</p>
+                         <div class="col-md-12  col-md-offset-1">
+                            <p>MOBILE NUMBER</p>
                             <input type="text" class="form-control" id="mobile" name="mobile_number" placeholder="123456789"><br><br>
                         </div>
-            		</div>
+                    </div>
                     <div class="form-row">
-            			<div class="col-md-12 col-md-offset-1">
+                        <div class="col-md-12 col-md-offset-1">
                             <a href="login.php">Already Have an Account? Click here to Log in!</a>
-                    		<input type="submit" class="btn btn-primary" id="submit" name="user" value="Sign Up">
-                    	</div>
-                	</div>
+                            <input type="submit" class="btn btn-primary" id="submit" name="user" value="Sign Up">
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
- 
-
-    
 </body>
 </html>
 
