@@ -97,7 +97,7 @@
     <ul class="nav navbar-nav navbar-right">
       <li><a href="displayProfile.php" style="color: white;">Home</a></li>
       <li><a href="displayProfile.php" style="color: white;">Profile</a></li>
-      <li><form method="POST" action=""><input type="submit" name="logout" value="Log Out" style="color: white;"></form></a></li>
+      <li><a><form method="POST" action=""><input type="submit" name="logout" value="Log Out" style="color: white;"></form></a></li>
     </ul>
   </div>
   </div>
