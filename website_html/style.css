@@ -93,4 +93,17 @@ body{
 .form-control{
   border-radius: 100px;
 }
+.navbar{
+  background-color: #00789E;
+}
+#stubu h1{
+  font-family: 'Oleo Script';
+  color: white;
+  padding-left: 20px;
+  font-size: 60px;
+}
+#micon{
+  padding-top: 20px;
+  font-size: 20px;
+}
 
