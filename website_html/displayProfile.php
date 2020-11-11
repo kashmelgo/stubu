@@ -98,9 +98,6 @@
       <li><a href="displayProfile.php" style="color: white;">Home</a></li>
       <li><a href="displayProfile.php" style="color: white;">Profile</a></li>
       <li><a><form method="POST" action=""><input type="submit" name="logout" value="Log Out" style="color: white;border: none;background-color: #00789E;"></form></a></li>
-
-    
-
     </ul>
   </div>
   </div>
