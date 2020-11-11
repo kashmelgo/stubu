@@ -33,6 +33,10 @@
 
 	        }
         }
+        if(isset($_POST['logout'])){
+            session_destroy();
+            header('Location: login.php');
+        }
     ?>
 <!-- <div class ="main-container">
     <div class = "col-md-4" id ="leftSide">
@@ -91,9 +95,9 @@
     </div>
     <div class="collapse navbar-collapse" id="micon">
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="index.html" style="color: white;">Home</a></li>
-      <li><a href="hobbies.html"style="color: white;">Profile</a></li>
-      <li><a href="interest.html"style="color: white;">Logout</a></li>
+      <li><a href="displayProfile.php" style="color: white;">Home</a></li>
+      <li><a href="displayProfile.php"style="color: white;">Profile</a></li>
+      <li><form method="POST" action=""><input type="submit" name="logout" value="Log Out" style="color: white;"></form></a></li>
     </ul>
   </div>
   </div>
@@ -103,11 +107,11 @@
 		<div class="row">
 			
 			<div class="col-sm-6">
-				<img src="defaultpic.png" class="img-responsive" width="500px">
+				<img src="defaultpic.png" class="img-responsive" width="300px">
 			</div>
 
 			<div class="col-sm-6">
-				<h1>About Me</h1>
+				<h1><?php echo $_SESSION['first_name'];?> <?php echo $_SESSION['last_name'];?></h1>
 				<p> Good day!</p>
 				<p>Nunc ut neque eget ante pretium scelerisque vitae id mauris. Etiam lacinia tristique nisi, sed vehicula tellus iaculis nec. Maecenas maximus metus hendrerit, finibus magna sed, tempor nulla. Pellentesque quam tortor, iaculis in ullamcorper at, imperdiet eu risus. Pellentesque bibendum ipsum eu volutpat facilisis. Vivamus justo nisi, vestibulum ut pellentesque eget, maximus sed nisi. Morbi quam orci, auctor vitae ullamcorper sit amet, tristique at diam. Pellentesque volutpat, neque quis euismod tempus, magna ex lobortis sapien, nec fringilla eros dui eget mi. Donec posuere viverra elit, sed pharetra quam auctor eget. Vestibulum pellentesque, sapien quis elementum semper, nunc felis vulputate nulla, sit amet venenatis neque ligula sit amet nulla. Mauris dolor ex, commodo sit amet velit sit amet, vulputate feugiat sapien. Pellentesque lacinia turpis id vulputate laoreet. Mauris pellentesque consequat imperdiet. Praesent ante ex, accumsan vel nibh non, tristique rhoncus massa. Phasellus euismod iaculis purus nec ullamcorper. Nunc ac congue dui. </p>	
 			</div>
