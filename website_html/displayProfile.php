@@ -110,11 +110,11 @@
 	<div class="container">
 		<div class="row">
 			
-			<div class="col-sm-6">
+			<div class="col-sm-4">
 				<img src="defaultpic.png" class="img-responsive" width="300px">
 			</div>
 
-			<div class="col-sm-6">
+			<div class="col-sm-8">
 				<h1><?php echo $_SESSION['first_name'];?> <?php echo $_SESSION['last_name'];?></h1>
                 <p><?php echo $_SESSION['email']?></p>
                 <p><?php echo $_SESSION['mobile_number']?></p>
