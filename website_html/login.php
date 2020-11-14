@@ -32,7 +32,7 @@
                 $username = $_POST['user_name'];
                 $password = $_POST['pass_word'];
 
-                $result = $conn->query("SELECT * FROM User WHERE Username = '$username'");
+                $result = $conn->query("SELECT * FROM User WHERE Username = '$username' OR Email_address = '$username'");
                 if($row = $result->fetch_assoc()){
                     if($row['Password'] == $password){
                         $_SESSION['user_id'] = $row['User_ID'];
@@ -73,13 +73,13 @@
                 	<div class="form-row"> 
                			 <div class="col-md-12  col-md-offset-1">
                     		<?php echo "<p>USERNAME<i style='color:red'>".$errormessage."</i></p>"?>
-                   			<input type="text" class="form-control" id="username" name="user_name"placeholder="Enter Username"><br>
+                   			<input type="text" class="form-control" id="username" name="user_name"placeholder="Username or Email Address"><br>
                 		</div>
             		</div>
             		<div class="form-row">
             			<div class="col-md-12 col-md-offset-1">
                     		<p>PASSWORD</p>
-                    		<input type="password" class="form-control" id="firstname" name="pass_word"placeholder="Enter Password"><br>
+                    		<input type="password" class="form-control" id="firstname" name="pass_word"placeholder="Password"><br>
                     		<a href="signup.php">Don't Have an Account? Click here to Sign Up</a>
                             <input type="submit" class=" btn btn-primary" id="submit" value="Login" name="login">
                     	</div>
