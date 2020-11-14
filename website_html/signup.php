@@ -48,7 +48,7 @@
                             $password = $_POST['pass_word'];  
                             $email = $_POST['email_address'];
                             $datecreated = date("Y-m-d");
-                            $lastlogin = date("Y-m-d");
+                            $lastlogin = date_timestamp_get("Y-m-d");
                             $mobileNumber = $_POST['mobile_number'];
                             $sql = "INSERT INTO User VALUES ('','$username','$password','$email','defaultPic','$firstname','$lastname','$mobileNumber','$datecreated','$lastlogin','0')";
                             $conn->query($sql);                                  // Connect inputted data to database
