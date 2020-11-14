@@ -21,7 +21,7 @@
                     Last_Name VARCHAR(50) NOT NULL,
                     Mobile_Number VARCHAR(14) NOT NULL,
                     Date_Created DATE NOT NULL,
-                    Last_online DATE NOT NULL,
+                    Last_online TIMESTAMP NOT NULL,
                     User_level INT NOT NULL
                     )"                   // <----------- Directory Column
                 );
