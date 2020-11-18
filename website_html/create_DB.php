@@ -12,19 +12,35 @@
                 $conn->query("CREATE DATABASE Stubu_Database;");    // Add Database Name
                     $conn->select_db('Stubu_Database');                    // Table and Columns Creation
                     $conn->query("CREATE TABLE User(
-                    User_ID INT AUTO_INCREMENT PRIMARY KEY,
-                    Username VARCHAR(100) NOT NULL,
-                    Password NVARCHAR(50) NOT NULL,
-                    Email_address VARCHAR(50) NOT NULL,
-                    Profile_picture VARCHAR(100) NOT NULL,
-                    First_Name VARCHAR(50) NOT NULL,
-                    Last_Name VARCHAR(50) NOT NULL,
-                    Mobile_Number VARCHAR(14) NOT NULL,
-                    Date_Created DATE NOT NULL,
-                    Last_online TIMESTAMP NOT NULL,
-                    User_level INT NOT NULL
-                    )"                   // <----------- Directory Column
-                );
+                        User_ID INT AUTO_INCREMENT PRIMARY KEY,
+                        Username VARCHAR(100) NOT NULL,
+                        Password NVARCHAR(50) NOT NULL,
+                        Email_address VARCHAR(50) NOT NULL,
+                        Profile_picture VARCHAR(100) NOT NULL,
+                        First_Name VARCHAR(50) NOT NULL,
+                        Last_Name VARCHAR(50) NOT NULL,
+                        Mobile_Number VARCHAR(14) NOT NULL,
+                        Date_Created DATE NOT NULL,
+                        Last_online TIMESTAMP NOT NULL,
+                        User_level INT NOT NULL
+                    )");
+
+                    $conn->query("CREATE TABLE Thread(
+                        Thread_ID INT AUTO_INCREMENT PRIMARY KEY,
+                        User_ID INT NOT NULL,
+                        Subject NVARCHAR(50) NOT NULL,
+                        Date_Created TIMESTAMP NOT NULL,
+                        Last_Reply TIMESTAMP NOT NULL,
+                    )");
+
+                    $conn->query("CREATE TABLE Reply(
+                        Reply_ID INT AUTO_INCREMENT PRIMARY KEY,
+                        Thread_ID INT NOT NULL,
+                        User_ID INT NOT NULL,
+                        Title VARCHAR(100) NOT NULL,
+                        Content NVARCHAR(50) NOT NULL,
+                        Date_Created TIMESTAMP NOT NULL,
+                    )");
 
                 echo "<br>Database successfully Created!";
             }
