@@ -37,50 +37,28 @@
             session_destroy();
             header('Location: login.php');
         }
+
+        if(isset($_POST['edit'])){
+            $files = $_FILES['file'];
+                
+            $filename = $files['name'];                 //File Information
+            $type = $files['type'];
+            $tmp = $files['tmp_name'];
+            $error = $files['error'];
+            $size = $files['size'];
+
+            $location = 'images/'.$filename;           // Folder is Created beforehand
+
+            move_uploaded_file($tmp, $location);           // Moves the Submitted File to a designated Folder
+                
+                
+            $sql = "UPDATE User
+                    SET Profile_picture = '$tmp'
+                    WHERE User_ID == $_SESSION['User_ID'];";
+
+            $conn->query($sql); 
+        }
     ?>
-<!-- <div class ="main-container">
-    <div class = "col-md-4" id ="leftSide">
-        <div id="leftoSide">   
-            <h1> StuBu</h1>
-            <h2> A Forum-based System</h2>
-            <h3> A system where Carolinians can ask questions</h3>
-        </div>
-    </div>
-    
-    <div class = "col-md-8" id ="rightSide-login">
-        <div class = "container">
-        	<div class="form-row"> 
-              	<div class="col-md-12  col-md-offset-1">
-                   	<img src="defaultpic.png" width="150px" height="150px"> 
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="col-md-5 col-md-offset-1">
-                    <p><?php echo $_SESSION['first_name'];?>  <?php echo $_SESSION['last_name'];?></p><br>
-                </div>
-            </div>
-            <div class="form-row"> 
-            	<div class="col-md-12  col-md-offset-1">
-                   	<p>USERNAME</p>
-               		<p><?php echo $_SESSION['username'];?></p><br>
-                </div>
-            </div>
-            
-            <div class="form-row"> 
-              	<div class="col-md-12  col-md-offset-1">
-                    <p>EMAIL</p>
-                    <p><?php echo $_SESSION['email'];?></p><br>
-                </div>
-                <div class="form-row"> 
-              		<div class="col-md-12  col-md-offset-1">
-            	       	<p>MOBILE NUMBER</p>
-                	    <p><?php echo $_SESSION['mobile_number'];?></p><br>
-              		</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -108,6 +86,19 @@
 			
 			<div class="col-sm-4">
 				<img src="defaultpic.png" class="img-responsive" width="300px">
+                <br>
+                <?php
+                    if(isset($_POST['edit'])){
+                        echo "<form method='POST' action='' enctype='multipart/form-data'>
+                            <input type = 'file' name='file' required>
+                            <input type='submit' name='submit'>
+                        </form>";
+                    }else{
+                        echo "<form method='POST' action=''>
+                    <input type='submit' name='edit' value='Edit Image'>
+                </form>";
+                    }
+                ?>
 			</div>
 
 			<div class="col-sm-8">
