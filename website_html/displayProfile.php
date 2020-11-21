@@ -54,7 +54,7 @@
                 
             $sql = "UPDATE User
                     SET Profile_picture = '$tmp'
-                    WHERE User_ID == $_SESSION['User_ID'];";
+                    WHERE User_ID == $_SESSION['User_ID']";
 
             $conn->query($sql); 
         }
