@@ -95,7 +95,7 @@
 		<div class="row">
 			
 			<div class="col-sm-4">
-				<img src="defaultpic.png" class="img-responsive" width="300px">
+				<img src="images/<?php echo $_SESSION['profile_picture']?>" class="img-responsive" width="300px">
                 <br>
                 <?php
                     if(isset($_POST['edit'])){
