@@ -25,21 +25,33 @@
                         User_level INT NOT NULL
                     )");
 
-                    $conn->query("CREATE TABLE Thread(
+                    /* $conn->query("CREATE TABLE Thread(
                         Thread_ID INT AUTO_INCREMENT PRIMARY KEY,
                         User_ID INT NOT NULL,
                         Subject NVARCHAR(50) NOT NULL,
                         Date_Created TIMESTAMP NOT NULL,
                         Last_Reply TIMESTAMP NOT NULL,
+                    )"); */
+
+                    $conn->query("CREATE TABLE Post(
+                        Post_ID INT AUTO_INCREMENT PRIMARY KEY,
+                        User_ID INT NOT NULL,
+                        Subject NVARCHAR(50) NOT NULL,
+                        Date_Created TIMESTAMP NOT NULL,
+                        FOREIGN KEY (User_ID) REFERENCES User(User_ID),
                     )");
 
                     $conn->query("CREATE TABLE Reply(
                         Reply_ID INT AUTO_INCREMENT PRIMARY KEY,
-                        Thread_ID INT NOT NULL,
+                        Post_ID INT,
+                        Reply_Reply_ID INT,
                         User_ID INT NOT NULL,
-                        Title VARCHAR(100) NOT NULL,
                         Content NVARCHAR(50) NOT NULL,
                         Date_Created TIMESTAMP NOT NULL,
+                        FOREIGN KEY (Post_ID) REFERENCES Post(Post_ID),
+                        FOREIGN KEY (Reply_Reply_ID) REFERENCES Reply(Reply_ID),
+                        FOREIGN KEY (User_ID) REFERENCES User(User_ID),
+                        CHECK(POST_ID IS NOT NULL OR Reply_Reply_ID IS NOT NULL);
                     )");
 
                 echo "<br>Database successfully Created!";
