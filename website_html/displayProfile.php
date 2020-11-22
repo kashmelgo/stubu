@@ -38,7 +38,7 @@
             header('Location: login.php');
         }
 
-        if(isset($_POST['edit'])){
+        if(isset($_POST['submit'])){
             $files = $_FILES['file'];
                 
             $filename = $files['name'];                 //File Information
@@ -46,17 +46,27 @@
             $tmp = $files['tmp_name'];
             $error = $files['error'];
             $size = $files['size'];
+            $temp = explode('.',$filename);
+            $ext = strtolower(end($temp));
+            $id = $_SESSION['user_id'];
+            
 
-            $location = 'images/'.$filename;           // Folder is Created beforehand
-
-            move_uploaded_file($tmp, $location);           // Moves the Submitted File to a designated Folder
+            $allowed = array("jpeg","jpg","png");
+            if($size > 2097152){
+                $error  = "Image size is greater than 2mb";
+            }else if(in_array($ext,$allowed)===false){
+                $error = "Image Extension not allowed";
+            }else{
+                $picture = $id.".".$ext;
+                $location = 'images/'.$picture;           // Folder is Created beforehand
                 
-                
-            $sql = "UPDATE User
-                    SET Profile_picture = '$tmp'
-                    WHERE User_ID == $_SESSION['User_ID']";
-
-            $conn->query($sql); 
+                move_uploaded_file($tmp, $location);           // Moves the Submitted File to a designated Folder
+                    
+                $sql = "UPDATE User SET Profile_picture = '$picture' WHERE User_ID = $id ";
+                $conn->query($sql);
+               $_SESSION['profile_picture'] = $picture;
+            }
+            
         }
     ?>
 
