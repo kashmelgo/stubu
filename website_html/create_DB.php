@@ -38,7 +38,7 @@
                         User_ID INT NOT NULL,
                         Subject NVARCHAR(50) NOT NULL,
                         Date_Created TIMESTAMP NOT NULL,
-                        FOREIGN KEY (User_ID) REFERENCES User(User_ID),
+                        FOREIGN KEY (User_ID) REFERENCES User(User_ID)
                     )");
 
                     $conn->query("CREATE TABLE Reply(
@@ -51,7 +51,7 @@
                         FOREIGN KEY (Post_ID) REFERENCES Post(Post_ID),
                         FOREIGN KEY (Reply_Reply_ID) REFERENCES Reply(Reply_ID),
                         FOREIGN KEY (User_ID) REFERENCES User(User_ID),
-                        CHECK(POST_ID IS NOT NULL OR Reply_Reply_ID IS NOT NULL);
+                        CHECK(POST_ID IS NOT NULL OR Reply_Reply_ID IS NOT NULL)
                     )");
 
                 echo "<br>Database successfully Created!";
