@@ -50,7 +50,7 @@
                             $datecreated = date("Y-m-d");
                             $lastlogin = date_timestamp_get("Y-m-d");
                             $mobileNumber = $_POST['mobile_number'];
-                            $sql = "INSERT INTO User VALUES ('','$username','$password','$email','defaultPic','$firstname','$lastname','$mobileNumber','$datecreated','$lastlogin','0')";
+                            $sql = "INSERT INTO User VALUES ('','$username','$password','$email','defaultpic.png','$firstname','$lastname','$mobileNumber','$datecreated','$lastlogin','0')";
                             $conn->query($sql);                                  // Connect inputted data to database
 
                             $result = $conn->query("SELECT * FROM User WHERE Username = '$username'");
