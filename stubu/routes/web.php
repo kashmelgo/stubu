@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    $threads=App\Thread::paginate(15);
     return view('welcome');
 });
 
@@ -21,4 +22,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('/thread','App\Http\Controllers\ThreadController');
+Route::get( '/thread', [App\Http\Controllers\ThreadController::class, 'index'])->name('thread');
