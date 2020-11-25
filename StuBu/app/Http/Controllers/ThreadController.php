@@ -55,7 +55,7 @@ class ThreadController extends Controller
 
         //store
 
-            auth()->user()->thread()->create($request->all());
+            auth()->user()->threads()->create($request->all());
 
 
         //redirect
