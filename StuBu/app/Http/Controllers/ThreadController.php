@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 
 class ThreadController extends Controller
 {
+
+    function __construct(){
+        /* Before reaching Thread Page, User must Pass the Authentication Page*/
+        return $this->middleware('auth')->except('index');
+    }
+
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -45,7 +54,9 @@ class ThreadController extends Controller
         ]);
 
         //store
-        Thread::create($request->all());
+
+            auth()->user()->threads()->create($request->all());
+
 
         //redirect
         return back()->withMessage('Thread Created');
@@ -89,6 +100,10 @@ class ThreadController extends Controller
             'body' => 'required'
         ]);
 
+        if(auth()->user()->id != $thread->user_id){
+            abort(401,'Unauthorized Access!');
+        }
+
         $thread->update($request->all());
 
         return redirect()->route('thread.show',$thread->id)->withMessage('Thread Updated Successfully!');
@@ -102,6 +117,10 @@ class ThreadController extends Controller
      */
     public function destroy(Thread $thread)
     {
+        if(auth()->user()->id != $thread->user_id){
+            abort(401,'Unauthorized Access!');
+        }
+
         $thread->delete();
 
         return redirect()->route('thread.index')->withMessage('Thread Deleted Successfully!');
