@@ -30,6 +30,7 @@
     <div class="comment-form">
         <form action="{{route('threadcomment.store',$thread->id)}}" method="POST" role="form">
         {{csrf_field()}}
+        {{method_field('POST')}}
         <legend>Create Comment</legend>
         <div class="form-group">
             <input type="text" class="form-control" name="body" id="" placeholder="Input...">
