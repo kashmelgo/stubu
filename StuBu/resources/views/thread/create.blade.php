@@ -42,16 +42,16 @@
                             <form class="form-vertical " action="{{ route('thread.store') }}" method="POST" role="form" id="create-thread-form">
                                 {{csrf_field()}}
                                 <div class="form-group">
-                                    <label>Subject</label>
+                                    <label><h5>Subject</h5></label>
                                     <input type="text" class="form-control-plaintext input-group-lg" name="subject" id="" placeholder="Input..." value="{{old('subject')}}">
                                 </div>
                                 <div class="form-group">
-                                    <label>Type</label>
+                                    <label><h5>Type</h5></label>
                                     <input type="text" class="form-control-plaintext input-group-lg" name="type" id="" placeholder="Input..." value="{{old('type')}}">
                                 </div>
                                 <div class="form-group">
-                                    <label>Thread</label>
-                                    <input type="text" class="form-control-plaintext input-group-lg" name="body" id="" placeholder="Input..." value="{{old('body')}}">
+                                    <label><h5>Thread</h5></label>
+                                    <textarea class="form-control-plaintext input-group-lg" name="body" id="" placeholder="Input...">{{old('body')}}</textarea>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Submit</button>
