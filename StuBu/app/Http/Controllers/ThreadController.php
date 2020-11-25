@@ -36,7 +36,20 @@ class ThreadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validate
+
+        $this->validate($request,[
+            'subject' => 'required|min:10',
+            'type' => 'required',
+            'body' => 'required'
+        ]);
+
+        //store
+        Thread::create($request->all());
+
+        //redirect
+        return back()->withMessage('Thread Created');
+
     }
 
     /**

@@ -6,11 +6,11 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <div>
-                        <div class="ml-auto">
+                    <div class="row">
+                        <div class="col-md-9">
                             <h1>Threads</h1>
                         </div>
-                        <div class="mr-auto">
+                        <div class="col-md-3">
                             <a class="btn btn-primary" href="{{ route('thread.create')}}">Create Thread</a>
                         </div>
                     </div>

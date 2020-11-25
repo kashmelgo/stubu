@@ -3,7 +3,17 @@
 @section('heading','Create Thread')
 
 @section('content')
-    
+
+@if (count($errors)>0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -21,21 +31,27 @@
                         </div>
                     @endif
 
-                    <div class="row">
-                        <div class="well">
-                            <form class="form-vertical" action="{{ route('thread.store') }}" method="POST" role="form" id="create-thread-form">
+                    @if (session('message'))
+                        <div class="alert alert-success">
+                            {{ session('message') }}
+                        </div> 
+                    @endif
+
+                    <div class="row ">
+                        <div class="well ">
+                            <form class="form-vertical " action="{{ route('thread.store') }}" method="POST" role="form" id="create-thread-form">
                                 {{csrf_field()}}
                                 <div class="form-group">
                                     <label>Subject</label>
-                                    <input type="text" class="form-control" name="subject" id="" placeholder="Input..." value="{{old('subject')}}">
+                                    <input type="text" class="form-control-plaintext input-group-lg" name="subject" id="" placeholder="Input..." value="{{old('subject')}}">
                                 </div>
                                 <div class="form-group">
                                     <label>Type</label>
-                                    <input type="text" class="form-control" name="type" id="" placeholder="Input..." value="{{old('type')}}">
+                                    <input type="text" class="form-control-plaintext input-group-lg" name="type" id="" placeholder="Input..." value="{{old('type')}}">
                                 </div>
                                 <div class="form-group">
                                     <label>Thread</label>
-                                    <input type="text" class="form-control" name="thread" id="" placeholder="Input..." value="{{old('thread')}}">
+                                    <input type="text" class="form-control-plaintext input-group-lg" name="body" id="" placeholder="Input..." value="{{old('body')}}">
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Submit</button>
