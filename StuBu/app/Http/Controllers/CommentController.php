@@ -20,7 +20,8 @@ class CommentController extends Controller
         $comment->user_id = auth()->user()->id;
 
         $thread->comments()->save($comment);
-
+        
+        return back()->withMessage('Comment Added Successfully!');
 
     }
     /**
