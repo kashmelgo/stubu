@@ -2,8 +2,13 @@
 
 @section('content')
 <div class="card">
-    <div class="card-header">
-        <h1>Threads</h1>
+    <div class="card-header row">
+        <div class="col-md-4 main-content-heading">
+            Threads
+        </div>
+        <div class="col-md-offset-6 col-md-2">
+            <a class="btn btn-primary" href="{{ route('thread.create')}}">Create Thread</a>
+        </div>
     </div>
 
     <div class="card-body">

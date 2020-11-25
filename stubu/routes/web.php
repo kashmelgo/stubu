@@ -22,4 +22,5 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get( '/thread', [App\Http\Controllers\ThreadController::class, 'index'])->name('thread');
+//Route::get( '/thread', [App\Http\Controllers\ThreadController::class, 'index'])->name('thread');
+Route::resource('/thread','App\Http\Controllers\ThreadController');
