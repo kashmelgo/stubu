@@ -3,6 +3,13 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+         <div class="col-md-4">
+            <h1>Choose Profile Picture</h1><br>
+            <form method="POST" action="upload" enctype="multipart/form-data">
+                            <input type = "file" name="file" required><br>
+                            <input type="submit" name="submit">
+             </form>
+         </div>
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
