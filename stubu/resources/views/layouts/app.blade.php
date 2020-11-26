@@ -19,8 +19,8 @@
 
     <!-- Styles -->
     <link href="https://bootswatch.com/4/lumen/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link href="{{asset('css/app.css')}}" rel="stylesheet">
+    <link href="{{ asset('style.css') }}" rel="stylesheet">
+    <link href="{{asset('app.css')}}" rel="stylesheet">
 
 </head>
 <body>
