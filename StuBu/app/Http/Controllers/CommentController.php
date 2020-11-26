@@ -24,6 +24,22 @@ class CommentController extends Controller
         return back()->withMessage('Comment Added Successfully!');
 
     }
+    
+    public function addReplyComment(Request $request, Comment $comment){
+
+        $this->validate($request,[
+            'body'=>'required'
+        ]);
+
+        $reply = new Comment();
+        $reply->body = $request->body;
+        $reply->user_id = auth()->user()->id;
+
+        $comment->comments()->save($reply);
+        
+        return back()->withMessage('Reply Added Successfully!');
+
+    }
     /**
      * Store a newly created resource in storage.
      *
