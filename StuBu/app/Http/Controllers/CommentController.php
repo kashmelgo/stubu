@@ -32,17 +32,6 @@ class CommentController extends Controller
      */
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Comment $comment)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -51,7 +40,16 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
-        //
+        if($comment->user_id!=auth()->user()->id){
+            abort(401);
+        }
+        $this->validate($request,[
+            'body'=>'required'
+        ]);
+
+        $comment->update($request->all());
+
+        return back()->withMessage('Comment Updated Successfully!');
     }
 
     /**
@@ -62,6 +60,11 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        if($comment->user_id!=auth()->user()->id){
+            abort(401);
+        }
+        $comment->delete();
+
+        return back()->withMessage('Comment Deleted Successfully');
     }
 }

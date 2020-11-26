@@ -23,6 +23,7 @@
         @foreach($thread->comments as $comment)
             <h4>{{$comment->user->name}}</h4>
             <p>{{$comment->body}}</p>
+            @if(auth()->user()->id == $comment->user_id)
             <div class="actions">
 
                 <a type="btn btn-xs" class="btn btn-primary" data-toggle="modal" href="#edit-comment-{{ $comment->id }}">
@@ -51,10 +52,6 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
                         </div>
                     </div>
                 </div>
@@ -64,6 +61,7 @@
                     <input class="btn btn-xs btn-danger" type="submit" value="Delete">
                 </form>
             </div>
+            @endif
         @endforeach
     </div>
     <br>
