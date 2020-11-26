@@ -3,5 +3,14 @@
 @section('content')
 
 <div class ="container">
-    <h1> This is the homefeed </h1>
+    <div class = "row">
+        <div id = "homefeedLeft" class= "col-md-4">
+            <h1> leftside </h1>
+        </div>
+        <div class = "col-md-6 col-md-offset-2">
+            <h2> hello im right side </h2>
+        </div>
+    </div>
 </div>
+
+@endsection
