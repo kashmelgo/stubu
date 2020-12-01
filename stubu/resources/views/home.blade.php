@@ -1,33 +1,48 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+#info{
+
+  background-color: #00789E;
+  border-style:solid;
+  border-color:white;
+  border-radius: 25px;
+  margin-bottom:20px;
+  color: white;
+}
+#info h1{
+    text-align: center;
+}
+#wa{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+}
+
+</style>
+
 <div class="container">
-    <div class="row justify-content-center">
-         <div class="col-md-4">
-            <h1>Choose Profile Picture</h1><br>
-            <form method="POST" action="upload" enctype="multipart/form-data">
-                            <input type = "file" name="file" required><br>
-                            <input type="submit" name="submit">
-             </form>
-         </div>
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    <h1>{{ __('Dashboard') }}</h1>
-                </div>
+    <div class="row">
+        <div class="col-md-6" id="info">
+                 <h1>{{Auth::user()->name}}</h1>
+                 <img src="images/petroglyph.png" class="img-responsive" id="wa">
+				<p>Nunc ut neque eget ante pretium scelerisque 
+                vitae id mauris. Etiam lacinia tristique nisi, sed 
+                vehicula tellus iaculis nec. Maecenas maximus metus 
+                hendrerit, finibus magna sed, tempor nulla. Pellentesque 
+                quam tortor, iaculis in ullamcorper at, imperdiet eu risus. 
+                Pellentesque bibendum ipsum eu volutpat facilisis. Vivamus justo nisi, vestibulum ut pellentesque eget, maximus sed nisi. Morbi quam orci, auctor vitae ullamcorper sit amet, tristique at diam. Pellentesque volutpat, neque quis euismod tempus, magna ex lobortis sapien, nec fringilla eros dui eget mi. Donec posuere viverra elit, sed pharetra quam auctor eget. Vestibulum pellentesque. </p>	
+            </div>   
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <h2>{{ __('Welcome! ') }} {{Auth::user()->name}}</h2>
-
-                </div>
-            </div>
-        </div>
-    </div>
+        <div class="col-md-6" id="info">
+            <h1>Contact Details</h1>
+                <p>Email Address: asdasd1dasd</p>
+                <p>Mobile Number: asdasdasd</p>
+                <p>Last Online: a few seconds ago</p>
+                <p>Date Created: asdasd</p>
+            </div>   
+    </div> 
 </div>
 @endsection
