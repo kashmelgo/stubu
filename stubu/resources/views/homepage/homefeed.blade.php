@@ -4,11 +4,15 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
-            <h1> left side </h1>
+        <div id = "homefeed-left" class="col-md-4">
+            <h1>hello</h1>
         </div>
-        <div class="col-md-6 col-md-offset-2">
-            <h1> right side </h1>
+        <div id ="homefeed-right" class="col-md-6 col-md-offset-2">
+            <div>
+                @foreach($threads as $subjects)
+                    <h1>{{$subjects->$id}}</h1>
+                @endforeach
+            </div>
         </div>
     </div>
 </div>
