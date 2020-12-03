@@ -58,6 +58,8 @@ class profileInfoController extends Controller
         }
 
         $info->save();
+
+        return view('home')->with('info',$info);
         
     }
 
