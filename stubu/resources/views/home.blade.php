@@ -73,6 +73,7 @@
               <div class="row">
                 <div class="col-md-6">
                     <h1>{{Auth::user()->name}}</h1>
+                    <h1>{{Auth::user()->id}}</h1>
                  
                     <img src="images/petroglyph.png" class="img-responsive" id="wa">
                     <h5>Reputation:123</h5>
@@ -103,9 +104,11 @@
     
  <div class="container collapse" id="profile_form" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="submit" method="POST" enctype="multipart/form-data">
+    @csrf
         Choose Profile Pic: <input type="file" name="image"><br>
         Enter Number: <input type="text" name="mobile_number"><br>
+        <input type="hidden" name="user_id" value='{{Auth::user()->id}}'>
         <textarea name="about_me" rows="10" cols="100">About Yourself...</textarea>
         <input type="Submit" name="submit">
     </form>
