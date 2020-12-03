@@ -42,7 +42,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}" v-pre>
+                            <a class="nav-link" href="{{ route('homefeed') }}" v-pre>
                                 Home
                             </a>
                         </li>
@@ -72,7 +72,7 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a class="nav-link" href="{{route('home')}}" role="button" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
                             </li>
