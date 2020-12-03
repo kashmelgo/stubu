@@ -9,9 +9,8 @@ class HomeFeedController extends Controller
 {
     public function index(){
 
-        $threads = DB::select('select * from threads', [1]);
-        
-        return view('homepage/homefeed', ['threads' => $threads->subject]);
+        $threads = DB::select('select subject from threads');
+        return view('homepage/homefeed', ['threads' => $threads]);
     }
 
     

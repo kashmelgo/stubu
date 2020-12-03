@@ -9,8 +9,8 @@
         </div>
         <div id ="homefeed-right" class="col-md-6 col-md-offset-2">
             <div>
-                @foreach($threads as $subjects)
-                    <h1>{{$subjects->$id}}</h1>
+                @foreach($threads as $thread)
+                    <h1>{{$thread->subject}}</h1>
                 @endforeach
             </div>
         </div>

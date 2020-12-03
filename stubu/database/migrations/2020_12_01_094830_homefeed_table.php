@@ -13,7 +13,7 @@ class HomefeedTable extends Migration
      */
     public function up()
     {
-        Schema::create('homefeed', function (Blueprint $table) {
+        Schema::create('homefeed', functilon (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
             $table->integer('thread_id');
