@@ -10,7 +10,9 @@
         <div id ="homefeed-right" class="col-md-6 col-md-offset-2">
             <div>
                 @foreach($threads as $subjects)
+                    @if($subjects!=NULL)
                     <h1>{{$subjects->$id}}</h1>
+                    @endif
                 @endforeach
             </div>
         </div>
