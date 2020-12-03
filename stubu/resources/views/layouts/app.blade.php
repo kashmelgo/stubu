@@ -42,13 +42,13 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a class="nav-link" href="{{ route('home') }}" v-pre>
                                 Home
                             </a>
                         </li>
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('thread.index') }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a class="nav-link" href="{{ route('thread.index') }}" v-pre>
                                     Thread
                                 </a>
                             </li>
