@@ -95,6 +95,7 @@
                 <p>Email Address: {{Auth::user()->email}}</p>
                 <p>Mobile Number: </p>
                 <p>Date Created: {{Auth::user()->created_at}}</p>
+  
             </div>   
     </div> 
 </div>
