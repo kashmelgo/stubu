@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\profileInfo;
+use Illuminate\Support\Facades\DB;
 
 class profileInfoController extends Controller
 {
@@ -15,6 +16,15 @@ class profileInfoController extends Controller
     public function index()
     {
         //
+
+        
+        
+
+        $info = DB::select('select * from profile_infos WHERE {{Auth::user()->id}} == user_id ');
+
+        // return view('home')->with('info',$info);
+
+        return view('profile')->with('info',$info);
     }
 
     /**
@@ -25,6 +35,7 @@ class profileInfoController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -59,7 +70,9 @@ class profileInfoController extends Controller
 
         $info->save();
 
-        return view('home')->with('info',$info);
+        // return view('home',[profileInfoController::class,'index']);
+
+        return back()->withMessage('Edited Successfully');
         
     }
 
