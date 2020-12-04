@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\profileInfo;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class profileInfoController extends Controller
 {
@@ -16,15 +17,8 @@ class profileInfoController extends Controller
     public function index()
     {
         //
-
-        
-        
-
-        $info = DB::select('select * from profile_infos WHERE {{Auth::user()->id}} == user_id ');
-
-        // return view('home')->with('info',$info);
-
-        return view('profile')->with('info',$info);
+    
+        return view('profile')->with('user', Auth::user());
     }
 
     /**
@@ -47,32 +41,32 @@ class profileInfoController extends Controller
     public function store(Request $request)
     {
         //
-        $user_id=$request->input('user_id');
-        $mobile_number=$request->input('mobile_number');
-        $about_me=$request->input('about_me');
+        // $user_id=$request->input('user_id');
+        // $mobile_number=$request->input('mobile_number');
+        // $about_me=$request->input('about_me');
 
-        $info= new profileInfo;
+        // $info= new profileInfo;
 
-        $info->about_me=$about_me;
-        $info->mobile_number=$mobile_number;
-        $info->user_id=$user_id;
+        // $info->about_me=$about_me;
+        // $info->mobile_number=$mobile_number;
+        // $info->user_id=$user_id;
 
-        if($request->hasfile('image')){
-            $file=$request->file('image');
-            $extension=$file->getClientOriginalExtension();
-            $filename= time() . '.' . $extension;
-            $file->move('images/profilePic/',$filename);
-            $info->image=$filename;
-        }else{
-            return $request;
-            $info->image='';
-        }
+        // if($request->hasfile('image')){
+        //     $file=$request->file('image');
+        //     $extension=$file->getClientOriginalExtension();
+        //     $filename= time() . '.' . $extension;
+        //     $file->move('images/profilePic/',$filename);
+        //     $info->image=$filename;
+        // }else{
+        //     return $request;
+        //     $info->image='';
+        // }
 
-        $info->save();
+        // $info->save();
 
-        // return view('home',[profileInfoController::class,'index']);
+       
 
-        return back()->withMessage('Edited Successfully');
+        // return back()->withMessage('Edited Successfully');
         
     }
 
@@ -105,9 +99,32 @@ class profileInfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
+        $user = Auth::user();
+
+
+     if($request->hasfile('image')){
+            $file=$request->file('image');
+            $extension=$file->getClientOriginalExtension();
+            $filename= time() . '.' . $extension;
+            $file->move('images/profilePic/',$filename);
+            $user->image=$filename;
+
+            
+        }
+
+        $user->name= $request->name;
+        $user->email= $request->email;
+        $user->mobile_number= $request->mobile_number;
+        $user->about_me= $request->about_me;
+    
+
+        $user->save();
+
+        return view('profile');
+
     }
 
     /**

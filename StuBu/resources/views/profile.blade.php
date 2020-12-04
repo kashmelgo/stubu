@@ -72,20 +72,17 @@
         <div class="col-md-6" id="info">
               <div class="row">
                 <div class="col-md-6">
-                    <h1>{{Auth::user()->name}}</h1>
+                  
+                    <h1>{{ Auth::user()->name}}</h1>
                     
-                    <img src="images/defaultPic.jpg" class="img-responsive" id="wa">
+
+                    <img src="images/profilePic/{{Auth::user()->image}}" class="img-responsive" id="wa">
                     <h5>Reputation:123</h5>
                 </div>
             <div class="col-md-6">
                 <h2>About Me </h2>
                 
-				<p>Nunc ut neque eget ante pretium scelerisque 
-                vitae id mauris. Etiam lacinia tristique nisi, sed 
-                vehicula tellus iaculis nec. Maecenas maximus metus 
-                hendrerit, finibus magna sed, tempor nulla. Pellentesque 
-                quam tortor, iaculis in ullamcorper at, imperdiet eu risus. 
-                Pellentesque bibendum ipe. </p>	
+				<p>{{ Auth::user()->about_me}} </p>	
              </div>
          </div>   
       </div>
@@ -93,10 +90,10 @@
         <div class="col-md-6" id="info">
             <h1>Contact Details</h1>
                 <p>Email Address: {{Auth::user()->email}}</p>
-                <p>Mobile Number: </p>
+                <p>Mobile Number:{{ Auth::user()->mobile_number}} </p>
                 <p>Date Created: {{Auth::user()->created_at}}</p>
 
-                    <h1>{{ $value->about_me }}</h1>
+                   
 
 
             </div>   
@@ -107,12 +104,13 @@
     
  <div class="container collapse" id="profile_form" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 
-    <form action="submit" method="POST" enctype="multipart/form-data">
+    <form action="update" method="POST" enctype="multipart/form-data">
     @csrf
         Choose Profile Pic: <input type="file" name="image"><br>
-        Enter Number: <input type="text" name="mobile_number"><br>
-        <input type="hidden" name="user_id" value='{{Auth::user()->id}}'>
-        <textarea name="about_me" rows="10" cols="100">About Yourself...</textarea>
+        Enter Name: <input type="text" name="name" value="{{ Auth::user()->name}}"><br>
+        Enter Email: <input type="text" name="email" value="{{Auth::user()->email}}"><br>
+        Enter Phone Number: <input type="text" name="mobile_number" value="{{ Auth::user()->mobile_number}}"><br>
+        <textarea name="about_me" rows="10" cols="100" >{{ Auth::user()->about_me}}</textarea>
         <input type="Submit" name="submit">
     </form>
 
