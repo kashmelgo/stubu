@@ -116,13 +116,18 @@ class profileInfoController extends Controller
         }
 
         $user->name= $request->name;
-        $user->email= $request->email;
         $user->mobile_number= $request->mobile_number;
         $user->about_me= $request->about_me;
     
 
-        $user->save();
+    
 
+        if($request->has('password')){
+
+            $user->password= bcrypt($request->password);
+        }
+
+        $user->save();
         return view('profile');
 
     }
