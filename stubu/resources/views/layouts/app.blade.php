@@ -72,7 +72,7 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('home')}}" role="button" v-pre>
+                                <a class="nav-link" href="{{route('profile')}}" role="button" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
                             </li>
