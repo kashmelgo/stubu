@@ -106,16 +106,26 @@
 </div>
 
     
-
- <div class="container collapse" id="profile_form" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="container">
-        <div class="row justify-content-center">
-             <div class="col-md-8">
-                  <div class="card">
-                      <div class="card-header">Edit Profile</div>
-                           <div class="card-body" id="popupForm">
+<div class="modal fade bd-example-modal-lg"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+             <div class="modal-content">
+                <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Edit Profile</h5>
+                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                             </button>
+                </div>
+                           <div class="modal-body">
                               <form action="update" method="POST" enctype="multipart/form-data">
                                      @csrf
+
+                                     <div class="form-group row">
+                                          <label class="col-md-4 col-form-label text-md-right">Your Current Pic</label>
+                                       <div class="col-md-6">
+                                        <img src="images/profilePic/{{Auth::user()->image}}" class="img-responsive" id="wa">
+                                    </div>
+                                    </div>
+
                                      <div class="form-group row">
                                           <label class="col-md-4 col-form-label text-md-right">Choose Pic</label>
                                        <div class="col-md-6">
@@ -156,27 +166,20 @@
                                 </div>
                              </div>
 
-                             <div class="form-group row mb-0" id="submit_button">
-                                 <div class="col-md-6 offset-md-4">
-                                         <button type="submit" class="btn btn-primary" name="submit">
-                                          Submit
-                                        </button>
-                                        
-                              </div>
-                             </div>
-
-                            </form>
+                             <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <input type="submit" class="btn btn-primary" name="submit">
                      </div>
-                 </div>
-             </div>
-         </div>
+                             </form>
+                         </div>
+        </div>
     </div>
 </div>
 
 
 <div class="container1">
     <div class="center">
-    <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#profile_form">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
         Edit Profile
         </button>
        
