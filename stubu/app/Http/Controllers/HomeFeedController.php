@@ -18,5 +18,9 @@ class HomeFeedController extends Controller
         return view('thread.create');
     }
 
+    public function show(Thread $thread)
+    {
+        return view('thread.single',compact('thread'));
+    }
 
 }

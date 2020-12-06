@@ -6,7 +6,7 @@
     <div class="row">
         <div id = "homefeed-left" class="col-md-4">
             <h1>What should I put here? I might change the container para mas nifty lantawn.</h1>
-            <button type="button"> <span class="glyphicon glyphicon-home"></span> </button> 
+            <button type="button"><span class="glyphicon glyphicon-home"></span></button> 
         </div>
         <div id ="homefeed-right" class="col-md-6 col-md-offset-2">
             <div class="card">
@@ -30,8 +30,8 @@
 
                     <div class="list-group">
                         @forelse($threads as $thread)
-                            <a href="" class="list-group-item">
-                                <h4 class="list-group-item-heading">{{$thread->subject}}</h4> 
+                            <a href=" {{route('thread.show',$thread->id)}} " class="list-group-item">
+                                <h4 class="list-group-item-heading"> {{$thread->subject}} </h4> 
                                 <p class="list-group-item-text">{{Str::limit($thread->body, 30, '...')}}</p>
                             </a>
 
