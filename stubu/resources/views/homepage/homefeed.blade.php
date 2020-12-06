@@ -5,11 +5,11 @@
 <div class="container">
     <div class="row">
         <div id = "homefeed-left" class="col-md-4">
-            <h1>What should I put here? I might change the container para mas nifty lantawn.</h1>
-            <button type="button"><span class="glyphicon glyphicon-home"></span></button> 
+            <h1>Hello, {{Auth::user()->name}}</h1>
+            <h2> {{Auth::user()->email}} </h2>
         </div>
         <div id ="homefeed-right" class="col-md-6 col-md-offset-2">
-            <div class="card">
+            <div class="card" id="card-homefeed">
                 <div class="card-header">
                     <div class="row">
                         <div class="col-md-9">
@@ -31,7 +31,7 @@
                     <div class="list-group">
                         @forelse($threads as $thread)
                             <a href=" {{route('thread.show',$thread->id)}} " class="list-group-item">
-                                <h4 class="list-group-item-heading"> {{$thread->subject}} </h4> 
+                                <h4 class="list-group-item-heading"> {{$thread->subject}} </h4>
                                 <p class="list-group-item-text">{{Str::limit($thread->body, 30, '...')}}</p>
                             </a>
 

@@ -12,7 +12,7 @@ body{
 
 #homefeed-left{
   padding: 5%;
-  margin: 3%;
+  margin-right: 5%;
   background-color: #00789E;
   border-style:solid;
   border-color:white;
@@ -20,6 +20,12 @@ body{
   margin-bottom:20px;
   color: white;
   height: 0%;
+}
+
+#card-homefeed{
+    padding: 5%;
+    margin: 3%;
+    max-width: 100%;
 }
 
 .nav-link{
