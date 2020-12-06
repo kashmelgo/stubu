@@ -64,6 +64,9 @@
     border-radius:25px;
 
 }
+#submit_form{
+    background-color:#00B8AB;
+}
 
 
     </style>
@@ -82,7 +85,7 @@
                     
 
                     <img src="images/profilePic/{{Auth::user()->image}}" class="img-responsive" id="wa">
-                    <h5>Reputation:123</h5>
+                    <h5>Reputation: {{ Auth::user()->reputation}} </h5>
                 </div>
             <div class="col-md-6">
                 <h2>About Me </h2>
@@ -168,7 +171,7 @@
 
                              <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <input type="submit" class="btn btn-primary" name="submit">
+                            <input type="submit" class="btn btn-primary" name="submit" id="submit_form">
                      </div>
                              </form>
                          </div>

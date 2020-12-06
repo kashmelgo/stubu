@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUsersColumn extends Migration
+class AddReputationColumn extends Migration
 {
     /**
      * Run the migrations.
@@ -15,10 +15,7 @@ class AddUsersColumn extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('image')->default('defaultPic.jpg')->after('email');
-            $table->string('about_me')->default('None');
-            $table->string('mobile_number')->default('None');
-          
+            $table->integer('reputation')->default(0)->after('email');
         });
     }
 
@@ -31,10 +28,7 @@ class AddUsersColumn extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('image');
-            $table->string('about_me');
-            $table->string('mobile_number');
-           
+            $table->integer('reputation');
         });
     }
 }
