@@ -21,7 +21,6 @@
                 <div class="card-header">
                     <div>
                         <h1>Create Thread</h1>
-                        
                     </div>
                 </div>
 
@@ -56,7 +55,8 @@
                             <button type="submit" class="btn btn-primary">Submit</button>
                             
                         </form>
-                        <form action=" {{ route('homefeed')}}" method="">
+                        
+                         <form action=" {{ route('homefeed')}}" method="">
                             <button type="submit" class="btn btn-primary">Close</button>
                         </form>
                     </div>
