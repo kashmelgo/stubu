@@ -71,9 +71,19 @@ h3{
 }
 #submit_form{
     background-color:#00B8AB;
+    
 }
 
-
+#edit{
+    background-color: #00B8AB;
+    border-radius:25px;
+    margin-top:10px;
+    margin-bottom:10px;
+    
+}
+#new{
+margin-left:70px;
+}
     </style>
 
 
@@ -87,15 +97,23 @@ h3{
                 <div class="col-md-6">
                   
                     <h1>{{ Auth::user()->name}}</h1>
-                    
+                    <h5>Reputation: {{ Auth::user()->reputation}} </h5>
 
                     <img src="images/profilePic/{{Auth::user()->image}}" class="img-responsive" id="wa">
-                    <h5>Reputation: {{ Auth::user()->reputation}} </h5>
+                    <div id="new">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" id="edit">
+                 Edit Profile
+                </button>
+                </div>
+                    
+                    
                 </div>
             <div class="col-md-6">
                 <h2>About Me </h2>
                 
 				<p>{{ Auth::user()->about_me}} </p>	
+
+                
              </div>
          </div>   
       </div>
@@ -207,13 +225,13 @@ h3{
 </div>
 
 
-<div class="container1">
+<!-- <div class="container1">
     <div class="center">
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
         Edit Profile
         </button>
        
-        </div>
+        </div> -->
 </div>
 
 
