@@ -11,6 +11,8 @@
   margin-bottom:20px;
   color: white;
   text-align: justify;
+
+ 
 }
 #info h1{
     text-align: center;
@@ -98,7 +100,15 @@ h3{
          </div>   
       </div>
 
-        <div class="col-md-6" id="info">
+      <div class="col-md-6" id="info">
+            <h1>Contact Details</h1>
+                <p>Email Address: {{Auth::user()->email}}</p>
+                <p>Mobile Number:{{ Auth::user()->mobile_number}} </p>
+                <p>Date Created: {{Auth::user()->created_at}}</p>
+
+            </div>   
+
+        <div class="col-md-12" id="info">
             <h3>{{$user->name}}'s latest Thread</h3>
             @forelse($threads as $thread)
                 <p>{{$thread->subject}}</p>
@@ -120,13 +130,6 @@ h3{
 
             </div>   
 
-            <div class="col-md-6" id="info">
-            <h1>Contact Details</h1>
-                <p>Email Address: {{Auth::user()->email}}</p>
-                <p>Mobile Number:{{ Auth::user()->mobile_number}} </p>
-                <p>Date Created: {{Auth::user()->created_at}}</p>
-
-            </div>   
     </div> 
 
   
