@@ -11,16 +11,11 @@
   margin-bottom:20px;
   color: white;
   text-align: justify;
-
- 
 }
 #info h1{
     text-align: center;
 }
 #info h2{
-    text-align: center;
-}
-h3{
     text-align: center;
 }
 #info p{
@@ -71,21 +66,10 @@ h3{
 }
 #submit_form{
     background-color:#00B8AB;
-    
 }
 
-#edit{
-    background-color: #00B8AB;
-    border-radius:25px;
-    margin-top:10px;
-    margin-bottom:10px;
-    
-}
-#new{
-margin-left:70px;
-}
-a{
-    color: #00B8AB;
+h3{
+    text-align:center;
 }
     </style>
 
@@ -100,59 +84,56 @@ a{
                 <div class="col-md-6">
                   
                     <h1>{{ Auth::user()->name}}</h1>
-                    <h5>Reputation: {{ Auth::user()->reputation}} </h5>
+                    
 
                     <img src="images/profilePic/{{Auth::user()->image}}" class="img-responsive" id="wa">
-                    <div id="new">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" id="edit">
-                 Edit Profile
-                </button>
-                </div>
-                    
-                    
+                    <h5>Reputation: {{ Auth::user()->reputation}} </h5>
                 </div>
             <div class="col-md-6">
                 <h2>About Me </h2>
                 
 				<p>{{ Auth::user()->about_me}} </p>	
-
-                
              </div>
          </div>   
       </div>
 
-      <div class="col-md-6" id="info">
+        <div class="col-md-6" id="info">
             <h1>Contact Details</h1>
                 <p>Email Address: {{Auth::user()->email}}</p>
                 <p>Mobile Number:{{ Auth::user()->mobile_number}} </p>
                 <p>Date Created: {{Auth::user()->created_at}}</p>
-
             </div>   
 
-        <div class="col-md-12" id="info">
-            <h3>{{$user->name}}'s latest Thread</h3>
-            @forelse($threads as $thread)
+            <div class="col-md-12" id="info">
+            <h3> {{$user->name}}'s latest Thread</h3>
+
+        @forelse($threads as $thread)
                 <p>{{$thread->subject}}</p>
 
-             @empty
+        @empty
                 <p>No Threads Yet </p>
 
-             @endforelse
-             <br>
-             <hr>
+        @endforelse
 
-             <h3>{{$user->name}}'s latest Comments </h3>
-             @forelse($comments as $comment)
-            <p>{{$user->name}} commented on <a href="{{ route('thread.show',$comment->commentable->id)}}"> {{$comment->commentable->body}}</a> {{$comment->created_at->diffForHumans()}}</p>
-             @empty
+        <b4>
+        <hr>
+
+        <h3>{{$user->name}}'s latest Comments </h3>
+
+        @forelse($comments as $comment)
+            <p>{{$user->name}} commented on <a href="{{ route('thread.show',$comment->commentable->id)}}" style="color: #00B8AB"> {{$comment->commentable->body}}</a> {{$comment->created_at->diffForHumans()}}</p>
+        @empty
             <p> No Comments Yet </p>
         
         @endforelse
 
             </div>   
-
     </div> 
 
+
+    <div>
+        
+    </div>
   
 </div>
 
@@ -228,13 +209,13 @@ a{
 </div>
 
 
-<!-- <div class="container1">
+<div class="container1">
     <div class="center">
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
         Edit Profile
         </button>
        
-        </div> -->
+        </div>
 </div>
 
 
