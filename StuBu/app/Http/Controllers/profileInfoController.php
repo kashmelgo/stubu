@@ -7,6 +7,9 @@ use App\Models\profileInfo;
 use Illuminate\Support\Facades\DB;
 use Auth;
 
+use App\Models\Comment;
+
+
 class profileInfoController extends Controller
 {
     /**
@@ -17,8 +20,12 @@ class profileInfoController extends Controller
     public function index()
     {
         //
-    
-        return view('profile')->with('user', Auth::user());
+        
+        $user= Auth::user();
+        $threads = Thread::where('user_id',$user->id)->latest()->get();
+        $comments= Comment::where('user_id',$user->id)->where('commentable_type','App\Models\Thread')->get();
+      
+        return view('profile', compact('threads','comments','user'));
     }
 
     /**

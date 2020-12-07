@@ -106,6 +106,33 @@
 
             </div>   
     </div> 
+
+
+    <div>
+        <h3> {{$user->name}}'s latest Thread</h3>
+
+        @forelse($threads as $thread)
+                <h5>{{$thread->subject}}</h5>
+
+        @empty
+                <h5>No Threads Yet </h5>
+
+        @endforelse
+
+        <b4>
+        <hr>
+
+        <h3>{{$user->name}}'s latest Comments </h3>
+
+        @forelse($comments as $comment)
+            <h5>{{$user->name}} commented on <a href="{{ route('thread.show',$comment->commentable->id)}}"> {{$comment->commentable->body}}</a> {{$comment->created_at->diffForHumans()}}</h5>
+        @empty
+            <h5> No Comments Yet </h5>
+        
+        @endforelse
+
+    </div>
+  
 </div>
 
     
