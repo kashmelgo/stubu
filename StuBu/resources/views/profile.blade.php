@@ -84,6 +84,9 @@ h3{
 #new{
 margin-left:70px;
 }
+a{
+    color: #00B8AB;
+}
     </style>
 
 
