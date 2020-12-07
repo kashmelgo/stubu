@@ -18,6 +18,9 @@
 #info h2{
     text-align: center;
 }
+h3{
+    text-align: center;
+}
 #info p{
     margin-top:20px;
 }
@@ -96,42 +99,36 @@
       </div>
 
         <div class="col-md-6" id="info">
+            <h3>{{$user->name}}'s latest Thread</h3>
+            @forelse($threads as $thread)
+                <p>{{$thread->subject}}</p>
+
+             @empty
+                <p>No Threads Yet </p>
+
+             @endforelse
+             <br>
+             <hr>
+
+             <h3>{{$user->name}}'s latest Comments </h3>
+             @forelse($comments as $comment)
+            <p>{{$user->name}} commented on <a href="{{ route('thread.show',$comment->commentable->id)}}"> {{$comment->commentable->body}}</a> {{$comment->created_at->diffForHumans()}}</p>
+             @empty
+            <p> No Comments Yet </p>
+        
+        @endforelse
+
+            </div>   
+
+            <div class="col-md-6" id="info">
             <h1>Contact Details</h1>
                 <p>Email Address: {{Auth::user()->email}}</p>
                 <p>Mobile Number:{{ Auth::user()->mobile_number}} </p>
                 <p>Date Created: {{Auth::user()->created_at}}</p>
 
-                   
-
-
             </div>   
     </div> 
 
-
-    <div>
-        <h3> {{$user->name}}'s latest Thread</h3>
-
-        @forelse($threads as $thread)
-                <h5>{{$thread->subject}}</h5>
-
-        @empty
-                <h5>No Threads Yet </h5>
-
-        @endforelse
-
-        <b4>
-        <hr>
-
-        <h3>{{$user->name}}'s latest Comments </h3>
-
-        @forelse($comments as $comment)
-            <h5>{{$user->name}} commented on <a href="{{ route('thread.show',$comment->commentable->id)}}"> {{$comment->commentable->body}}</a> {{$comment->created_at->diffForHumans()}}</h5>
-        @empty
-            <h5> No Comments Yet </h5>
-        
-        @endforelse
-
-    </div>
   
 </div>
 
