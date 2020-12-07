@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Auth;
 
 use App\Models\Comment;
+use App\Models\Thread;
 
 
 class profileInfoController extends Controller
