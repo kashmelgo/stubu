@@ -136,7 +136,13 @@ class profileInfoController extends Controller
         }
 
         $user->save();
-        return view('profile');
+
+        $user= Auth::user();
+        $threads = Thread::where('user_id',$user->id)->latest()->get();
+        $comments= Comment::where('user_id',$user->id)->where('commentable_type','App\Models\Thread')->get();
+      
+        return view('profile', compact('threads','comments','user'));
+       
 
     }
 
