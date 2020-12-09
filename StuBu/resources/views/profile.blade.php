@@ -105,7 +105,7 @@ h3{
             </div>   
 
             <div class="col-md-12" id="info">
-            <h3> {{$user->name}}'s latest Thread</h3>
+            <h3> Your latest Thread</h3>
 
         @forelse($threads as $thread)
                 <p>{{$thread->subject}}</p>
@@ -118,10 +118,10 @@ h3{
         <b4>
         <hr>
 
-        <h3>{{$user->name}}'s latest Comments </h3>
+        <h3>Your latest Comments </h3>
 
         @forelse($comments as $comment)
-            <p>{{$user->name}} commented on <a href="{{ route('thread.show',$comment->commentable->id)}}" style="color: #00B8AB"> {{$comment->commentable->body}}</a> {{$comment->created_at->diffForHumans()}}</p>
+            <p>You commented on <a href="{{ route('thread.show',$comment->commentable->id)}}" style="color: #00B8AB"> {{$comment->commentable->body}}</a> {{$comment->created_at->diffForHumans()}}</p>
         @empty
             <p> No Comments Yet </p>
         
