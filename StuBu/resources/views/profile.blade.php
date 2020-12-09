@@ -121,7 +121,7 @@ h3{
         <h3>Your latest Comments </h3>
 
         @forelse($comments as $comment)
-            <p>You commented on <a href="{{ route('thread.show',$comment->commentable->id)}}" style="color: #00B8AB"> {{$comment->commentable->body}}</a> {{$comment->created_at->diffForHumans()}}</p>
+            <p>You commented on <a href="{{ route('thread.show',$comment->commentable->id)}}" style="color: #00B8AB"> {{$comment->commentable->subject}}</a> {{$comment->created_at->diffForHumans()}}</p>
         @empty
             <p> No Comments Yet </p>
         
