@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Thread;
+use App\Notifications\RepliedToThread;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -20,11 +21,13 @@ class CommentController extends Controller
         $comment->user_id = auth()->user()->id;
 
         $thread->comments()->save($comment);
-        
+
+        auth()->user()->notify(new RepliedToThread());
+
         return back()->withMessage('Comment Added Successfully!');
 
     }
-    
+
     public function addReplyComment(Request $request, Comment $comment){
 
         $this->validate($request,[
@@ -36,7 +39,7 @@ class CommentController extends Controller
         $reply->user_id = auth()->user()->id;
 
         $comment->comments()->save($reply);
-        
+
         return back()->withMessage('Reply Added Successfully!');
 
     }

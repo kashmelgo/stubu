@@ -11,7 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -25,6 +25,7 @@
     <!-- Styles -->
     <link href="https://bootswatch.com/4/lumen/bootstrap.min.css" rel="stylesheet">
     <link href="{{asset('app.css')}}" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f29fb0b11c.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -64,13 +65,26 @@
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
-                            
+
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
+                            <div class="dropdown show">
+                                <a class="btn btn-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-bell fa-lg" id="notifbutton"></i>
+                                    <span class="badge"> {{count(auth()->user()->unreadNotifications)}} </span>
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    @foreach(auth()->user()->unreadNotifications as $notification)
+                                        {{-- @include(snake_case(class_basename($notification->type))) --}}
+                                        <a href="#">{{Str::snake(class_basename($notification->type))}} </a>
+                                    @endforeach
+                                </div>
+                            </div>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('profile')}}" role="button" v-pre>
                                     {{ Auth::user()->name }}
