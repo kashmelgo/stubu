@@ -30,19 +30,19 @@ body{
 #leftoSide{
   padding-top: 190px;
   text-align: center;
- 
+
   color: white;
 }
 
 
 #leftoSide h1{
-  
+
   font-family: 'Oleo Script';
   font-style: normal;
   font-weight: normal;
   font-size: 72px;
   line-height: 100px;
-  
+
   color: #FFFFFF;
 }
 #leftoSide h2{
@@ -110,4 +110,9 @@ body{
   padding-top: 20px;
   font-size: 20px;
 }
-
+#threadbody{
+    background-color: white;
+    padding: 4%;
+    height:100%;
+    border-radius: 50px;
+}

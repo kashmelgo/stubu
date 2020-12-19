@@ -3,29 +3,37 @@
 
 @section('content')
 
-    <hr>
-    <h4>{{$thread->subject}}</h4>
- 
+    <div id="threadbody">
+        <h1> hello </h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div id="threadbody">
+                <h4>{{$thread->subject}}</h4>
 
-    <div class="thread-details">
-        {{$thread->body}}
+
+                <div class="thread-details">
+                    {{$thread->body}}
+                </div>
+
+                <div class="actions">
+                    @if(auth()->user()->id == $thread->user_id)
+                        <a href="{{route('thread.edit',$thread->id)}}" class="btn btn-info btn-xs">Edit</a>
+                        <form action="{{ route('thread.destroy',$thread->id) }}" method="POST" class="inline-it">
+                            {{csrf_field()}}
+                            {{method_field('DELETE')}}
+                            <input class="btn btn-xs btn-danger" type="submit" value="Delete">
+                        </form>
+                    @endif
+                    <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#edit-comment-{{ $thread->id }}">
+                        Reply
+                    </button>
+                </div>
+
+            </div>
+        </div>
     </div>
-    
-    <div class="actions">
-        @if(auth()->user()->id == $thread->user_id)
-            <a href="{{route('thread.edit',$thread->id)}}" class="btn btn-info btn-xs">Edit</a>
-            <form action="{{ route('thread.destroy',$thread->id) }}" method="POST" class="inline-it">
-                {{csrf_field()}}
-                {{method_field('DELETE')}}
-                <input class="btn btn-xs btn-danger" type="submit" value="Delete">
-            </form>
-        @endif
-        <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#edit-comment-{{ $thread->id }}">
-            Reply
-        </button>
-    </div>
-    
-    <hr>
+
     <div class="comment-form collapse" id="edit-comment-{{ $thread->id }}" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <form action="{{route('threadcomment.store',$thread->id)}}" method="POST" role="form">
         {{csrf_field()}}
@@ -82,7 +90,7 @@
                 </a>
             </div>
 
-            
+
 
             <!-- Reply to Comment Code -->
             <div class="reply-form collapse" id="reply-comment-{{ $comment->id }}" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
