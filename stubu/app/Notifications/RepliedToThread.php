@@ -59,7 +59,7 @@ class RepliedToThread extends Notification
         // dd($notifiable);
         return [
             'thread'=> $this->thread,
-            'user' => $notifiable
+            'user' => $notifiable,
             // 'repliedTime'=>Carbon::now()
         ];
     }
