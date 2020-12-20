@@ -161,6 +161,9 @@
 <!-- Copied Template -->
 
 
+    <!-- Copied Template -->
+
+
     <div class="container">
         <div class="row">
         <!-- Contenedor Principal -->
@@ -180,6 +183,7 @@
                                     <!-- Actions -->
                                     <i class="fa fa-reply"></i>
                                     <i class="fa fa-heart"></i>
+                                    <i class="fa fa-trash"></i>
                                 </div>
                                 <div class="comment-content">
                                     {{$comment->body}}
