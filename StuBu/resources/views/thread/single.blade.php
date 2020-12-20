@@ -175,7 +175,7 @@
                             <!-- Contenedor del Comentario -->
                             <div class="comment-box">
                                 <div class="comment-head">
-                                    <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">{{$comment->user->name}}</a></h6>
+                                    <h6 class="comment-name by-author"><a href="{{route('profile')}}">{{$comment->user->name}}</a></h6>
                                     <span>{{$comment->created_at->diffForHumans()}}</span>
                                     <!-- Actions -->
                                     <i class="fa fa-reply"></i>
@@ -195,7 +195,7 @@
                                 <!-- Contenedor del Comentario -->
                                 <div class="comment-box">
                                     <div class="comment-head">
-                                        <h6 class="comment-name"><a href="http://creaticode.com/blog">{{$reply->user->name}}</a></h6>
+                                        <h6 class="comment-name"><a href="{{route('profile')}}">{{$reply->user->name}}</a></h6>
                                         <span>{{$reply->created_at->diffForHumans()}}</span>
                                         <!-- Actions -->
                                         <i class="fa fa-reply"></i>

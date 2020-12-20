@@ -35,6 +35,7 @@ Route::post('reply/create/{comment}','App\Http\Controllers\CommentController@add
 
 Route::get('/profile',[App\Http\Controllers\profileInfoController::class,'index'])->name('profile');
 
+
 Route::post('update',[profileInfoController::class,'update']);
 
 

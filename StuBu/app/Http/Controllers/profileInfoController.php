@@ -87,6 +87,11 @@ class profileInfoController extends Controller
     public function show($id)
     {
         //
+                $user= Auth::user();
+        $threads = Thread::where('user_id',$user->id)->latest()->get();
+        $comments= Comment::where('user_id',$user->id)->where('commentable_type','App\Models\Thread')->get();
+      
+        return view('profile', compact('threads','comments','user'));
     }
 
     /**
