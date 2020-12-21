@@ -161,9 +161,6 @@
 <!-- Copied Template -->
 
 
-    <!-- Copied Template -->
-
-
     <div class="container">
         <div class="row">
         <!-- Contenedor Principal -->
