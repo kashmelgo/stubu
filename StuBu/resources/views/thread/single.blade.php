@@ -177,7 +177,7 @@
                             <!-- Contenedor del Comentario -->
                             <div class="comment-box">
                                 <div class="comment-head">
-                                    <h6 class="comment-name by-author"><a href="{{route('profile.show',$comment->user->id)}}">{{$comment->user->name}}</a></h6>
+                                    <h6 class="comment-name by-author"><a href="{{route('profile.index',$comment->user->id)}}">{{$comment->user->name}}</a></h6>
                                     <span>{{$comment->created_at->diffForHumans()}}</span>
                                     <!-- Actions -->
                                     <i class="fa fa-reply"></i>
@@ -198,7 +198,7 @@
                                 <!-- Contenedor del Comentario -->
                                 <div class="comment-box">
                                     <div class="comment-head">
-                                        <h6 class="comment-name"><a href="{{route('profile.show',$reply->user->id)}}">{{$reply->user->name}}</a></h6>
+                                        <h6 class="comment-name"><a href="{{route('profile.index',$reply->user->id)}}">{{$reply->user->name}}</a></h6>
                                         <span>{{$reply->created_at->diffForHumans()}}</span>
                                         <!-- Actions -->
                                         <i class="fa fa-reply"></i>
