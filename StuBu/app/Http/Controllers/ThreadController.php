@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Thread;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\DB;
 
 class ThreadController extends Controller
 {
@@ -124,5 +126,19 @@ class ThreadController extends Controller
         $thread->delete();
 
         return redirect()->route('thread.index')->withMessage('Thread Deleted Successfully!');
+    }
+
+    public function deletenotif(Thread $thread, $id)
+    {
+
+        $userUnreadNotification = auth()->user()
+                                    ->unreadNotifications
+                                    ->where('id', $id)
+                                    ->first();
+
+        if($userUnreadNotification) {
+            $userUnreadNotification->markAsRead();
+        }
+        return view('thread.single',compact('thread'));
     }
 }

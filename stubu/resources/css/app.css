@@ -10,3 +10,8 @@
     height:100%;
     border-radius: 50px;
 }
+
+#welcomebigtxt{
+    font-family: 'Quicksand' !important;
+    font-size: 60px !important;
+}

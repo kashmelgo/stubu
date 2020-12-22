@@ -116,3 +116,9 @@ body{
     height:100%;
     border-radius: 50px;
 }
+
+#welcometextleft{
+    max-width:60%;
+}
+
+

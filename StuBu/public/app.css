@@ -1,3 +1,4 @@
+
 body{
   background-color: #DCF0F2;
   height: 100%;
@@ -51,3 +52,78 @@ body{
   color: white
 }
 
+#threadbody{
+    background-color: white;
+    padding: 4%;
+    height:100%;
+    border-style: solid;
+    border-color: black;
+    border-radius: 50px;
+}
+
+#welcomebody{
+    background-color: #F7F7F7;
+    padding: 0;
+}
+
+#welcomecontainer{
+    margin-left: 3.3%;
+    margin-right: 5% !important;
+    max-width: 100%;
+    font-size: 24px;
+}
+
+#welcomebrandname{
+    font-size: 68px;
+    font-family: 'Oleo Script';
+}
+
+#welcomenavitem{
+    font-family: 'Open Sans';
+    color:  #00789E;
+    transform: translateX(100%);
+    font-weight:bolder;
+}
+
+.welcome{
+    background-color:  #F7F7F7 !important;
+    border: 0;
+}
+
+.welcome .navitem{
+    color: #00789E !important;
+}
+
+#welcomebigtxt{
+    font-family: 'Quicksand' !important;
+    font-weight: bold;
+    font-size: 68px !important;
+    color:#00789E;
+}
+
+.welcomelefttext{
+    margin-top: 10%;
+    margin-left: 3.5%;
+}
+
+#welcomesmalltxt{
+    font-family:'Quicksand' !important;
+    font-weight: lighter;
+    font-size: 28px;
+    color:#00789E;
+}
+
+.welcomebold{
+    font-family: 'Quicksand' !important;
+    font-weight: bold;
+}
+
+#welcomeimage{
+    width: auto;
+    height: 1300px;
+    transform: translateY(-30%);
+}
+
+#welcomeimgright{
+    height: 1000px;
+}

@@ -25,6 +25,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/homefeed', [App\Http\Controllers\HomeFeedController::class, 'index'])->name('homefeed');
 
+Route::get('/deletenotif/test/{thread}/{id}', [App\Http\Controllers\ThreadController::class, 'deletenotif'])->name('deletenotif');
+
 Route::resource('/thread','App\Http\Controllers\ThreadController');
 
 Route::resource('comment','App\Http\Controllers\CommentController',['only'=>['update','destroy']]);

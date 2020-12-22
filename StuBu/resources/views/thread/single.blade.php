@@ -3,9 +3,6 @@
 
 @section('content')
 
-    <div id="threadbody">
-        <h1> hello </h1>
-    </div>
     <div class="container">
         <div class="row">
             <div id="threadbody">
