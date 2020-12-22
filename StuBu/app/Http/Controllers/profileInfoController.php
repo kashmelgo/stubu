@@ -48,33 +48,7 @@ class profileInfoController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // $user_id=$request->input('user_id');
-        // $mobile_number=$request->input('mobile_number');
-        // $about_me=$request->input('about_me');
-
-        // $info= new profileInfo;
-
-        // $info->about_me=$about_me;
-        // $info->mobile_number=$mobile_number;
-        // $info->user_id=$user_id;
-
-        // if($request->hasfile('image')){
-        //     $file=$request->file('image');
-        //     $extension=$file->getClientOriginalExtension();
-        //     $filename= time() . '.' . $extension;
-        //     $file->move('images/profilePic/',$filename);
-        //     $info->image=$filename;
-        // }else{
-        //     return $request;
-        //     $info->image='';
-        // }
-
-        // $info->save();
-
-       
-
-        // return back()->withMessage('Edited Successfully');
+     
         
     }
 
@@ -84,9 +58,14 @@ class profileInfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(profileInfo $profile)
     {
         //
+        $user= $profile;
+        $threads = Thread::where('user_id',$user->id)->latest()->get();
+        $comments= Comment::where('user_id',$user->id)->where('commentable_type','App\Models\Thread')->get();
+      
+        return view('profile', compact('threads','comments','user'));
       
     }
 
