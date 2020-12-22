@@ -42,10 +42,17 @@
         <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
+
+
+
+    <!-- Anhi Sugod Para sa Comments -->
     <div class="comment">
         @foreach($thread->comments as $comment)
             <h4>{{$comment->user->name}}</h4>
             <p>{{$comment->body}}</p>
+
+
+
             <div class="actions">
                 @if(auth()->user()->id == $comment->user_id)
                 <a type="btn btn-xs" class="btn btn-primary" data-toggle="modal" href="#edit-comment-{{ $comment->id }}">
@@ -86,6 +93,8 @@
                     Reply
                 </a>
             </div>
+
+
 
 
 
@@ -149,5 +158,68 @@
     </div>
     <br>
     <br>
+
+<!-- Copied Template -->
+
+
+    <div class="container">
+        <div class="row">
+        <!-- Contenedor Principal -->
+        <div class="comments-container">
+            <h1>Comments</h1>
+            @foreach($thread->comments as $comment)
+                <ul id="comments-list" class="comments-list">
+                    <li>
+                        <div class="comment-main-level">
+                            <!-- Avatar -->
+                            <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
+                            <!-- Contenedor del Comentario -->
+                            <div class="comment-box">
+                                <div class="comment-head">
+                                    <h6 class="comment-name by-author"><a href="{{route('profile')}}">{{$comment->user->name}}</a></h6>
+                                    <span>{{$comment->created_at->diffForHumans()}}</span>
+                                    <!-- Actions -->
+                                    <i class="fa fa-reply"></i>
+                                    <i class="fa fa-heart"></i>
+                                    <i class="fa fa-trash"></i>
+                                </div>
+                                <div class="comment-content">
+                                    {{$comment->body}}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Respuestas de los comentarios -->
+                        @foreach($comment->comments as $reply)
+                        <ul class="comments-list reply-list">
+                            <li>
+                                <!-- Avatar -->
+                                <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
+                                <!-- Contenedor del Comentario -->
+                                <div class="comment-box">
+                                    <div class="comment-head">
+                                        <h6 class="comment-name"><a href="{{route('profile')}}">{{$reply->user->name}}</a></h6>
+                                        <span>{{$reply->created_at->diffForHumans()}}</span>
+                                        <!-- Actions -->
+                                        <i class="fa fa-reply"></i>
+                                        <i class="fa fa-heart"></i>
+                                    </div>
+                                    <div class="comment-content">
+                                        {{$reply->body}}
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        @endforeach
+                    </li>
+                </ul>
+            @endforeach
+        </div>
+	</div>
+</div>
+
+
+
+
+
 @endsection
 

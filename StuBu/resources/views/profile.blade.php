@@ -83,25 +83,25 @@ h3{
               <div class="row">
                 <div class="col-md-6">
                   
-                    <h1>{{ Auth::user()->name}}</h1>
+                    <h1> {{$user->name}}</h1>
                     
 
                     <img src="images/profilePic/{{Auth::user()->image}}" class="img-responsive" id="wa">
-                    <h5>Reputation: {{ Auth::user()->reputation}} </h5>
+                    <h5>Reputation: {{ $user->reputation}} </h5>
                 </div>
             <div class="col-md-6">
                 <h2>About Me </h2>
                 
-				<p>{{ Auth::user()->about_me}} </p>	
+				<p>{{ $user->about_me}} </p>	
              </div>
          </div>   
       </div>
 
         <div class="col-md-6" id="info">
             <h1>Contact Details</h1>
-                <p>Email Address: {{Auth::user()->email}}</p>
-                <p>Mobile Number:{{ Auth::user()->mobile_number}} </p>
-                <p>Date Created: {{Auth::user()->created_at}}</p>
+                <p>Email Address: {{$user->email}}</p>
+                <p>Mobile Number:{{ $user->mobile_number}} </p>
+                <p>Date Created: {{$user->created_at}}</p>
             </div>   
 
             <div class="col-md-12" id="info">
@@ -208,7 +208,7 @@ h3{
     </div>
 </div>
 
-
+@if(auth()->user()->id==$user->id)
 <div class="container1">
     <div class="center">
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
@@ -217,7 +217,7 @@ h3{
        
         </div>
 </div>
-
+@endif
 
 
   

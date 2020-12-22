@@ -87,6 +87,7 @@ class profileInfoController extends Controller
     public function show($id)
     {
         //
+      
     }
 
     /**
