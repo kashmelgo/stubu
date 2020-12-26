@@ -86,7 +86,7 @@ h3{
                     <h1> {{$user->name}}</h1>
                     
 
-                    <img src="images/profilePic/{{Auth::user()->image}}" class="img-responsive" id="wa">
+                    <img src="images/profilePic/{{$user->image}}" class="img-responsive" id="wa">
                     <h5>Reputation: {{ $user->reputation}} </h5>
                 </div>
             <div class="col-md-6">
@@ -148,7 +148,7 @@ h3{
                              </button>
                 </div>
                            <div class="modal-body">
-                              <form action="update" method="POST" enctype="multipart/form-data">
+                              <form action="{{route('profile.update',$user->id)}}" method="POST" enctype="multipart/form-data">
                                      @csrf
 
                                      <div class="form-group row">

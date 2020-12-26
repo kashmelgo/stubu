@@ -35,12 +35,14 @@ Route::post('comment/create/{thread}','App\Http\Controllers\CommentController@ad
 
 Route::post('reply/create/{comment}','App\Http\Controllers\CommentController@addReplyComment')->name('replycomment.store');
 
-Route::get('/profile',[App\Http\Controllers\profileInfoController::class,'index'])->name('profile');
 
 Route::get('/search', 'App\Http\Controllers\ThreadController@search')->name('search');
 
 
-Route::post('update',[profileInfoController::class,'update']);
+Route::resource('/profile','App\Http\Controllers\profileInfoController');
+Route::post('profile/{profile}','App\Http\Controllers\profileInfoController@update');
+
+
 
 
 
