@@ -141,4 +141,12 @@ class ThreadController extends Controller
         }
         return view('thread.single',compact('thread'));
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->search;
+        $posts = DB::table('threads')->where('subject','like','%'.$search.'%')->paginate(5);
+        return view('thread.index', ['posts' => $posts]);
+    }
+
 }

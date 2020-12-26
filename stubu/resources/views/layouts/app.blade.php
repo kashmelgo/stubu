@@ -72,6 +72,14 @@
                                 </li>
                             @endif
                         @else
+                                <form action="{{route('search')}}" class="form-inline d-flex justify-content-center md-form form-sm" method="GET">
+                                    <div class="form-group">
+                                        <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="search" name="search" aria-label="search">
+                                        <span class="form-group-btn">
+                                            <button type="submit" class="btn-primary" id="searchbutton"><i class="fas fa-search" aria-hidden="true"></i></button>
+                                        </span>
+                                    </div>
+                                </form>
                             <div class="dropdown show">
                                 <a class="btn btn-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-bell fa-lg" id="notifbutton"></i>

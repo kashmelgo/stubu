@@ -23,6 +23,9 @@ body{
   height: 0%;
 }
 
+#searchbutton{
+    border: 0;
+}
 .dropdown{
     padding-top: 2%;
 }
