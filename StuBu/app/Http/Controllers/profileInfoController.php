@@ -23,10 +23,11 @@ class profileInfoController extends Controller
         //
         
         $user= Auth::user();
+   
         $threads = Thread::where('user_id',$user->id)->latest()->get();
         $comments= Comment::where('user_id',$user->id)->where('commentable_type','App\Models\Thread')->get();
       
-        return view('profile', compact('threads','comments','user'));
+        return view('profile.index', compact('threads','comments','user'));
     }
 
     /**
@@ -65,7 +66,7 @@ class profileInfoController extends Controller
         $threads = Thread::where('user_id',$user->id)->latest()->get();
         $comments= Comment::where('user_id',$user->id)->where('commentable_type','App\Models\Thread')->get();
       
-        return view('profile',compact('threads','comments','user'));
+        return view('profile.index',compact('threads','comments','user'));
       
     }
 
@@ -121,7 +122,7 @@ class profileInfoController extends Controller
         $threads = Thread::where('user_id',$user->id)->latest()->get();
         $comments= Comment::where('user_id',$user->id)->where('commentable_type','App\Models\Thread')->get();
       
-        return view('profile', compact('threads','comments','user'));
+        return view('profile.index', compact('threads','comments','user'));
        
 
     }
@@ -132,8 +133,15 @@ class profileInfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(profileInfo $user)
     {
         //
+        
+        $threads = Thread::where('user_id',$user->id)->latest()->get();
+        $comments= Comment::where('user_id',$user->id)->where('commentable_type','App\Models\Thread')->get();
+
+        return view('profile.index',compact('threads','comments','user'));
     }
+
+
 }
