@@ -41,7 +41,7 @@ Route::get('/search', 'App\Http\Controllers\ThreadController@search')->name('sea
 
 Route::resource('/profile','App\Http\Controllers\profileInfoController');
 Route::post('update','App\Http\Controllers\profileInfoController@update');
-
+Route::get('profile/{profile}','App\Http\Controllers\profileInfoController@create')->name('show_user');
 
 
 

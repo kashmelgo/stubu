@@ -35,9 +35,14 @@ class profileInfoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
         //
+        
+        
+        $users = DB::table('users')->where('id',$id);
+        return view('hello')->with('users',$users);
+      
 
     }
 
@@ -59,16 +64,6 @@ class profileInfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(profileInfo $profile)
-    {
-        //
-        $user= $profile;
-        $threads = Thread::where('user_id',$user->id)->latest()->get();
-        $comments= Comment::where('user_id',$user->id)->where('commentable_type','App\Models\Thread')->get();
-      
-        return view('profile.index',compact('threads','comments','user'));
-      
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -133,15 +128,7 @@ class profileInfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(profileInfo $user)
-    {
-        //
-        
-        $threads = Thread::where('user_id',$user->id)->latest()->get();
-        $comments= Comment::where('user_id',$user->id)->where('commentable_type','App\Models\Thread')->get();
 
-        return view('profile.index',compact('threads','comments','user'));
-    }
 
 
 }
