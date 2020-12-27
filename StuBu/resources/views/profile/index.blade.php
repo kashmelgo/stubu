@@ -148,9 +148,9 @@ h3{
                              </button>
                 </div>
                            <div class="modal-body">
-                              <form action="{{route('profile.update',$user->id)}}" method="POST" enctype="multipart/form-data">
+                              <form action="update" method="POST" enctype="multipart/form-data">
                                      @csrf
-
+                                    
                                      <div class="form-group row">
                                           <label class="col-md-4 col-form-label text-md-right">Your Current Pic</label>
                                        <div class="col-md-6">

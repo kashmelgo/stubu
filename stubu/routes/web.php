@@ -40,7 +40,9 @@ Route::get('/search', 'App\Http\Controllers\ThreadController@search')->name('sea
 
 
 Route::resource('/profile','App\Http\Controllers\profileInfoController');
-Route::post('/profile/{profile}','App\Http\Controllers\profileInfoController@update');
+Route::post('update','App\Http\Controllers\profileInfoController@update');
+
+
 
 
 
