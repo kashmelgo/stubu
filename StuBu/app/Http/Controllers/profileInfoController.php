@@ -21,9 +21,11 @@ class profileInfoController extends Controller
     public function index()
     {
         //
-        
+
         $user= Auth::user();
-   
+        
+      
+        
         $threads = Thread::where('user_id',$user->id)->latest()->get();
         $comments= Comment::where('user_id',$user->id)->where('commentable_type','App\Models\Thread')->get();
       
@@ -39,13 +41,18 @@ class profileInfoController extends Controller
     {
         //
         
-        
-        $users = DB::table('users')->where('id',$id);
-        return view('hello')->with('users',$users);
       
 
     }
 
+    public function show($id){
+        $user= DB::table('users')->where('id',$id)->first();
+        
+        $threads = Thread::where('user_id',$user->id)->latest()->get();
+        $comments= Comment::where('user_id',$user->id)->where('commentable_type','App\Models\Thread')->get();
+      
+        return view('profile.index', compact('threads','comments','user'));
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -71,19 +78,7 @@ class profileInfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request)
+    public function edit(Request $request)
     {
         //
         $user = Auth::user();
@@ -113,11 +108,24 @@ class profileInfoController extends Controller
 
         $user->save();
 
-        $user= Auth::user();
         $threads = Thread::where('user_id',$user->id)->latest()->get();
         $comments= Comment::where('user_id',$user->id)->where('commentable_type','App\Models\Thread')->get();
       
         return view('profile.index', compact('threads','comments','user'));
+    
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request)
+    {
+        //
+        
        
 
     }
@@ -128,7 +136,9 @@ class profileInfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
+    public function destroy($id){
+        
+    }
 
 
 }

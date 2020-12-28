@@ -86,7 +86,7 @@ h3{
                     <h1> {{$user->name}}</h1>
                     
 
-                    <img src="images/profilePic/{{$user->image}}" class="img-responsive" id="wa">
+                    <img src="/images/profilePic/{{$user->image}}" class="img-responsive" id="wa">
                     <h5>Reputation: {{ $user->reputation}} </h5>
                 </div>
             <div class="col-md-6">
@@ -105,7 +105,12 @@ h3{
             </div>   
 
             <div class="col-md-12" id="info">
-            <h3> Your latest Thread</h3>
+            @if(auth()->user()->id==$user->id)
+        <h3>Your Latest Threads </h3>
+            @else
+        <h3>{{$user->name}}'s Latest Threads</h3>
+        @endif
+            
 
         @forelse($threads as $thread)
                 <p>{{$thread->subject}}</p>
@@ -117,11 +122,18 @@ h3{
 
         <b4>
         <hr>
-
+        @if(auth()->user()->id==$user->id)
         <h3>Your latest Comments </h3>
-
+            @else
+        <h3>{{$user->name}}'s Latest Comments</h3>
+        @endif
         @forelse($comments as $comment)
-            <p>You commented on <a href="{{ route('thread.show',$comment->commentable->id)}}" style="color: #00B8AB"> {{$comment->commentable->subject}}</a> {{$comment->created_at->diffForHumans()}}</p>
+                @if(auth()->user()->id==$user->id)
+                <p>You commented on <a href="{{ route('thread.show',$comment->commentable->id)}}" style="color: #00B8AB"> {{$comment->commentable->subject}}</a> {{$comment->created_at->diffForHumans()}}</p>
+                    @else
+                <p>{{$user->name}} commented on <a href="{{ route('thread.show',$comment->commentable->id)}}" style="color: #00B8AB"> {{$comment->commentable->subject}}</a> {{$comment->created_at->diffForHumans()}}</p>
+                @endif
+            
         @empty
             <p> No Comments Yet </p>
         
@@ -154,7 +166,7 @@ h3{
                                      <div class="form-group row">
                                           <label class="col-md-4 col-form-label text-md-right">Your Current Pic</label>
                                        <div class="col-md-6">
-                                        <img src="images/profilePic/{{Auth::user()->image}}" class="img-responsive" id="wa">
+                                        <img src="/images/profilePic/{{Auth::user()->image}}" class="img-responsive" id="wa">
                                     </div>
                                     </div>
 

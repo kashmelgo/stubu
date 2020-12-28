@@ -38,10 +38,11 @@ Route::post('reply/create/{comment}','App\Http\Controllers\CommentController@add
 
 Route::get('/search', 'App\Http\Controllers\ThreadController@search')->name('search');
 
+Route::get('/profile','App\Http\Controllers\profileInfoController@index')->name('profile');
+Route::get('profile/{profile}','App\Http\Controllers\profileInfoController@show')->name('profile_show');
+Route::POST('update','App\Http\Controllers\profileInfoController@edit');
 
-Route::resource('/profile','App\Http\Controllers\profileInfoController');
-Route::post('update','App\Http\Controllers\profileInfoController@update');
-Route::get('profile/{profile}','App\Http\Controllers\profileInfoController@create')->name('show_user');
+
 
 
 

@@ -93,7 +93,7 @@
                                 </div>
                             </div>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('profile.index')}}" role="button" v-pre>
+                                <a class="nav-link" href="{{route('profile')}}" role="button" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
                             </li>
