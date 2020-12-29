@@ -162,13 +162,13 @@
 <!-- Copied Template -->
 
 
-    <div class="container">
-        <div class="row">
+<div class="container">
+    <div class="row">
         <!-- Contenedor Principal -->
         <div class="comments-container">
             <h1>Comments</h1>
-            @foreach($thread->comments as $comment)
-    
+                @foreach($thread->comments as $comment)
+                
                 <ul id="comments-list" class="comments-list">
                     <li>
                         <div class="comment-main-level">
