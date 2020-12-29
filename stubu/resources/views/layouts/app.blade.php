@@ -32,7 +32,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
             <div class="container">
-                <a id = "brand-name" class="navbar-brand" href="{{ url('/') }}">
+                <a id = "brand-name" class="navbar-brand" href="{{ url('/homefeed') }}">
                     {{ config('app.name', 'StuBu') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
