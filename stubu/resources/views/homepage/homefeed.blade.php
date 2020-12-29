@@ -10,8 +10,7 @@
             <img src="/images/profilePic/{{Auth::user()->image}}" class="img-responsive" style="width: 200px;">
             
             
-            <h1>Hello, <a href="{{route('profile')}}" style="color: white;">{{Auth::user()->name}}</a></h1>
-            <h4> <a href="{{route('profile')}}" style="color: white;">{{Auth::user()->email}}</a> </h4>
+            <h1>Welcome, <a href="{{route('profile')}}" style="color: white;">{{Auth::user()->name}}</a></h1>
             <BellIcon size={16} />
             
         
