@@ -226,7 +226,7 @@
                                     <span>{{$comment->created_at->diffForHumans()}}</span>
                                     <!-- Actions -->
                                    <button class="border-0 bg-transparent ml-2" onclick="showForm('comment{{$comment->id}}')"> <i class="fa fa-reply"></i></button>
-                                    <i class="fa fa-heart"><button class="border-0 bg-transparent ml-2"></button></i>
+                                    <!-- Tago sa ka ha?? <i class="fa fa-heart"><button class="border-0 bg-transparent ml-2"></button></i> -->
                                     @if(auth()->user()->id == $comment->user_id)
                                     
                                     <button class="border-0 bg-transparent ml-2" onclick="editForm('edit{{$comment->id}}','show{{$comment->id}}')"><i class="fas fa-edit"></i></button>
@@ -289,7 +289,7 @@
                                         <h6 class="comment-name"><a href="{{route('profile_show',$reply->user->id)}}">{{$reply->user->name}}</a></h6>
                                         <span>{{$reply->created_at->diffForHumans()}}</span>
                                         <!-- Actions -->        
-                                        <i class="fa fa-heart"><button class="border-0 bg-transparent"></button></i>
+                                        <!-- <i class="fa fa-heart"><button class="border-0 bg-transparent"></button></i> -->
                                         @if(auth()->user()->id == $reply->user_id)
                                         <button class="border-0 bg-transparent ml-2" onclick="editForm('editR{{$reply->id}}','showR{{$reply->id}}')"><i class="fas fa-edit"></i></button>
                                         <form action="{{ route('comment.destroy',$reply->id) }}" method="POST" class="inline-it">

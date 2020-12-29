@@ -146,7 +146,7 @@ class ThreadController extends Controller
     {
         $search = $request->search;
         $posts = DB::table('threads')->where('subject','like','%'.$search.'%')->paginate(5);
-        return view('thread.index', ['posts' => $posts]);
+        return view('thread.index', ['threads' => $posts]);
     }
 
 }
