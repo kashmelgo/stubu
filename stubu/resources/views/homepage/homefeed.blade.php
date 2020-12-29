@@ -5,9 +5,16 @@
 <div class="container">
     <div class="row">
         <div id = "homefeed-left" class="col-md-4">
-            <h1>Hello, {{Auth::user()->name}}</h1>
-            <h2> {{Auth::user()->email}} </h2>
+        
+            
+            <img src="/images/profilePic/{{Auth::user()->image}}" class="img-responsive" style="width: 200px;">
+            
+            
+            <h1>Hello, <a href="{{route('profile')}}" style="color: white;">{{Auth::user()->name}}</a></h1>
+            <h4> <a href="{{route('profile')}}" style="color: white;">{{Auth::user()->email}}</a> </h4>
             <BellIcon size={16} />
+            
+        
         </div>
         <div id ="homefeed-right" class="col-md-6 col-md-offset-2">
             <div class="card" id="card-homefeed">
