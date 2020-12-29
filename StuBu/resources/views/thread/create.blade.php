@@ -19,8 +19,17 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <div>
-                        <h1>Create Thread</h1>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h1>Create Thread</h1>
+                        </div>
+                        <div class="col-md-6">
+                            <form action=" {{ route('homefeed')}}" method="">
+                                <button type="submit" class="border-0 bg-transparent ml-2 float-right"><i class="fa fa-times" aria-hidden="true"></i></button>
+                            </form>
+                        </div>
+
+                        
                     </div>
                 </div>
 
@@ -50,14 +59,9 @@
                             </div>
                             <div class="form-group">
                                 <label><h5>Thread</h5></label>
-                                <textarea class="form-control-plaintext input-group-lg" name="body" id="" placeholder="Input...">{{old('body')}}</textarea>
+                                <textarea class="form-control-plaintext input-group-lg" name="body" id="" placeholder="Input..." rows="5" style="resize:none">{{old('body')}}</textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            
-                        </form>
-                        
-                         <form action=" {{ route('homefeed')}}" method="">
-                            <button type="submit" class="btn btn-primary">Close</button>
+                            <button type="submit" class="btn btn-primary float-right">Submit</button>
                         </form>
                     </div>
                 </div>
