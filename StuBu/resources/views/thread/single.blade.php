@@ -227,10 +227,11 @@
                                     <h6 class="comment-name"><a href="{{route('profile_show',$comment->user->id)}}">{{$comment->user->name}}</a></h6>
                                     <span>{{$comment->created_at->diffForHumans()}}</span>
                                     <!-- Actions -->
-                                   <button class="border-0 bg-transparent ml-2"> <i class="fa fa-reply"></i></button></i>
+                                   <button class="border-0 bg-transparent ml-2" onclick="showForm('comment{{$comment->id}}')"> <i class="fa fa-reply"></i></button>
                                     <i class="fa fa-heart"><button class="border-0 bg-transparent ml-2"></button></i>
                                     @if(auth()->user()->id == $comment->user_id)
-                                    <i class="fas fa-edit"></i>
+                                    
+                                    <button class="border-0 bg-transparent ml-2" onclick="editForm('edit{{$comment->id}}','show{{$comment->id}}')"><i class="fas fa-edit"></i></button>
                                     <form action="{{ route('comment.destroy',$comment->id) }}" method="POST" class="inline-it">
                                         {{csrf_field()}}
                                         {{method_field('DELETE')}}
@@ -238,16 +239,31 @@
                                     </form>
                                     @endif
                                 </div>
-                                <div class="comment-content">
+                                <div class="comment-content" id="show{{$comment->id}}">
                                     {{$comment->body}}
+                                </div>
+
+                                <div class="comment-content d-none" id="edit{{$comment->id}}">
+                                    <form action="{{route('comment.update',$comment->id)}}" method="POST" role="form">
+                                        {{csrf_field()}}
+                                        {{method_field('put')}}
+                                        <textarea type="text" class="form-control" name="body" id="" rows="4" style="resize:none;word-wrap:break-word;">{{$comment->body}}</textarea>
+                                        <br>
+                                        <button type="submit" class="btn btn-primary float-right">Submit</button>
+                                        
+                                    </form>
+                                    <button class="btn btn-primary" onclick="editForm('show{{$comment->id}}','edit{{$comment->id}}')">Close</button>
+                                    <br><br>
                                 </div>
                             </div>
                         </div>
 
                         <li>
-                            <div class="comment-box d-none">
+                            <div class="comment-box d-none" id="comment{{$comment->id}}">
                                 <div class="comment-head">
-                                    <h5>Reply Comment</h5>
+                                    <h5 class="comment-name">Reply Comment</h5>
+                                    
+                                    <button class="border-0 bg-transparent ml-2" onclick="hideForm('comment{{$comment->id}}')"><i class="fa fa-times" aria-hidden="true"></i></button>
                                 </div>
                                 <div class="comment-content">
                                     <form action="{{route('replycomment.store',$comment->id)}}" method="POST" role="form">
@@ -277,7 +293,7 @@
                                         <!-- Actions -->        
                                         <i class="fa fa-heart"><button class="border-0 bg-transparent"></button></i>
                                         @if(auth()->user()->id == $reply->user_id)
-                                        <i class="fas fa-edit"></i>
+                                        <button class="border-0 bg-transparent ml-2" onclick="editForm('editR{{$reply->id}}','showR{{$reply->id}}')"><i class="fas fa-edit"></i></button>
                                         <form action="{{ route('comment.destroy',$reply->id) }}" method="POST" class="inline-it">
                                             {{csrf_field()}}
                                             {{method_field('DELETE')}}
@@ -285,8 +301,20 @@
                                         </form>
                                         @endif
                                     </div>
-                                    <div class="comment-content">
+                                    <div class="comment-content" id="showR{{$reply->id}}">
                                         {{$reply->body}}
+                                    </div>
+                                    <div class="comment-content d-none" id="editR{{$reply->id}}">
+                                        <form action="{{route('comment.update',$reply->id)}}" method="POST" role="form">
+                                            {{csrf_field()}}
+                                            {{method_field('put')}}
+                                            <div class="form-group">
+                                                <textarea type="text" class="form-control" name="body" id="" rows="3" style="resize:none;word-wrap:break-word;">{{$reply->body}}</textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary float-right">Submit</button>
+                                        </form>
+                                        <button class="btn btn-primary" onclick="editForm('showR{{$reply->id}}','editR{{$reply->id}}')">Close</button>
+                                        <br><br>
                                     </div>
                                 </div>
                             </li>
