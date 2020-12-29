@@ -87,7 +87,6 @@ h3{
 
 
                     <img src="/images/profilePic/{{$user->image}}" class="img-responsive" id="wa">
-                    <!--<h5>Reputation: {{ $user->reputation}} </h5>-->
                     <br>
                 </div>
             <div class="col-md-6">
