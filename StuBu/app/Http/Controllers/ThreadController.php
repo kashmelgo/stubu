@@ -57,11 +57,11 @@ class ThreadController extends Controller
 
         //store
 
-            auth()->user()->threads()->create($request->all());
-
+        $thread = auth()->user()->threads()->create($request->all());
+            
 
         //redirect
-        return back()->withMessage('Thread Created');
+        return view('thread.single',compact('thread'));
 
     }
 

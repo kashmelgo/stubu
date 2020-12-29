@@ -74,7 +74,7 @@
                 <div class="col-md-6">
                     <h1>{{Auth::user()->name}}</h1>
 
-                    <img src="images/defaultPic.jpg" class="img-responsive" id="wa">
+                    <img src="images/profilePic/defaultPic.jpg" class="img-responsive" id="wa">
                     <h5>Reputation:123</h5>
                 </div>
             <div class="col-md-6">
