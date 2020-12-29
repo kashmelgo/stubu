@@ -103,7 +103,16 @@ h3{
                 <p>Email Address: {{$user->email}}</p>
                 <p>Mobile Number:{{ $user->mobile_number}} </p>
                 <p>Date Created: {{$user->created_at}}</p>
-            </div>
+                @if(auth()->user()->id==$user->id)
+                <div class="container1">
+                    <div class="center">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
+                            Edit Profile
+                        </button>
+                    </div>
+                </div>
+                @endif
+            </div>   
 
             <div class="col-md-12" id="info">
             @if(auth()->user()->id==$user->id)
@@ -209,16 +218,6 @@ h3{
     </div>
 </div>
 
-@if(auth()->user()->id==$user->id)
-<div class="container1">
-    <div class="center">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
-        Edit Profile
-        </button>
-
-        </div>
-</div>
-@endif
 
 
 
