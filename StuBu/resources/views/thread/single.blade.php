@@ -165,6 +165,54 @@
     <div class="row">
         <!-- Contenedor Principal -->
         <div class="comments-container">
+            
+            <div class="comment-main-level">
+                <div class="comment-box">
+                    <div class="comment-head">
+                        <div class="thread-avatar mr-2"><img src="/images/profilePic/{{$comment->user->image}}" alt="" style="height:100%;width:100%"></div>
+                        <legend>{{$thread->subject}}</legend>
+                        <!-- Actions -->
+                        @if(auth()->user()->id == $thread->user_id)
+                        <i class="fas fa-edit"></i>
+                        <form action="{{ route('thread.destroy',$thread->id) }}" method="POST" class="inline-it">
+                            {{csrf_field()}}
+                            {{method_field('DELETE')}}
+                            <button class="border-0 bg-transparent ml-2" type="submit"><i class="fa fa-trash"></i></button>
+                        </form>
+                        @endif
+                        <h6 class="comment-name">by: <a href="{{route('profile_show',$comment->user->id)}}">{{$thread->user->name}}</a></h6>
+                        <span>  {{$thread->created_at->diffForHumans()}}</span>
+                    </div>
+                    <div class="comment-content">
+                        {{$thread->body}}
+                    </div>
+                </div>
+            </div>
+            <br>
+
+
+
+            <div class="comment-main-level">
+                <div class="comment-box">
+                    <div class="comment-head">
+                       <h4>Create Comment</h4>
+                    </div>
+                    <div class="comment-content">
+                        <form action="{{route('threadcomment.store',$thread->id)}}" method="POST" role="form">
+                            {{csrf_field()}}
+                            {{method_field('POST')}}
+                            <div class="form-group">
+                                <textarea type="text" class="form-control" name="body" id="" placeholder="Input..." rows="4" style="resize:none;word-wrap:break-word;"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary float-right">Submit</button>
+                            <br><br>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
             <h1>Comments</h1>
                 @foreach($thread->comments as $comment)
                 
@@ -179,30 +227,63 @@
                                     <h6 class="comment-name"><a href="{{route('profile_show',$comment->user->id)}}">{{$comment->user->name}}</a></h6>
                                     <span>{{$comment->created_at->diffForHumans()}}</span>
                                     <!-- Actions -->
-                                    <i class="fa fa-reply"></i>
-                                    <i class="fa fa-heart"></i>
-                                    <i class="fa fa-trash"></i>
+                                   <button class="border-0 bg-transparent ml-2"> <i class="fa fa-reply"></i></button></i>
+                                    <i class="fa fa-heart"><button class="border-0 bg-transparent ml-2"></button></i>
+                                    @if(auth()->user()->id == $comment->user_id)
                                     <i class="fas fa-edit"></i>
+                                    <form action="{{ route('comment.destroy',$comment->id) }}" method="POST" class="inline-it">
+                                        {{csrf_field()}}
+                                        {{method_field('DELETE')}}
+                                        <button class="border-0 bg-transparent ml-2" type="submit"><i class="fa fa-trash"></i></button>
+                                    </form>
+                                    @endif
                                 </div>
                                 <div class="comment-content">
                                     {{$comment->body}}
                                 </div>
                             </div>
                         </div>
+
+                        <li>
+                            <div class="comment-box d-none">
+                                <div class="comment-head">
+                                    <h5>Reply Comment</h5>
+                                </div>
+                                <div class="comment-content">
+                                    <form action="{{route('replycomment.store',$comment->id)}}" method="POST" role="form">
+                                        {{csrf_field()}}
+                                        {{method_field('POST')}}
+                                        <div class="form-group">
+                                            <textarea type="text" class="form-control" name="body" id="" placeholder="Input..." rows="3" style="resize:none;word-wrap:break-word;"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary float-right">Submit</button>
+                                        <br><br>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+                        
                         <!-- Respuestas de los comentarios -->
                         @foreach($comment->comments as $reply)
                         <ul class="comments-list reply-list">
                             <li>
                                 <!-- Avatar -->
-                                <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
+                                <div class="comment-avatar"><img src="/images/profilePic/{{$reply->user->image}}" alt=""></div>
                                 <!-- Contenedor del Comentario -->
                                 <div class="comment-box">
                                     <div class="comment-head">
                                         <h6 class="comment-name"><a href="{{route('profile_show',$reply->user->id)}}">{{$reply->user->name}}</a></h6>
                                         <span>{{$reply->created_at->diffForHumans()}}</span>
-                                        <!-- Actions -->
-                                        <i class="fa fa-reply"></i>
-                                        <i class="fa fa-heart"></i>
+                                        <!-- Actions -->        
+                                        <i class="fa fa-heart"><button class="border-0 bg-transparent"></button></i>
+                                        @if(auth()->user()->id == $reply->user_id)
+                                        <i class="fas fa-edit"></i>
+                                        <form action="{{ route('comment.destroy',$reply->id) }}" method="POST" class="inline-it">
+                                            {{csrf_field()}}
+                                            {{method_field('DELETE')}}
+                                            <button class="border-0 bg-transparent ml-2" type="submit"><i class="fa fa-trash"></i></button>
+                                        </form>
+                                        @endif
                                     </div>
                                     <div class="comment-content">
                                         {{$reply->body}}

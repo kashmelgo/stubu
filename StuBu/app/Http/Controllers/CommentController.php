@@ -24,7 +24,7 @@ class CommentController extends Controller
 
         $thread->user->notify(new RepliedToThread($thread));
 
-        return view('thread.single',compact('thread'));
+        return back()->withMessage('Comment Created Successfully');
 
     }
 
@@ -40,7 +40,7 @@ class CommentController extends Controller
 
         $comment->comments()->save($reply);
 
-        return back()->withMessage('Reply Added Successfully!');
+        return back()->withMessage('Comment Created Successfully');
 
     }
     /**
