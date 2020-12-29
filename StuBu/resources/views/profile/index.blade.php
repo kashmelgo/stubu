@@ -40,10 +40,10 @@
     width:400px;
     height:500px;
 }
-.container1 { 
+.container1 {
   height: 50px;
   position: relative;
- 
+
 }
 
 .center {
@@ -82,9 +82,9 @@ h3{
         <div class="col-md-6" id="info">
               <div class="row">
                 <div class="col-md-6">
-                  
+
                     <h1> {{$user->name}}</h1>
-                    
+
 
                     <img src="/images/profilePic/{{$user->image}}" class="img-responsive" id="wa">
                     <!--<h5>Reputation: {{ $user->reputation}} </h5>-->
@@ -92,10 +92,10 @@ h3{
                 </div>
             <div class="col-md-6">
                 <h2>About Me </h2>
-                
-				<p>{{ $user->about_me}} </p>	
+
+				<p>{{ $user->about_me}} </p>
              </div>
-         </div>   
+         </div>
       </div>
 
         <div class="col-md-6" id="info">
@@ -103,7 +103,7 @@ h3{
                 <p>Email Address: {{$user->email}}</p>
                 <p>Mobile Number:{{ $user->mobile_number}} </p>
                 <p>Date Created: {{$user->created_at}}</p>
-            </div>   
+            </div>
 
             <div class="col-md-12" id="info">
             @if(auth()->user()->id==$user->id)
@@ -111,7 +111,7 @@ h3{
             @else
         <h3>{{$user->name}}'s Latest Threads</h3>
         @endif
-            
+
 
         @forelse($threads as $thread)
                 Thread <a href="{{ route('thread.show',$thread->id)}}" style="color: #00B8AB"> "{{$thread->subject}}"</a> was created
@@ -132,23 +132,23 @@ h3{
                     @else
                 <p>{{$user->name}} commented on <a href="{{ route('thread.show',$comment->commentable->id)}}" style="color: #00B8AB"> {{$comment->commentable->subject}}</a> {{$comment->created_at->diffForHumans()}}</p>
                 @endif
-            
+
         @empty
             <p> No Comments Yet </p>
-        
+
         @endforelse
 
-            </div>   
-    </div> 
+            </div>
+    </div>
 
 
     <div>
-        
+
     </div>
-  
+
 </div>
 
-    
+
 <div class="modal fade bd-example-modal-lg"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
              <div class="modal-content">
@@ -182,7 +182,7 @@ h3{
                                              <input type="text" name="name" value="{{ Auth::user()->name}}">
                                       </div>
                                  </div>
-               
+
                                <div class="form-group row">
                                     <label class="col-md-4 col-form-label text-md-right">Phone Number</label>
 
@@ -215,13 +215,13 @@ h3{
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
         Edit Profile
         </button>
-       
+
         </div>
 </div>
 @endif
 
 
-  
+
 
 
 
