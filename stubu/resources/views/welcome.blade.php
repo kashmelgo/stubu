@@ -56,6 +56,7 @@
                 <div class="col-md-6" id="welcometextleft">
                     <h2 id="welcomebigtxt">Got a question?</h2>
                     <p id="welcomesmalltxt"><b class="welcomebold">StuBu</b> is a website where Carolinians can ask any question regarding schoolwork. <b class="welcomebold"> StuBu</b> is inspired by the websites, StackOverflow and Quora.</p>
+                    <a href="{{ route('register') }}"><button type="button" href="{{route('register')}}"class="btn btn-primary btn-lg btn-block">Get Started</button></a>
                 </div>
                 <div class="col-md-6" id="welcomeimgright">
                     <img id="welcomeimage" src="{{asset('images/assets/idea.png')}}">
