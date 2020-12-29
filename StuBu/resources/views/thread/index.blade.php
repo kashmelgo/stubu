@@ -24,7 +24,6 @@
                     @endif
 
                     <div class="list-group">
-                        @forelse($posts as $post)
                         @forelse($threads as $post)
                             <a href="{{ route('thread.show',$post->id)}}" class="list-group-item">
                                 <h4 class="list-group-item-heading">{{$post->subject}}</h4>
