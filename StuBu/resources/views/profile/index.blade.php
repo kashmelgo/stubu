@@ -87,7 +87,8 @@ h3{
                     
 
                     <img src="/images/profilePic/{{$user->image}}" class="img-responsive" id="wa">
-                    <h5>Reputation: {{ $user->reputation}} </h5>
+                    <!--<h5>Reputation: {{ $user->reputation}} </h5>-->
+                    <br>
                 </div>
             <div class="col-md-6">
                 <h2>About Me </h2>
@@ -113,11 +114,9 @@ h3{
             
 
         @forelse($threads as $thread)
-                <p>{{$thread->subject}}</p>
-
+                Thread <a href="{{ route('thread.show',$thread->id)}}" style="color: #00B8AB"> "{{$thread->subject}}"</a> was created
         @empty
                 <p>No Threads Yet </p>
-
         @endforelse
 
         <b4>
