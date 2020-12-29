@@ -114,9 +114,9 @@ h3{
 
 
         @forelse($threads as $thread)
-                Thread <a href="{{ route('thread.show',$thread->id)}}" style="color: #00B8AB"> "{{$thread->subject}}"</a> was created
+                <p class="d-flex justify-content-center">{{$user->name}} Created a Thread  <a href="{{ route('thread.show',$thread->id)}}" style="color: #00B8AB"> "{{$thread->subject}}"</a> {{$thread->created_at->diffForHumans()}}</p> <br>
         @empty
-                <p>No Threads Yet </p>
+                <p class="d-flex justify-content-center">No Threads Yet </p><br>
         @endforelse
 
         <b4>
@@ -128,7 +128,7 @@ h3{
         @endif
         @forelse($comments as $comment)
                 @if(auth()->user()->id==$user->id)
-                <p>You commented on <a href="{{ route('thread.show',$comment->commentable->id)}}" style="color: #00B8AB"> {{$comment->commentable->subject}}</a> {{$comment->created_at->diffForHumans()}}</p>
+                <p class="d-flex justify-content-center">You commented on <a href="{{ route('thread.show',$comment->commentable->id)}}" style="color: #00B8AB"> {{$comment->commentable->subject}}</a> {{$comment->created_at->diffForHumans()}}</p>
                     @else
                 <p>{{$user->name}} commented on <a href="{{ route('thread.show',$comment->commentable->id)}}" style="color: #00B8AB"> {{$comment->commentable->subject}}</a> {{$comment->created_at->diffForHumans()}}</p>
                 @endif
