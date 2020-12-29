@@ -11,7 +11,7 @@
                             <h1>Threads</h1>
                         </div>
                         <div class="col-md-3">
-                            <a class="btn btn-primary" href="{{ route('thread.create')}}">Create Thread</a>
+                            <a class="btn btn-primary" href="{{ route('thread.create')}}">Ask Question</a>
                         </div>
                     </div>
                 </div>

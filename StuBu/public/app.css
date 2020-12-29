@@ -125,6 +125,7 @@ body{
     width: auto;
     height: 1300px;
     transform: translateY(-30%);
+    z-index: -1;
 }
 
 #welcomeimgright{
