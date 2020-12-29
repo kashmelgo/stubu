@@ -3,6 +3,7 @@
 
 @section('content')
 
+<!--
     <div class="container">
         <div class="row">
             <div id="threadbody">
@@ -44,7 +45,6 @@
 
 
 
-    <!-- Anhi Sugod Para sa Comments -->
     <div class="comment">
         @foreach($thread->comments as $comment)
             <h4>{{$comment->user->name}}</h4>
@@ -97,7 +97,6 @@
 
 
 
-            <!-- Reply to Comment Code -->
             <div class="reply-form collapse" id="reply-comment-{{ $comment->id }}" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <form action="{{route('replycomment.store',$comment->id)}}" method="POST" role="form">
                         {{csrf_field()}}
@@ -157,8 +156,7 @@
     </div>
     <br>
     <br>
-
-<!-- Copied Template -->
+-->
 
 
 <div class="container">
