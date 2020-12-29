@@ -176,12 +176,13 @@
                             <!-- Contenedor del Comentario -->
                             <div class="comment-box">
                                 <div class="comment-head">
-                                    <h6 class="comment-name by-author"><a href="{{route('profile_show',$comment->user->id)}}">{{$comment->user->name}}</a></h6>
+                                    <h6 class="comment-name"><a href="{{route('profile_show',$comment->user->id)}}">{{$comment->user->name}}</a></h6>
                                     <span>{{$comment->created_at->diffForHumans()}}</span>
                                     <!-- Actions -->
                                     <i class="fa fa-reply"></i>
                                     <i class="fa fa-heart"></i>
                                     <i class="fa fa-trash"></i>
+                                    <i class="fas fa-edit"></i>
                                 </div>
                                 <div class="comment-content">
                                     {{$comment->body}}
