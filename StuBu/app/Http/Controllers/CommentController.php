@@ -24,7 +24,7 @@ class CommentController extends Controller
 
         $thread->user->notify(new RepliedToThread($thread));
 
-        return back()->withMessage('Comment Added Successfully!');
+        return view('thread.single',compact('thread'));
 
     }
 

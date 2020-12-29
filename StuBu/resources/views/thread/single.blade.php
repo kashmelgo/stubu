@@ -26,7 +26,6 @@
                         Reply
                     </button>
                 </div>
-
             </div>
         </div>
     </div>
@@ -173,7 +172,7 @@
                     <li>
                         <div class="comment-main-level">
                             <!-- Avatar -->
-                            <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
+                            <div class="comment-avatar"><img src="/images/profilePic/{{$comment->user->image}}" alt=""></div>
                             <!-- Contenedor del Comentario -->
                             <div class="comment-box">
                                 <div class="comment-head">
@@ -217,10 +216,5 @@
         </div>
 	</div>
 </div>
-
-
-
-
-
 @endsection
 
