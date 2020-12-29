@@ -162,7 +162,6 @@ h3{
                            <div class="modal-body">
                               <form action="update" method="POST" enctype="multipart/form-data">
                                      @csrf
-                                    {{method_field('POST')}}
                                      <div class="form-group row">
                                           <label class="col-md-4 col-form-label text-md-right">Your Current Pic</label>
                                        <div class="col-md-6">
@@ -184,15 +183,6 @@ h3{
                                              <input type="text" name="name" value="{{ Auth::user()->name}}">
                                       </div>
                                  </div>
-
-                
-                                  <div class="form-group row">
-                                      <label class="col-md-4 col-form-label text-md-right">Change Password</label>
-
-                                      <div class="col-md-6">
-                                         <input type="text" name="password">
-                                     </div>
-                                  </div>
                
                                <div class="form-group row">
                                     <label class="col-md-4 col-form-label text-md-right">Phone Number</label>

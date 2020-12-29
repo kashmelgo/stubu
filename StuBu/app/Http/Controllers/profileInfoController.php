@@ -82,29 +82,19 @@ class profileInfoController extends Controller
     {
         //
         $user = Auth::user();
-
-
+        
      if($request->hasfile('image')){
             $file=$request->file('image');
             $extension=$file->getClientOriginalExtension();
             $filename= time() . '.' . $extension;
             $file->move('images/profilePic/',$filename);
             $user->image=$filename;
-
-            
         }
 
         $user->name= $request->name;
         $user->mobile_number= $request->mobile_number;
         $user->about_me= $request->about_me;
     
-
-    
-
-        if($request->has('password')){
-
-            $user->password= bcrypt($request->password);
-        }
 
         $user->save();
 
@@ -124,10 +114,7 @@ class profileInfoController extends Controller
      */
     public function update(Request $request)
     {
-        //
-        
-       
-
+    
     }
 
     /**
