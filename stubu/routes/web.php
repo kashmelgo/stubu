@@ -42,6 +42,8 @@ Route::get('/profile','App\Http\Controllers\profileInfoController@index')->name(
 Route::get('profile/{profile}','App\Http\Controllers\profileInfoController@show')->name('profile_show');
 Route::POST('update','App\Http\Controllers\profileInfoController@edit');
 
+Route::POST('vote','App\Http\Controllers\VoteController@vote')->name('vote');
+
 
 
 

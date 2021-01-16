@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
 
-    use CommentableTrait, LikableTrait;
+    use CommentableTrait;
 
     protected $fillable=['body','user_id'];
 
@@ -24,5 +24,15 @@ class Comment extends Model
 
     public function comments(){
         return $this->morphMany(Comment::class,'commentable');
+    }
+
+    
+
+
+
+
+
+    public function votes(){
+        return $this->hasMany(Vote::class);
     }
 }

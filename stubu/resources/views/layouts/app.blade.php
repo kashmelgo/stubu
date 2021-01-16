@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'StuBu') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 
 
     <!-- Fonts -->
@@ -26,6 +26,7 @@
     <link href="https://bootswatch.com/4/lumen/bootstrap.min.css" rel="stylesheet">
     <link href="{{asset('app.css')}}" rel="stylesheet">
     <script src="https://kit.fontawesome.com/f29fb0b11c.js" crossorigin="anonymous"></script>
+    
 
 </head>
 <body>
@@ -128,7 +129,7 @@
         </main>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="{{asset('/js/main.js')}}"> </script>
@@ -152,12 +153,45 @@
             element.classList.remove('d-none');
             form.classList.add('d-none');
         }
+   
 
+        $('.upvote').on('click', function(event) {
+            console.log("clicked the button");
+
+
+
+            let comment_id = $("input[name=comment_id]").val();
+            let vote = $("input[name=vote]").val();
+
+            $.ajax({                                                            
+                type: "POST",                                                                                                                      
+                url: "{{route('vote')}}",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "comment_id":comment_id,
+                    "vote":vote,
+                    "status":"success"
+                  },
+                success: function (data) 
+                {
+                    if(data.bool == true )
+                    {
+                        console.log('wewe?'); 
+                    }
+                    else
+                    {
+                                                   
+                    }                            
+               },
+               error: function(data){
+                    console.log('error');
+                }
+           });
+        });
     </script>
-
-
-
-
+    
+    
+    
 
 
 
