@@ -84,7 +84,7 @@
                         @else
                                 <form action="{{route('search')}}" class="form-inline d-flex justify-content-center md-form form-sm" method="GET">
                                     <div class="form-group">
-                                        <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="search" name="search" aria-label="search">
+                                        <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search Thread" name="search" aria-label="search">
                                         <span class="form-group-btn">
                                             <button type="submit" class="btn-primary" id="searchbutton"><i class="fas fa-search" aria-hidden="true"></i></button>
                                         </span>
@@ -157,8 +157,6 @@
 
         $('.upvote').on('click', function(event) {
             console.log("clicked the button");
-
-
 
             let comment_id = $("input[name=comment_id]").val();
             let vote = $("input[name=vote]").val();

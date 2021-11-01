@@ -51,8 +51,6 @@
                 </div>
             </div>
 
-
-
             <h1>Comments</h1>
                 @if($thread->comments->count() == 0)
                 <br>
@@ -72,33 +70,27 @@
                                     <span>{{$comment->created_at->diffForHumans()}}</span>
                                    <button class="border-0 bg-transparent ml-2" onclick="showForm('comment{{$comment->id}}')"> <i class="fa fa-reply"></i></button>
                                   
-                                   
-                                   <form action=" {{route('vote')}} " method="POST">
-                                        {{csrf_field()}}
-                                        <input type="hidden" name="vote" value="-1">
-                                        <button class="border-0 bg-transparent ml-2" type="button"><i class="fa fa-arrow-down" aria-hidden="true"></i></button>
-                                   </form>
-                                
-                                   <form action=" {{route('vote')}} " method="POST">
-                                        {{csrf_field()}}
-                                        <input type="hidden" name="vote" value="1">
-                                        
-                                   </form>
-                                   <form>
-                                        <input type="hidden" name="comment_id" value="{{$comment->id}}">
-                                        <input type="hidden" name="vote" value="1">
-                                        <button class="border-0 bg-transparent ml-2 upvote" type="button"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
-                                   </form>
-                                   
+                                   @if(auth()->user()->id != $comment->user_id)
+                                    <form>
+                                            <input type="hidden" name="comment_id" value="{{$comment->id}}">
+                                            <input type="hidden" name="vote" value="0">
+                                            <button class="border-0 bg-transparent ml-2 upvote" type="button"><i class="fa fa-arrow-down" aria-hidden="true"></i></button>
+                                    </form>
+                                    
+                                    <form>
+                                            <input type="hidden" name="comment_id" value="{{$comment->id}}">
+                                            <input type="hidden" name="vote" value="1">
+                                            <button class="border-0 bg-transparent ml-2 upvote" type="button"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+                                    </form>
+                                   @endif
                                    
                                     @if(auth()->user()->id == $comment->user_id)
-                                    
-                                    <button class="border-0 bg-transparent ml-2" onclick="editForm('edit{{$comment->id}}','show{{$comment->id}}')"><i class="fas fa-edit"></i></button>
-                                    <form action="{{ route('comment.destroy',$comment->id) }}" method="POST" class="inline-it">
-                                        {{csrf_field()}}
-                                        {{method_field('DELETE')}}
-                                        <button class="border-0 bg-transparent ml-2" type="submit"><i class="fa fa-trash"></i></button>
-                                    </form>
+                                        <button class="border-0 bg-transparent ml-2" onclick="editForm('edit{{$comment->id}}','show{{$comment->id}}')"><i class="fas fa-edit"></i></button>
+                                        <form action="{{ route('comment.destroy',$comment->id) }}" method="POST" class="inline-it">
+                                            {{csrf_field()}}
+                                            {{method_field('DELETE')}}
+                                            <button class="border-0 bg-transparent ml-2" type="submit"><i class="fa fa-trash"></i></button>
+                                        </form>
                                     @endif
                                 </div>
                                 <div class="comment-content" id="show{{$comment->id}}">
