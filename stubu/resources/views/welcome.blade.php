@@ -61,7 +61,7 @@
                     <a href="{{ route('register') }}"><button type="button" href="{{route('register')}}"class="btn btn-primary btn-lg btn-block">Get Started</button></a>
                 </div>
                 <div class="col-md-6" id="welcomeimgright">
-                    <img id="welcomeimage" src="{{asset('images/assets/idea.png')}}">
+                    <img id="welcomeimage" src="{{asset('images/assets/idea.png')}} ">
                 </div>
             </div>
         </div>

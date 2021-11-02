@@ -74,13 +74,13 @@
                                     <form>
                                             <input type="hidden" name="comment_id" value="{{$comment->id}}">
                                             <input type="hidden" name="vote" value="0">
-                                            <button class="border-0 bg-transparent ml-2 upvote" type="button"><i class="fa fa-arrow-down" aria-hidden="true"></i></button>
+                                            <button class="border-0 bg-transparent ml-2 upvote" type="button"><i class="fa fa-thumbs-down" aria-hidden="true"></i></button>
                                     </form>
-                                    
+                                    <!-- Hover Color color: #03658c; -->
                                     <form>
                                             <input type="hidden" name="comment_id" value="{{$comment->id}}">
                                             <input type="hidden" name="vote" value="1">
-                                            <button class="border-0 bg-transparent ml-2 upvote" type="button"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+                                            <button class="border-0 bg-transparent ml-2 upvote" type="button"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
                                     </form>
                                    @endif
                                    
