@@ -91,11 +91,12 @@
                                     </div>
                                 </form>
                             <div class="dropdown show">
+
                                 <a class="btn btn-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-bell fa-lg" id="notifbutton"></i>
                                     <span class="badge"> {{count(auth()->user()->unreadNotifications)}} </span>
                                 </a>
-
+                                
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                     @foreach(auth()->user()->unreadNotifications as $notification)
                                         @include('layouts.notifications')
@@ -129,11 +130,12 @@
         </main>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="{{asset('/js/main.js')}}"> </script>
-
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+    </script>
 
     <script>
 
@@ -154,38 +156,7 @@
             form.classList.add('d-none');
         }
    
-
-        $('.upvote').on('click', function(event) {
-            console.log("clicked the button");
-
-            let comment_id = $("input[name=comment_id]").val();
-            let vote = $("input[name=vote]").val();
-
-            $.ajax({                                                            
-                type: "POST",                                                                                                                      
-                url: "{{route('vote')}}",
-                data: {
-                    "_token": "{{ csrf_token() }}",
-                    "comment_id":comment_id,
-                    "vote":vote,
-                    "status":"success"
-                  },
-                success: function (data) 
-                {
-                    if(data.bool == true )
-                    {
-                        console.log('wewe?'); 
-                    }
-                    else
-                    {
-                                                   
-                    }                            
-               },
-               error: function(data){
-                    console.log('error');
-                }
-           });
-        });
     </script>
+    @yield('js')
 </body>
 </html>

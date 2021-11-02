@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\profileInfoController;
 
+use App\Http\Controllers\LikeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,7 +46,8 @@ Route::POST('update','App\Http\Controllers\profileInfoController@edit');
 
 Route::POST('vote','App\Http\Controllers\VoteController@vote')->name('vote');
 
-
+Route::post('comment/like', 'App\Http\Controllers\LikeController@likeIt')->name('likeIt');
+Route::post('comment/unLike', 'App\Http\Controllers\LikeController@unLikeIt')->name('unLikeIt');
 
 
 

@@ -71,17 +71,19 @@
                                    <button class="border-0 bg-transparent ml-2" onclick="showForm('comment{{$comment->id}}')"> <i class="fa fa-reply"></i></button>
                                   
                                    @if(auth()->user()->id != $comment->user_id)
-                                    <form>
-                                            <input type="hidden" name="comment_id" value="{{$comment->id}}">
-                                            <input type="hidden" name="vote" value="0">
-                                            <button class="border-0 bg-transparent ml-2 upvote" type="button"><i class="fa fa-thumbs-down" aria-hidden="true"></i></button>
-                                    </form>
-                                    <!-- Hover Color color: #03658c; -->
-                                    <form>
-                                            <input type="hidden" name="comment_id" value="{{$comment->id}}">
-                                            <input type="hidden" name="vote" value="1">
-                                            <button class="border-0 bg-transparent ml-2 upvote" type="button"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
-                                    </form>
+                                    <div class="voting">
+                                        <form class="unlikeComment">
+                                                <input type="hidden" name="comment_id" value="{{$comment->id}}">
+                                                <input type="hidden" name="vote" value="-1">
+                                                <button class="border-0 bg-transparent ml-2" type="submit" name="submit"><i class="fa fa-thumbs-down {{$comment->isUnLiked() ? "clicked" : ""}}" aria-hidden="true"></i></button>
+                                        </form>
+                                        <!-- Hover Color color: #03658c; -->
+                                        <form class="likeComment">
+                                                <input type="hidden" name="comment_id" value="{{$comment->id}}">
+                                                <input type="hidden" name="vote" value="1">
+                                                <button class="border-0 bg-transparent ml-2" type="submit" name="submit"><i class="fa fa-thumbs-up {{$comment->isLiked() ? "clicked" : ""}}" aria-hidden="true"></i></button>
+                                        </form>
+                                    </div>
                                    @endif
                                    
                                     @if(auth()->user()->id == $comment->user_id)
@@ -178,3 +180,62 @@
 </div>
 @endsection
 
+@section('js')
+    <script>
+        $(document).ready(function(){
+            $.ajaxSetup({
+                headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+            });
+    
+            $('.likeComment').on('submit',function(e){
+                e.preventDefault();
+                var parent = $(this).parent()
+                var item = $(this);
+                var data = $(this).serialize();
+                var url = '{{route("likeIt")}}';
+                var post = 'POST';
+                $.ajax({
+                    type : post,
+                    url : url,
+                    data : data,
+                    success:function(data){
+                        data = JSON.parse(data);
+                        if(data != 1){
+                            item.find('.fa-thumbs-up').removeClass('clicked'); 
+                        }else{
+                            item.find('.fa-thumbs-up').addClass('clicked'); 
+                            parent.find('.fa-thumbs-down').removeClass('clicked');
+                        }                                   
+                    },
+                })
+            });
+
+            $('.unlikeComment').on('submit',function(e){
+                e.preventDefault();
+                var parent = $(this).parent()
+                var item = $(this);
+                var data = $(this).serialize();
+                var url = '{{route("unLikeIt")}}';
+                var post = 'POST';
+                $.ajax({
+                    type : post,
+                    url : url,
+                    data : data,
+                    success:function(data){
+                        data = JSON.parse(data);
+                        if(data != -1){
+                            item.find('.fa-thumbs-down').removeClass('clicked'); 
+                        }else{
+                            item.find('.fa-thumbs-down').addClass('clicked'); 
+                            parent.find('.fa-thumbs-up').removeClass('clicked');
+                        }
+                                                              
+                    },
+                })
+            });
+
+        });
+
+    </script>
+
+@endsection

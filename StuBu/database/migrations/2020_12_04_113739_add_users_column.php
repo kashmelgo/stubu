@@ -13,13 +13,20 @@ class AddUsersColumn extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-            $table->string('image')->default('defaultPic.jpg')->after('email');
-            $table->string('about_me')->default('None');
-            $table->string('mobile_number')->default('None');
-          
-        });
+        
+
+        if (!Schema::hasColumn('users', 'image'))
+        {
+            Schema::table('users', function (Blueprint $table) {
+                //
+                $table->string('image')->default('defaultPic.jpg')->after('email');
+                $table->string('about_me')->default('None');
+                $table->string('mobile_number')->default('None');
+              
+            });
+        }
+
+        
     }
 
     /**
@@ -29,12 +36,19 @@ class AddUsersColumn extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-            $table->string('image');
-            $table->string('about_me');
-            $table->string('mobile_number');
-           
-        });
+        
+
+        if (!Schema::hasColumn('users', 'image'))
+        {
+            Schema::table('users', function (Blueprint $table) {
+                //
+                $table->string('image');
+                $table->string('about_me');
+                $table->string('mobile_number');
+               
+            });
+
+            
+        }
     }
 }

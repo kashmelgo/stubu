@@ -8,11 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
 
-    use CommentableTrait;
+    use CommentableTrait, LikeableTrait;
 
     protected $fillable=['body','user_id'];
 
     use HasFactory;
+
+    public function likeable(){
+        return $this->morphTo();
+    }
 
     public function commentable(){
         return $this->morphTo();

@@ -13,12 +13,19 @@ class HomefeedTable extends Migration
      */
     public function up()
     {
-        Schema::create('homefeed', function (Blueprint $table) {
-            $table->id();
-            $table->integer('user_id');
-            $table->integer('thread_id');
-            $table->timestamps();
-        });
+        
+
+        if (!Schema::hasColumn('homefeed', 'user_id'))
+        {
+            Schema::create('homefeed', function (Blueprint $table) {
+                $table->id();
+                $table->integer('user_id');
+                $table->integer('thread_id');
+                $table->timestamps();
+            });
+        }
+
+        
     }
 
     /**

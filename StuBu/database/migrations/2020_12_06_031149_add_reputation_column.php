@@ -13,10 +13,12 @@ class AddReputationColumn extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-            $table->integer('reputation')->default(0)->after('email');
-        });
+        if (!Schema::hasColumn('users', 'reputation'))
+        {
+            Schema::table('users', function (Blueprint $table) {
+                $table->integer('reputation')->default(0)->after('email');
+            });
+        }
     }
 
     /**
@@ -26,9 +28,14 @@ class AddReputationColumn extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-            $table->integer('reputation');
-        });
+        
+
+        if (!Schema::hasColumn('users', 'reputation'))
+        {
+            Schema::table('users', function (Blueprint $table) {
+                //
+                $table->integer('reputation');
+            });
+        }
     }
 }
