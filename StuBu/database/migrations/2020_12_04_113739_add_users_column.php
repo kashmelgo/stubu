@@ -22,7 +22,7 @@ class AddUsersColumn extends Migration
                 $table->string('image')->default('defaultPic.jpg')->after('email');
                 $table->string('about_me')->default('None');
                 $table->string('mobile_number')->default('None');
-              
+                $table->boolean('isAdmin')->default(0);
             });
         }
 
@@ -45,6 +45,7 @@ class AddUsersColumn extends Migration
                 $table->string('image');
                 $table->string('about_me');
                 $table->string('mobile_number');
+                $table->boolean('isAdmin');
                
             });
 
