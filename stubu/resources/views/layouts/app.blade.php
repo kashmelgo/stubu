@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'StuBu') }}</title>
 
     <!-- Scripts -->
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
 
     <!-- Fonts -->
@@ -133,9 +133,12 @@
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous">
     </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="{{asset('/js/main.js')}}"> </script>
     
+    
+    <script src="{{asset('/js/main.js')}}"> </script>
 
     <script>
 
@@ -155,6 +158,7 @@
             element.classList.remove('d-none');
             form.classList.add('d-none');
         }
+        
    
     </script>
     @yield('js')

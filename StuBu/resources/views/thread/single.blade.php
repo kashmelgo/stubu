@@ -76,7 +76,7 @@
                                     @if(auth()->user()->id != $comment->user_id)
                                         
                                     <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                           Dropdown button
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -84,7 +84,25 @@
                                           <a class="dropdown-item" href="#">Another action</a>
                                           <a class="dropdown-item" href="#">Something else here</a>
                                         </div>
-                                      </div>
+                                    </div>
+
+
+
+                                    {{-- <div class="dropdown show">
+
+                                        <a class="btn btn-link dropdown-toggle" href="#" role="button" id="dropdownMenuLinkTest" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-bell fa-lg" id="notifbutton"></i>
+                                            <span class="badge"> {{count(auth()->user()->unreadNotifications)}} </span>
+                                        </a>
+                                        
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLinkTest">
+                                            @foreach(auth()->user()->unreadNotifications as $notification)
+                                                @include('layouts.notifications')
+                                            @endforeach
+                                        </div>
+                                    </div> --}}
+
+
                                     @endif
 
                                     <button class="border-0 bg-transparent ml-2" onclick="showForm('comment{{$comment->id}}')"> <i class="fa fa-reply"></i></button>
