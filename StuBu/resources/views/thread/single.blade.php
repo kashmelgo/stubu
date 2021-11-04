@@ -42,7 +42,7 @@
                             {{csrf_field()}}
                             {{method_field('POST')}}
                             <div class="form-group">
-                                <textarea type="text" class="form-control" name="body" id="" placeholder="Input..." rows="4" style="resize:none;word-wrap:break-word;"></textarea>
+                                <pre><textarea type="text" class="form-control" name="body" id="" placeholder="Input..." rows="4" style="resize:none;word-wrap:break-word;white-space: pre-wrap"></textarea></pre>
                             </div>
                             <button type="submit" class="btn btn-primary float-right">Submit</button>
                             <br><br>
@@ -96,7 +96,7 @@
                                     @endif
                                 </div>
                                 <div class="comment-content" id="show{{$comment->id}}">
-                                    {{$comment->body}}
+                                    {!!nl2br(e($comment->body))!!}
                                 </div>
 
                                 <div class="comment-content d-none" id="edit{{$comment->id}}">
