@@ -12,19 +12,24 @@
                     <div class="comment-head">
                         <div class="thread-avatar mr-2"><img src="/images/profilePic/{{$thread->user->image}}" alt="" style="height:100%;width:100%"></div>
                         <legend>{{$thread->subject}}</legend>
+                        
                         @if(auth()->user()->id == $thread->user_id)
-                        <i class="fas fa-edit"></i>
-                        <form action="{{ route('thread.destroy',$thread->id) }}" method="POST" class="inline-it">
-                            {{csrf_field()}}
-                            {{method_field('DELETE')}}
-                            <button class="border-0 bg-transparent ml-2" type="submit"><i class="fa fa-trash"></i></button>
-                        </form>
+                            <i class="fas fa-edit"></i>
+                            <form action="{{ route('thread.destroy',$thread->id) }}" method="POST" class="inline-it">
+                                {{csrf_field()}}
+                                {{method_field('DELETE')}}
+                                <button class="border-0 bg-transparent ml-2" type="submit"><i class="fa fa-trash"></i></button>
+                            </form>                            
+                        @else
+                            <i class="fas fa-flag" aria-hidden="true"></i>
+                            
                         @endif
+                        
                         <h6 class="comment-name">by: <a href="{{route('profile_show',$thread->user->id)}}">{{$thread->user->name}}</a></h6>
                         <span>  {{$thread->created_at->diffForHumans()}}</span>
                     </div>
                     <div class="comment-content">
-                        {{$thread->body}}
+                        {!!nl2br(e($thread->body))!!}
                     </div>
                 </div>
             </div>
@@ -68,9 +73,24 @@
                                 <div class="comment-head">
                                     <h6 class="comment-name"><a href="{{route('profile_show',$comment->user->id)}}">{{$comment->user->name}}</a></h6>
                                     <span>{{$comment->created_at->diffForHumans()}}</span>
-                                   <button class="border-0 bg-transparent ml-2" onclick="showForm('comment{{$comment->id}}')"> <i class="fa fa-reply"></i></button>
-                                  
+                                    @if(auth()->user()->id != $comment->user_id)
+                                        
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          Dropdown button
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                          <a class="dropdown-item" href="#">Action</a>
+                                          <a class="dropdown-item" href="#">Another action</a>
+                                          <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                      </div>
+                                    @endif
+
+                                    <button class="border-0 bg-transparent ml-2" onclick="showForm('comment{{$comment->id}}')"> <i class="fa fa-reply"></i></button>
+                                    
                                    @if(auth()->user()->id != $comment->user_id)
+                                   
                                     <div class="voting">
                                         <form class="unlikeComment">
                                                 <input type="hidden" name="comment_id" value="{{$comment->id}}">
@@ -86,7 +106,7 @@
                                     </div>
                                    @endif
                                    
-                                    @if(auth()->user()->id == $comment->user_id)
+                                   @if(auth()->user()->id == $comment->user_id)
                                         <button class="border-0 bg-transparent ml-2" onclick="editForm('edit{{$comment->id}}','show{{$comment->id}}')"><i class="fas fa-edit"></i></button>
                                         <form action="{{ route('comment.destroy',$comment->id) }}" method="POST" class="inline-it">
                                             {{csrf_field()}}
@@ -94,11 +114,12 @@
                                             <button class="border-0 bg-transparent ml-2" type="submit"><i class="fa fa-trash"></i></button>
                                         </form>
                                     @endif
+
                                 </div>
                                 <div class="comment-content" id="show{{$comment->id}}">
                                     {!!nl2br(e($comment->body))!!}
                                 </div>
-
+                                
                                 <div class="comment-content d-none" id="edit{{$comment->id}}">
                                     <form action="{{route('comment.update',$comment->id)}}" method="POST" role="form">
                                         {{csrf_field()}}
@@ -106,7 +127,6 @@
                                         <textarea type="text" class="form-control" name="body" id="" rows="4" style="resize:none;word-wrap:break-word;">{{$comment->body}}</textarea>
                                         <br>
                                         <button type="submit" class="btn btn-primary float-right">Submit</button>
-                                        
                                     </form>
                                     <button class="btn btn-primary" onclick="editForm('show{{$comment->id}}','edit{{$comment->id}}')">Close</button>
                                     <br><br>
@@ -153,7 +173,7 @@
                                         @endif
                                     </div>
                                     <div class="comment-content" id="showR{{$reply->id}}">
-                                        {{$reply->body}}
+                                        {!!nl2br(e($reply->body))!!}
                                     </div>
                                     <div class="comment-content d-none" id="editR{{$reply->id}}">
                                         <form action="{{route('comment.update',$reply->id)}}" method="POST" role="form">

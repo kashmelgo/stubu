@@ -59,7 +59,7 @@
                             </div>
                             <div class="form-group">
                                 <label><h5>Thread</h5></label>
-                                <textarea class="form-control-plaintext input-group-lg" name="body" id="" placeholder="Input..." rows="5" style="resize:none">{{old('body')}}</textarea>
+                                <pre><textarea class="form-control-plaintext input-group-lg" name="body" id="" placeholder="Input..." rows="5" style="resize:none">{{old('body')}}</textarea></pre>
                             </div>
                             <button type="submit" class="btn btn-primary float-right">Submit</button>
                         </form>
