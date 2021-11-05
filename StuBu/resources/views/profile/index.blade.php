@@ -1,163 +1,124 @@
 @extends('layouts.app')
 
 @section('content')
-<style>
-#info{
-
-  background-color: #00789E;
-  border-style:solid;
-  border-color:white;
-  border-radius: 25px;
-  margin-bottom:20px;
-  color: white;
-  text-align: justify;
-}
-#info h1{
-    text-align: center;
-}
-#info h2{
-    text-align: center;
-}
-#info p{
-    margin-top:20px;
-}
-#info h5{
-    text-align: center;
-    margin-top:10px;
-    padding-top:10px;
-    padding-bottom:10px;
-    margin-bottom:10px;
-    background-color: #00B8AB;
-    border-radius:25px;
-}
-#wa{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 200px;
-}
-#about_me{
-    width:400px;
-    height:500px;
-}
-.container1 {
-  height: 50px;
-  position: relative;
-
-}
-
-.center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  /* -ms-transform: translate(-50%, -50%); */
-  transform: translate(-50%, -50%);
-}
-.center button{
-    font-size: 15px;
-    padding-top:10px;
-    padding-bottom:10px;
-    padding-left:10px;
-    padding-right:10px;
-    background-color:#00B8AB;
-    border-radius:25px;
-
-}
-#submit_form{
-    background-color:#00B8AB;
-}
-
-h3{
-    text-align:center;
-}
-    </style>
-
-
-
-
-
 <div class="container">
-    <div class="row">
-        <div class="col-md-6" id="info">
-              <div class="row">
-                <div class="col-md-6">
-
-                    <h1> {{$user->name}}</h1>
-
-
-                    <img src="/images/profilePic/{{$user->image}}" class="img-responsive" id="wa">
-                    <br>
+    <div class="main-body">
+    
+          <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+                    <img src="/images/profilePic/{{$user->image}}" alt="Admin" class="rounded-circle" width="150">
+                    <div class="mt-3">
+                      <h4>{{$user->name}}</h4>
+                      <p class="text-secondary mb-1">Reputation: {{$user->reputation}}</p>
+                      <p class="text-muted font-size-sm">{{$user->about_me}}</p>
+                    </div>
+                  </div>
                 </div>
-            <div class="col-md-6">
-                <h2>About Me </h2>
-
-				<p>{{ $user->about_me}} </p>
-             </div>
-         </div>
-      </div>
-
-        <div class="col-md-6" id="info">
-            <h1>Contact Details</h1>
-                <p>Email Address: {{$user->email}}</p>
-                <p>Mobile Number:{{ $user->mobile_number}} </p>
-                <p>Date Created: {{$user->created_at}}</p>
-                @if(auth()->user()->id==$user->id)
-                <div class="container1">
-                    <div class="center">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Full Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    {{$user->name}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    {{$user->email}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Mobile</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    {{$user->mobile_number}}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Joined</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    {{$user->created_at}}
+                    </div>
+                  </div>
+                  <hr>
+                  @if(auth()->user()->id==$user->id)
+                  <div class="row">
+                    <div class="col-sm-12">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
                             Edit Profile
                         </button>
                     </div>
+                  </div>
+                  @endif
                 </div>
+              </div>
+
+              <div class="row gutters-sm">
+                <div class="col-sm-6 mb-3">
+                  <div class="card h-100">
+                    <div class="card-body">
+                    @if(auth()->user()->id==$user->id)
+                          <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Posts</i>Your Latest Threads</h6>
+                         @else
+                          <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Posts</i>{{$user->name}}'s Latest Threads</h6>
+                         @endif
+                     @forelse($threads as $thread)
+                         @if(auth()->user()->id==$user->id)
+                <p >You Created a Thread  <a href="{{ route('thread.show',$thread->id)}}" style="color: #0a99d1"> "{{$thread->subject}}"</a> {{$thread->created_at->diffForHumans()}}</p> <br>
+                @else
+                <p >{{$user->name}} Created a Thread  <a href="{{ route('thread.show',$thread->id)}}" style="color: #0a99d1"> "{{$thread->subject}}"</a> {{$thread->created_at->diffForHumans()}}</p> <br>
                 @endif
-            </div>   
-
-            <div class="col-md-12" id="info">
-            @if(auth()->user()->id==$user->id)
-        <h3>Your Latest Threads </h3>
-            @else
-        <h3>{{$user->name}}'s Latest Threads</h3>
-        @endif
-
-
-        @forelse($threads as $thread)
-                <p class="d-flex justify-content-center">{{$user->name}} Created a Thread  <a href="{{ route('thread.show',$thread->id)}}" style="color: #00B8AB"> "{{$thread->subject}}"</a> {{$thread->created_at->diffForHumans()}}</p> <br>
-        @empty
+                @empty
                 <p class="d-flex justify-content-center">No Threads Yet </p><br>
         @endforelse
-
-        <b4>
-        <hr>
-        @if(auth()->user()->id==$user->id)
-        <h3>Your latest Comments </h3>
-            @else
-        <h3>{{$user->name}}'s Latest Comments</h3>
-        @endif
-        @forelse($comments as $comment)
-                @if(auth()->user()->id==$user->id)
-                <p class="d-flex justify-content-center">You commented on <a href="{{ route('thread.show',$comment->commentable->id)}}" style="color: #00B8AB"> {{$comment->commentable->subject}}</a> {{$comment->created_at->diffForHumans()}}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 mb-3">
+                  <div class="card h-100">
+                    <div class="card-body">
+                         @if(auth()->user()->id==$user->id)
+                          <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Comments</i>Your Latest Comments</h6>
+                         @else
+                          <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2" >Comments</i>{{$user->name}}'s Latest Comments</h6>
+                         @endif
+                         @forelse($comments as $comment)
+                     @if(auth()->user()->id==$user->id)
+                         <p >You commented on <a href="{{ route('thread.show',$comment->commentable->id)}}" style="color: #0a99d1">"{{$comment->commentable->subject}}"</a> {{$comment->created_at->diffForHumans()}}</p>
                     @else
-                <p>{{$user->name}} commented on <a href="{{ route('thread.show',$comment->commentable->id)}}" style="color: #00B8AB"> {{$comment->commentable->subject}}</a> {{$comment->created_at->diffForHumans()}}</p>
-                @endif
+                         <p>{{$user->name}} commented on <a href="{{ route('thread.show',$comment->commentable->id)}}" style="color: #0a99d1">"{{$comment->commentable->subject}}"</a> {{$comment->created_at->diffForHumans()}}</p>
+                     @endif
 
-        @empty
-            <p> No Comments Yet </p>
-
-        @endforelse
-
+                     @empty
+                        <p class="d-flex justify-content-center"> No Comments Made </p>
+                    @endforelse
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+        </div>
     </div>
 
-
-    <div>
-
-    </div>
-
-</div>
-
-
-<div class="modal fade bd-example-modal-lg"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <!-- THIS WHAT WILL SHOW WHEN EDIT PROFILE IS CLICKED -->
+    <div class="modal fade bd-example-modal-lg"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
              <div class="modal-content">
                 <div class="modal-header">
@@ -215,10 +176,7 @@ h3{
                          </div>
         </div>
     </div>
-</div>
-
-
-
+</div> 
 
 
 
