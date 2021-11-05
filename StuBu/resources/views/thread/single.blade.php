@@ -70,17 +70,17 @@
                         <div class="comment-main-level">
                             <div class="comment-avatar"><img src="/images/profilePic/{{$comment->user->image}}" alt=""></div>
                             <div class="comment-box">
-                                <div class="comment-head">
+                                <div class="comment-head py-4" style="overflow: visible">
                                     <h6 class="comment-name"><a href="{{route('profile_show',$comment->user->id)}}">{{$comment->user->name}}</a></h6>
                                     <span>{{$comment->created_at->diffForHumans()}}</span>
-                                    @if(auth()->user()->id != $comment->user_id)
-                                        
-                                    <div class="dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    @if(auth()->user()->id != $comment->user_id)   
+                                    <div class="dropdown p-0">
+                                        <a class="" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
                                             <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                                            <span></span>
                                         </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <a class="dropdown-item" href="#">Action</a>
+                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink" style="float: right">
+                                            <a class="dropdown-item" href="#">Report Post</a>
                                             <a class="dropdown-item" href="#">Another action</a>
                                             <a class="dropdown-item" href="#">Something else here</a>
                                         </div>
