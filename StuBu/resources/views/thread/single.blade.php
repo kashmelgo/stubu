@@ -12,6 +12,9 @@
                     <div class="comment-head">
                         <div class="thread-avatar mr-2"><img src="/images/profilePic/{{$thread->user->image}}" alt="" style="height:100%;width:100%"></div>
                         <legend>{{$thread->subject}}</legend>
+                        @if(auth()->user()->id != $thread->user_id)   
+                            <button class="border-0 bg-transparent ml-2" type="submit" name="submit"><i class="fa fa-flag" aria-hidden="true"></i></button>
+                        @endif
                         
                         @if(auth()->user()->id == $thread->user_id)
                             <i class="fas fa-edit"></i>
@@ -73,36 +76,10 @@
                                 <div class="comment-head py-4" style="overflow: visible">
                                     <h6 class="comment-name"><a href="{{route('profile_show',$comment->user->id)}}">{{$comment->user->name}}</a></h6>
                                     <span>{{$comment->created_at->diffForHumans()}}</span>
+
                                     @if(auth()->user()->id != $comment->user_id)   
-                                    <div class="dropdown p-0">
-                                        <a class="" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
-                                            <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
-                                            <span></span>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink" style="float: right">
-                                            <a class="dropdown-item" href="#">Report Post</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
                                     
-
-
-                                    {{-- <div class="dropdown show">
-
-                                        <a class="btn btn-link dropdown-toggle" href="#" role="button" id="dropdownMenuLinkTest" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-bell fa-lg" id="notifbutton"></i>
-                                            <span class="badge"> {{count(auth()->user()->unreadNotifications)}} </span>
-                                        </a>
-                                        
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLinkTest">
-                                            @foreach(auth()->user()->unreadNotifications as $notification)
-                                                @include('layouts.notifications')
-                                            @endforeach
-                                        </div>
-                                    </div> --}}
-
-
+                                    <button data-toggle="modal" data-target="#squarespaceModal" class="border-0 bg-transparent ml-2"><i class="fa fa-flag" aria-hidden="true"></i></button>
                                     @endif
 
                                     <button class="border-0 bg-transparent ml-2" onclick="showForm('comment{{$comment->id}}')"> <i class="fa fa-reply"></i></button>
@@ -215,6 +192,65 @@
             @endif
         </div>
 	</div>
+</div>
+
+
+<!-- line modal -->
+<div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+            <h3 class="modal-title" id="lineModalLabel">Report Post</h3>
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+			
+		</div>
+		<div class="modal-body">
+			
+            <!-- content goes here -->
+			<form>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Post is Rude or Offensive
+                </label>
+                <br>
+                <label>
+                    <input type="checkbox"> Post is not constructive / obsolete
+                </label>
+                <br>
+                <label>
+                    <input type="checkbox"> Post is too chatty / off-topic
+                </label>
+                <br>
+                <label>
+                    <input type="checkbox"> Others:
+                    
+                </label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+              </div>
+            </form>
+
+		</div>
+		<div class="modal-footer">
+			<div class="btn-group btn-group-justified" role="group" aria-label="group button">
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
+				</div>
+				
+				<div class="btn-group" role="group">
+					<button type="button" id="saveImage" class="btn btn-primary float-right" data-action="save" role="button">Submit</button>
+				</div>
+			</div>
+		</div>
+	</div>
+  </div>
 </div>
 @endsection
 
