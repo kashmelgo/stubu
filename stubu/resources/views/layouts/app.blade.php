@@ -52,6 +52,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        @auth
                         @if(auth()->user()->isAdmin == 1)
                           <li class="nav-item">
                                 <a class="nav-link" href="{{ route('thread.index') }}" v-pre>
@@ -59,6 +60,7 @@
                                 </a>
                             </li>
                         @endif
+                        @endauth
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('homefeed') }}" v-pre>
                                 Home
