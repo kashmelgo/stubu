@@ -51,11 +51,8 @@ Route::post('comment/like', 'App\Http\Controllers\LikeController@likeIt')->name(
 Route::post('comment/unLike', 'App\Http\Controllers\LikeController@unLikeIt')->name('unLikeIt');
 
 Route::get('/admindashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('admindashboard');
-
-// Route::get('/users', [App\Http\Controllers\AdminController::class, 'searchUsers'])->name('searchusers');
 Route::get('/users', [App\Http\Controllers\AdminController::class, 'getUsers'])->name('users');
-
-
+Route::get('/searchUsers', [App\Http\Controllers\AdminController::class, 'searchUsers'])->name('searchUsers');
 Route::delete('/users/{id}', [App\Http\Controllers\AdminController::class, 'deleteUser'])->name('deleteUser');
 
 

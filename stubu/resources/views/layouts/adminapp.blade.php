@@ -54,7 +54,7 @@
                     <ul class="navbar-nav mr-auto">
                         @auth
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('users') }}" v-pre>
+                            <a class="nav-link" href="{{ url('/users') }}" v-pre>
                                 Users
                             </a>
                         </li>

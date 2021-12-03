@@ -25,8 +25,8 @@ class AdminController extends Controller
     }
 
     function searchUsers(Request $request){
-        dd($request);
-
-        return view('admin/adminusers');
+        $search = $request->searchusers;
+        $users = User::where('name', $search)->orWhere('name', 'like', '%'.$search.'%')->get();
+        return view('admin/adminusers', ['users' => $users]);
     }
 }
