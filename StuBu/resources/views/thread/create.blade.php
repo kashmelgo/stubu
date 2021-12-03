@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends(auth()->user()->isAdmin==1? 'layouts.adminapp': 'layouts.app');
 
 @section('heading','Create Thread')
 
