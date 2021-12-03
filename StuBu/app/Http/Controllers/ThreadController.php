@@ -58,7 +58,7 @@ class ThreadController extends Controller
         //store
 
         $thread = auth()->user()->threads()->create($request->all());
-            
+
 
         //redirect
         return view('thread.single',compact('thread'));
@@ -144,6 +144,7 @@ class ThreadController extends Controller
 
     public function search(Request $request)
     {
+        dd($request);
         $search = $request->search;
         $posts = DB::table('threads')->where('subject','like','%'.$search.'%')->paginate(5);
         return view('thread.index', ['threads' => $posts]);

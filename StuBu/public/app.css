@@ -434,7 +434,7 @@ body{
     margin-top:20px;
     color: #1a202c;
     text-align: left;
-    background-color: #e2e8f0;    
+    background-color: #e2e8f0;
 }
 .main-body {
     padding: 15px;
@@ -483,4 +483,7 @@ body{
 .shadow-none {
     box-shadow: none!important;
 }
+
+.bg-primary{
+    background-color: #158cba;
 }
