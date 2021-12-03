@@ -59,11 +59,10 @@
                 </div>
             </div>
 
-            <h1>Comments</h1>
+                <h1>Comments</h1>
                 @if($thread->comments->count() == 0)
-                <br>
-                <h3 class="d-flex justify-content-center">No Comments Yet</h3>
-
+                    <br>
+                    <h3 class="d-flex justify-content-center">No Comments Yet</h3>
                 @else
 
                 @foreach($thread->comments as $comment)
@@ -79,10 +78,10 @@
 
                                     @if(auth()->user()->id != $comment->user_id)   
                                     
-                                    <button data-toggle="modal" data-target="#squarespaceModal" class="border-0 bg-transparent ml-2"><i class="fa fa-flag" aria-hidden="true"></i></button>
+                                    <button id="{{$comment->id}}" name="{{$comment->commentable_type}}" data-toggle="modal" data-target="#squarespaceModal" class="report border-0 bg-transparent ml-2"><i class="fa fa-flag" aria-hidden="true"></i></button>
                                     @endif
 
-                                    <button class="border-0 bg-transparent ml-2" onclick="showForm('comment{{$comment->id}}')"> <i class="fa fa-reply"></i></button>
+                                    <button  class="border-0 bg-transparent ml-2" onclick="showForm('comment{{$comment->id}}')"> <i class="fa fa-reply"></i></button>
                                     
                                    @if(auth()->user()->id != $comment->user_id)
                                    
@@ -195,47 +194,46 @@
 </div>
 
 
-<!-- line modal -->
+<!-- Report Modal -->
 <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
   <div class="modal-dialog">
-	<div class="modal-content">
+	<div id="main_content" class="modal-content">
 		<div class="modal-header">
             <h3 class="modal-title" id="lineModalLabel">Report Post</h3>
 			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-			
 		</div>
+        <form class="reportForm">
+        {{csrf_field()}}
 		<div class="modal-body">
-			
-            <!-- content goes here -->
-			<form>
+            
+                
+                <input id="reportID" type="hidden" name="report_id" value="">
+                <input id="reportType" type="hidden" name="report_type" value="">
               <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <label for="exampleInputEmail1">Help us, What is wrong with this post?</label>
+                <br>
+                <label id="printID" style="color:red">Test</label>
               </div>
               <div class="checkbox">
                 <label>
-                  <input type="checkbox"> Post is Rude or Offensive
+                  <input id="check1" type="checkbox" name="reasons[]" value="Post is Rude or Offensive"> Post is Rude or Offensive
                 </label>
                 <br>
                 <label>
-                    <input type="checkbox"> Post is not constructive / obsolete
+                    <input id="check2" type="checkbox" name="reasons[]" value="Post is not constructive / obsolete"> Post is not constructive / obsolete
                 </label>
                 <br>
                 <label>
-                    <input type="checkbox"> Post is too chatty / off-topic
+                    <input id="check3" type="checkbox" name="reasons[]" value="Post is too chatty / off-topic"> Post is too chatty / off-topic
                 </label>
+                <!--
                 <br>
-                <label>
-                    <input type="checkbox"> Others:
-                    
-                </label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-              </div>
-            </form>
+                <label><br>Others:</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"> 
+                <textarea type="text" class="form-control" id="exampleInputEmail1" rows="3" style="resize:none;word-wrap:break-word;" placeholder="Enter Reason"></textarea>
+                -->
+            </div>
+            
 
 		</div>
 		<div class="modal-footer">
@@ -245,13 +243,29 @@
 				</div>
 				
 				<div class="btn-group" role="group">
-					<button type="button" id="saveImage" class="btn btn-primary float-right" data-action="save" role="button">Submit</button>
+					<input type="submit" id="saveImage" class="btn btn-primary float-right" data-action="save" role="button" name="Submit" >
 				</div>
 			</div>
 		</div>
+
+        </form>
 	</div>
+
+    <div id="submit_content" class="modal-content d-none">
+        <div class="modal-header">
+            <h3 class="modal-title" id="lineModalLabel">Report Post</h3>
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+		</div>
+        <div class="modal-body">
+            <label> Our Team will Evaluate the Post for any Violations<br> Thank You for Helping the Site a Better Place </label>
+        </div>
+
+
+    </div>
   </div>
 </div>
+
+
 @endsection
 
 @section('js')
@@ -307,6 +321,41 @@
                     },
                 })
             });
+
+
+            $(".report").on("click",function(e){
+                var id = $(this).attr("id");
+                var type = $(this).attr("name");
+
+                $("#reportID").val(id);
+                $("#reportType").val(type);
+
+                $("#main_content").removeClass("d-none");
+                $("#submit_content").addClass("d-none");
+
+                $('#check1').prop('checked',false); 
+                $('#check2').prop('checked',false);  
+                $('#check3').prop('checked',false);     
+            });
+
+            $('.reportForm').on('submit',function(e){
+                e.preventDefault();
+                var modal = $(this).parent().parent();
+                var data = $(this).serialize();
+                var url = '{{route("report")}}';
+                var post = 'POST';
+                $.ajax({
+                    type : post,
+                    url : url,
+                    data : data,
+                    success:function(data){
+                        $("#main_content").addClass("d-none");
+                        $("#submit_content").removeClass("d-none");                                                   
+                    },
+                })
+            });
+
+
 
         });
 

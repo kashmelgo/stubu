@@ -49,7 +49,7 @@ Route::POST('vote','App\Http\Controllers\VoteController@vote')->name('vote');
 Route::post('comment/like', 'App\Http\Controllers\LikeController@likeIt')->name('likeIt');
 Route::post('comment/unLike', 'App\Http\Controllers\LikeController@unLikeIt')->name('unLikeIt');
 
-
+Route::post('report','App\Http\Controllers\ReportController@report')->name('report');
 
 
 
