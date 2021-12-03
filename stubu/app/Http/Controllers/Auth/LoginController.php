@@ -27,10 +27,9 @@ class LoginController extends Controller
      * @var string
      */
     public function authenticated(){
-    // if(auth()->user()->hasRole('admin'))
-    // {
-    //     return redirect('/admin/dashboard');
-    // } 
+    if(auth()->user()->isAdmin == 1){
+        return redirect('admindashboard');
+    }
 
     return redirect('homefeed');
     }

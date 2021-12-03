@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\profileInfoController;
@@ -49,11 +50,7 @@ Route::POST('vote','App\Http\Controllers\VoteController@vote')->name('vote');
 Route::post('comment/like', 'App\Http\Controllers\LikeController@likeIt')->name('likeIt');
 Route::post('comment/unLike', 'App\Http\Controllers\LikeController@unLikeIt')->name('unLikeIt');
 
+Route::get('/admindashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('admindashboard');
+Route::get('/users', [App\Http\Controllers\AdminController::class, 'getUsers'])->name('getUsers');
+
 Route::post('report','App\Http\Controllers\ReportController@report')->name('report');
-
-
-
-
-
-
-
