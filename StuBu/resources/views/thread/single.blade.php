@@ -16,7 +16,7 @@
                             <button class="border-0 bg-transparent ml-2" type="submit" name="submit"><i class="fa fa-flag" aria-hidden="true"></i></button>
                         @endif
                         
-                        @if(auth()->user()->id == $thread->user_id || auth()->user()->isAdmin == 1)
+                        @if(auth()->user()->id == $thread->user_id)
                             <i class="fas fa-edit"></i>
                             <form action="{{ route('thread.destroy',$thread->id) }}" method="POST" class="inline-it">
                                 {{csrf_field()}}
