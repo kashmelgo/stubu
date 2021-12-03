@@ -134,7 +134,7 @@
                                      <div class="form-group row">
                                           <label class="col-md-4 col-form-label text-md-right">Your Current Pic</label>
                                        <div class="col-md-6">
-                                        <img src="/images/profilePic/{{Auth::user()->image}}" class="img-responsive" id="wa">
+                                        <img src="/images/profilePic/{{Auth::user()->image}}" class="img-responsive" id="wa" width="150">
                                     </div>
                                     </div>
 
