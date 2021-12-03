@@ -13,7 +13,7 @@ class AddUsersColumn extends Migration
      */
     public function up()
     {
-        
+
 
         if (!Schema::hasColumn('users', 'image'))
         {
@@ -26,7 +26,7 @@ class AddUsersColumn extends Migration
             });
         }
 
-        
+
     }
 
     /**
@@ -36,7 +36,7 @@ class AddUsersColumn extends Migration
      */
     public function down()
     {
-        
+
 
         if (!Schema::hasColumn('users', 'image'))
         {
@@ -46,10 +46,9 @@ class AddUsersColumn extends Migration
                 $table->string('about_me');
                 $table->string('mobile_number');
                 $table->boolean('isAdmin');
-               
             });
 
-            
+
         }
     }
 }

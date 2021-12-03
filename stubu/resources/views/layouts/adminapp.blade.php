@@ -34,7 +34,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
             <div class="container">
                 @auth
-                <a id = "brand-name" class="navbar-brand" href="{{ url('/homefeed') }}">
+                <a id = "brand-name" class="navbar-brand" href="{{ url('/admindashboard') }}">
                     {{ config('app.name', 'StuBu') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -54,13 +54,13 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('homefeed') }}" v-pre>
-                                Home
+                                Users
                             </a>
                         </li>
                         @auth
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('thread.index') }}" v-pre>
-                                    Thread
+                                    Threads
                                 </a>
                             </li>
                         @endauth
@@ -82,34 +82,6 @@
                                 </li>
                             @endif
                         @else
-                                <form action="{{route('search')}}" class="form-inline d-flex justify-content-center md-form form-sm" method="GET">
-                                    <div class="form-group">
-                                        <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search Thread" name="search" aria-label="search">
-                                        <span class="form-group-btn">
-                                            <button type="submit" class="btn-primary" id="searchbutton"><i class="fas fa-search" aria-hidden="true"></i></button>
-                                        </span>
-                                    </div>
-                                </form>
-                            <div class="dropdown show">
-
-                                <a class="btn btn-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-bell fa-lg" id="notifbutton"></i>
-                                    @if(count(auth()->user()->unreadNotifications) != 0)
-                                        <span class="badge"> {{count(auth()->user()->unreadNotifications)}} </span>
-                                    @endif
-                                </a>
-
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    @foreach(auth()->user()->unreadNotifications as $notification)
-                                        @include('layouts.notifications')
-                                    @endforeach
-                                </div>
-                            </div>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{route('profile')}}" role="button" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-                            </li>
                             <li>
                                 <a class="nav-link" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
