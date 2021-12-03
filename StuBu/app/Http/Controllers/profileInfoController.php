@@ -28,7 +28,7 @@ class profileInfoController extends Controller
         
         $threads = Thread::where('user_id',$user->id)->latest()->get();
         $comments= Comment::where('user_id',$user->id)->where('commentable_type','App\Models\Thread')->get();
-      
+        
         return view('profile.index', compact('threads','comments','user'));
     }
 

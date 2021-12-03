@@ -99,7 +99,8 @@
                          @else
                           <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2" >Comments</i>{{$user->name}}'s Latest Comments</h6>
                          @endif
-                         @forelse($comments as $comment)
+               
+                      @forelse($comments as $comment)
                      @if(auth()->user()->id==$user->id)
                          <p >You commented on <a href="{{ route('thread.show',$comment->commentable->id)}}" style="color: #0a99d1">"{{$comment->commentable->subject}}"</a> {{$comment->created_at->diffForHumans()}}</p>
                     @else
