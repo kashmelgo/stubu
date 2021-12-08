@@ -54,6 +54,7 @@ Route::get('/admindashboard', [App\Http\Controllers\AdminController::class, 'ind
 Route::get('/users', [App\Http\Controllers\AdminController::class, 'getUsers'])->name('users');
 Route::get('/searchUsers', [App\Http\Controllers\AdminController::class, 'searchUsers'])->name('searchUsers');
 Route::delete('/users/{id}', [App\Http\Controllers\AdminController::class, 'deleteUser'])->name('deleteUser');
+Route::post('/users/{id}', [App\Http\Controllers\AdminController::class, 'editUser'])->name('editUser');
 
 
 

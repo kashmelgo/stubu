@@ -25,6 +25,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Reputation</th>
+                        <th scope="col">User Type</th>
                         <th scope="col">Delete User</th>
                       </tr>
                     </thead>
@@ -35,6 +36,20 @@
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
                             <td>{{$user->reputation}}</td>
+                            <td>
+                                <form method="post" action="{{route('editUser', $user->id)}}">
+                                    @csrf
+                                    <select name="isAdmin" class="custom-select custom-select-md mb-3 col-md-6">
+                                        <option value={{$user->isAdmin ? 1:0}} selected>{{$user->isAdmin ? "Admin":"User"}}</option>
+                                        @if($user->isAdmin)
+                                            <option value="0">User</option>
+                                        @else
+                                            <option value="1">Admin</option>
+                                        @endif
+                                    </select>
+                                    <input class="btn btn-secondary col-md-4" type="submit" value="Submit" />
+                                </form>
+                            </td>
                             <td>
                                 <form method="post" action="{{ route('deleteUser', $user->id) }}" >
                                     @method('DELETE')
@@ -50,6 +65,5 @@
         </div>
     </div>
 </div>
-
 @endsection
 

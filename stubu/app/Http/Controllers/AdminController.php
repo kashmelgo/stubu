@@ -24,6 +24,14 @@ class AdminController extends Controller
         return redirect('users');
     }
 
+    function editUser(Request $request){
+        $user = User::find($request->id);
+        $user->isAdmin = $request->isAdmin;
+
+        $user->save();
+        return redirect('users');
+    }
+
     function searchUsers(Request $request){
         $search = $request->searchusers;
         $users = User::where('name', $search)->orWhere('name', 'like', '%'.$search.'%')->get();
