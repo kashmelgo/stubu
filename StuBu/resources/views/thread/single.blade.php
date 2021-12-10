@@ -50,7 +50,7 @@
                             {{csrf_field()}}
                             {{method_field('POST')}}
                             <div class="form-group">
-                                <pre><textarea type="text" class="form-control" name="body" id="" placeholder="Input..." rows="4" style="resize:none;word-wrap:break-word;white-space: pre-wrap"></textarea></pre>
+                                <pre><textarea type="text" class="form-control" name="body" id="" placeholder="Enter Comment..." rows="4" style="resize:none;word-wrap:break-word;white-space: pre-wrap"></textarea></pre>
                             </div>
                             <button type="submit" class="btn btn-primary float-right">Submit</button>
                             <br><br>
@@ -140,7 +140,7 @@
                                         {{csrf_field()}}
                                         {{method_field('POST')}}
                                         <div class="form-group">
-                                            <textarea type="text" class="form-control" name="body" id="" placeholder="Input..." rows="3" style="resize:none;word-wrap:break-word;"></textarea>
+                                            <textarea type="text" class="form-control" name="body" id="" placeholder="Enter Comment..." rows="3" style="resize:none;word-wrap:break-word;"></textarea>
                                         </div>
                                         <button type="submit" class="btn btn-primary float-right">Submit</button>
                                         <br><br>
@@ -211,8 +211,6 @@
                 <input id="reportType" type="hidden" name="report_type" value="">
               <div class="form-group">
                 <label for="exampleInputEmail1">Help us, What is wrong with this post?</label>
-                <br>
-                <label id="printID" style="color:red">Test</label>
               </div>
               <div class="checkbox">
                 <label>
@@ -226,12 +224,6 @@
                 <label>
                     <input id="check3" type="checkbox" name="reasons[]" value="Post is too chatty / off-topic"> Post is too chatty / off-topic
                 </label>
-                <!--
-                <br>
-                <label><br>Others:</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"> 
-                <textarea type="text" class="form-control" id="exampleInputEmail1" rows="3" style="resize:none;word-wrap:break-word;" placeholder="Enter Reason"></textarea>
-                -->
             </div>
             
 
