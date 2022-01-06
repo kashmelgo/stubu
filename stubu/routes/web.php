@@ -50,9 +50,9 @@ Route::POST('vote','App\Http\Controllers\VoteController@vote')->name('vote');
 Route::post('comment/like', 'App\Http\Controllers\LikeController@likeIt')->name('likeIt');
 Route::post('comment/unLike', 'App\Http\Controllers\LikeController@unLikeIt')->name('unLikeIt');
 
-Route::get('/admindashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('admindashboard');
-Route::get('/users', [App\Http\Controllers\AdminController::class, 'getUsers'])->name('users');
-Route::get('/searchUsers', [App\Http\Controllers\AdminController::class, 'searchUsers'])->name('searchUsers');
+Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('admindashboard');
+Route::get('admin/users', [App\Http\Controllers\AdminController::class, 'getUsers'])->name('users');
+Route::get('admin/searchUsers', [App\Http\Controllers\AdminController::class, 'searchUsers'])->name('searchUsers');
 Route::delete('/users/{id}', [App\Http\Controllers\AdminController::class, 'deleteUser'])->name('deleteUser');
 Route::post('/users/{id}', [App\Http\Controllers\AdminController::class, 'editUser'])->name('editUser');
 
