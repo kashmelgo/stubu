@@ -27,11 +27,11 @@ class ReportController extends Controller
 
         if($report->reportable_type = "App\Models\Thread"){
             $comment = Comment::FindOrFail($report->reportable_id);
-            $comment->status = "Flagged";
+            $comment->status = "Pending";
             $comment->save();
         }else{
             $thread = Thread::FindOrFail($report->reportable_id);
-            $thread->status = "Flagged";
+            $thread->status = "Pending";
             $thread->save();
         }
         
@@ -39,16 +39,11 @@ class ReportController extends Controller
         echo json_encode($report);
     }
 
-    public function isReported()
-    {
-
-    }
-
     public function getReports(){
         //$comments = Comment::paginate(15);
 
-        $threads = Thread::where('status', '=', "Flagged")->get();
-        $comments = Comment::where('status', '=', "Flagged")->get();
+        $threads = Thread::where('status', '=', "Pending")->get();
+        $comments = Comment::where('status', '=', "Pending")->get();
 
         return view('admin/adminreports', ['threads' => $threads , 'comments' => $comments]);
     }

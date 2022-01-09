@@ -26,7 +26,6 @@ class CommentController extends Controller
         $thread->user->notify(new RepliedToThread($thread));
 
         return back()->withMessage('Comment Created Successfully');
-
     }
 
     public function addReplyComment(Request $request, Comment $comment){
@@ -86,5 +85,13 @@ class CommentController extends Controller
         $comment->delete();
 
         return back()->withMessage('Comment Deleted Successfully');
+    }
+
+    public function updateStatus(Request $request){
+        $comment = Comment::findorFail($request->id);
+        $comment->status = $request->status;
+
+        $comment->save();
+        return back();
     }
 }

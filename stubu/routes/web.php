@@ -33,8 +33,8 @@ Route::get('/deletenotif/test/{thread}/{id}', [App\Http\Controllers\ThreadContro
 Route::resource('/thread','App\Http\Controllers\ThreadController');
 
 Route::resource('comment','App\Http\Controllers\CommentController',['only'=>['update','destroy']]);
-
 Route::post('comment/create/{thread}','App\Http\Controllers\CommentController@addThreadComment')->name('threadcomment.store');
+Route::put('comment/update/status/{id}','App\Http\Controllers\CommentController@updateStatus')->name('comment.statusUpdate');
 
 Route::post('reply/create/{comment}','App\Http\Controllers\CommentController@addReplyComment')->name('replycomment.store');
 
