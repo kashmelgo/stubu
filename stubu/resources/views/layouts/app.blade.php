@@ -26,8 +26,6 @@
     <link href="https://bootswatch.com/4/lumen/bootstrap.min.css" rel="stylesheet">
     <link href="{{asset('app.css')}}" rel="stylesheet">
     <script src="https://kit.fontawesome.com/f29fb0b11c.js" crossorigin="anonymous"></script>
-
-
 </head>
 <body>
     <div id="app">

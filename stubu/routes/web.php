@@ -56,6 +56,5 @@ Route::get('admin/searchUsers', [App\Http\Controllers\AdminController::class, 's
 Route::delete('/users/{id}', [App\Http\Controllers\AdminController::class, 'deleteUser'])->name('deleteUser');
 Route::post('/users/{id}', [App\Http\Controllers\AdminController::class, 'editUser'])->name('editUser');
 
-
-
 Route::post('report','App\Http\Controllers\ReportController@report')->name('report');
+Route::get('admin/reports', [App\Http\Controllers\ReportController::class, 'getReports'])->name('getReports');

@@ -19,6 +19,7 @@ class CommentController extends Controller
         $comment = new Comment();
         $comment->body = $request->body;
         $comment->user_id = auth()->user()->id;
+        $comment->status = "Valid";
 
         $thread->comments()->save($comment);
 

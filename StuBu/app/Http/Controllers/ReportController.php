@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Report;
+use App\Models\Comment;
+use App\Models\Thread;
 
 class ReportController extends Controller
 {
@@ -22,6 +25,31 @@ class ReportController extends Controller
 
         $report->save();
 
+        if($report->reportable_type = "App\Models\Thread"){
+            $comment = Comment::FindOrFail($report->reportable_id);
+            $comment->status = "Flagged";
+            $comment->save();
+        }else{
+            $thread = Thread::FindOrFail($report->reportable_id);
+            $thread->status = "Flagged";
+            $thread->save();
+        }
+        
+
         echo json_encode($report);
+    }
+
+    public function isReported()
+    {
+
+    }
+
+    public function getReports(){
+        //$comments = Comment::paginate(15);
+
+        $threads = Thread::where('status', '=', "Flagged")->get();
+        $comments = Comment::where('status', '=', "Flagged")->get();
+
+        return view('admin/adminreports', ['threads' => $threads , 'comments' => $comments]);
     }
 }

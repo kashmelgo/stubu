@@ -59,7 +59,6 @@ class ThreadController extends Controller
 
         $thread = auth()->user()->threads()->create($request->all());
 
-
         //redirect
         return view('thread.single',compact('thread'));
 
