@@ -1,8 +1,9 @@
-@extends('layouts.adminapp')
+@extends('layouts.admin')
 
 @section('content')
 <div class="row">
-    <div class="container-lg">
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Users Page</h1>
         <div class="p-4 justify-content">
             <div class="shadow-lg px-3 pb-3 mb-5 bg-white rounded">
                 <form method="GET" action="{{route('searchUsers')}}"class="col-md-12 p-0 m-0">

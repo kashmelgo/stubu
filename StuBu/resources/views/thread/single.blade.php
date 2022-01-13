@@ -13,6 +13,7 @@
                         <legend>{{$thread->subject}}</legend>
                         @if(auth()->user()->id != $thread->user_id)   
                             <button class="border-0 bg-transparent ml-2" type="submit" name="submit"><i class="fa fa-flag" aria-hidden="true"></i></button>
+                            <button id="{{$thread->id}}" name="thread" data-toggle="modal" data-target="#squarespaceModal" class="report border-0 bg-transparent ml-2"><i class="fa fa-flag" aria-hidden="true"></i></button>
                         @endif
                         
                         @if(auth()->user()->id == $thread->user_id || auth()->user()->isAdmin == 1)
@@ -59,6 +60,7 @@
                 @else
 
                 @foreach($thread->comments as $comment)
+                    @if($comment->status != "Flagged")
                     <ul id="comments-list" class="comments-list">
                         <li>
                             <div class="comment-main-level">
@@ -74,25 +76,9 @@
                                         @endif
 
                                         <button  class="border-0 bg-transparent ml-2" onclick="showForm('comment{{$comment->id}}')"> <i class="fa fa-reply"></i></button>
-                                        
-                                    @if(auth()->user()->id != $comment->user_id)
-                                    
-                                        <div class="voting">
-                                            <form class="unlikeComment">
-                                                    <input type="hidden" name="comment_id" value="{{$comment->id}}">
-                                                    <input type="hidden" name="vote" value="-1">
-                                                    <button class="border-0 bg-transparent ml-2" type="submit" name="submit"><i class="fa fa-thumbs-down {{$comment->isUnLiked() ? "clicked" : ""}}" aria-hidden="true"></i></button>
-                                            </form>
-                                            <!-- Hover Color color: #03658c; -->
-                                            <form class="likeComment">
-                                                    <input type="hidden" name="comment_id" value="{{$comment->id}}">
-                                                    <input type="hidden" name="vote" value="1">
-                                                    <button class="border-0 bg-transparent ml-2" type="submit" name="submit"><i class="fa fa-thumbs-up {{$comment->isLiked() ? "clicked" : ""}}" aria-hidden="true"></i></button>
-                                            </form>
-                                        </div>
-                                    @endif
-                                    
-                                    @if(auth()->user()->id == $comment->user_id)
+
+
+                                        @if(auth()->user()->id == $comment->user_id)
                                             <button class="border-0 bg-transparent ml-2" onclick="editForm('edit{{$comment->id}}','show{{$comment->id}}')"><i class="fas fa-edit"></i></button>
                                             <form action="{{ route('comment.destroy',$comment->id) }}" method="POST" class="inline-it">
                                                 {{csrf_field()}}
@@ -100,6 +86,28 @@
                                                 <button class="border-0 bg-transparent ml-2" type="submit"><i class="fa fa-trash"></i></button>
                                             </form>
                                         @endif
+                                        
+                                   
+                                    
+                                        <div class="voting">
+                                            @if(auth()->user()->id != $comment->user_id)
+                                                <form class="unlikeComment">
+                                                        <input type="hidden" name="comment_id" value="{{$comment->id}}">
+                                                        <input type="hidden" name="vote" value="-1">
+                                                        <button class="border-0 bg-transparent ml-2" type="submit" name="submit"><i class="fa fa-thumbs-down {{$comment->isUnLiked() ? "clicked" : ""}}" aria-hidden="true"></i></button>
+                                                </form>
+                                                <!-- Hover Color color: #03658c; -->
+                                                <form class="likeComment">
+                                                        <input type="hidden" name="comment_id" value="{{$comment->id}}">
+                                                        <input type="hidden" name="vote" value="1">
+                                                        <button class="border-0 bg-transparent ml-2" type="submit" name="submit"><i class="fa fa-thumbs-up {{$comment->isLiked() ? "clicked" : ""}}" aria-hidden="true"></i></button>
+                                                </form>
+                                            @endif
+                                            <i class="fa likeCount clicked"> {{$comment->likes()->where("value", "=", 1)->count() - $comment->likes()->where("value" ,"=", -1)->count()}}</i>
+                                        </div>
+                                    
+                                    
+                                        
 
                                     </div>
                                     <div class="comment-content" id="show{{$comment->id}}">
@@ -142,6 +150,7 @@
                             </li>
                             
                             @foreach($comment->comments as $reply)
+                            @if($reply->status != "Flagged")
                             <ul class="comments-list reply-list">
                                 <li>
                                     <div class="comment-avatar"><img src="/images/profilePic/{{$reply->user->image}}" alt=""></div>
@@ -156,6 +165,11 @@
                                                 {{method_field('DELETE')}}
                                                 <button class="border-0 bg-transparent ml-2" type="submit"><i class="fa fa-trash"></i></button>
                                             </form>
+                                            @else
+                                             
+                                        
+                                            <button id="{{$reply->id}}" name="{{$reply->commentable_type}}" data-toggle="modal" data-target="#squarespaceModal" class="report border-0 bg-transparent ml-2"><i class="fa fa-flag" aria-hidden="true"></i></button>
+                                            
                                             @endif
                                         </div>
                                         <div class="comment-content" id="showR{{$reply->id}}">
@@ -176,9 +190,11 @@
                                     </div>
                                 </li>
                             </ul>
+                            @endif
                             @endforeach
                         </li>
                     </ul>
+                    @endif
                 @endforeach
             @endif
         </div>
@@ -272,12 +288,15 @@
                     data : data,
                     success:function(data){
                         data = JSON.parse(data);
-                        if(data != 1){
-                            item.find('.fa-thumbs-up').removeClass('clicked'); 
+                        if(data.ret != 1){
+                            item.find('.fa-thumbs-up').removeClass('clicked');
+                            
+
                         }else{
                             item.find('.fa-thumbs-up').addClass('clicked'); 
                             parent.find('.fa-thumbs-down').removeClass('clicked');
-                        }                                   
+                        }     
+                        parent.find('.likeCount').html(data.likeCount);                              
                     },
                 })
             });
@@ -295,13 +314,14 @@
                     data : data,
                     success:function(data){
                         data = JSON.parse(data);
-                        if(data != -1){
+                        if(data.ret != -1){
                             item.find('.fa-thumbs-down').removeClass('clicked'); 
+                            
                         }else{
                             item.find('.fa-thumbs-down').addClass('clicked'); 
                             parent.find('.fa-thumbs-up').removeClass('clicked');
                         }
-                                                              
+                        parent.find('.likeCount').html(data.likeCount);                          
                     },
                 })
             });

@@ -32,6 +32,8 @@ Route::get('/deletenotif/test/{thread}/{id}', [App\Http\Controllers\ThreadContro
 
 Route::resource('/thread','App\Http\Controllers\ThreadController');
 
+Route::put('/admin/report/thread/{id}', 'App\Http\Controllers\ThreadController@updateStatus')->name('thread.updateStatus');
+
 Route::resource('comment','App\Http\Controllers\CommentController',['only'=>['update','destroy']]);
 Route::post('comment/create/{thread}','App\Http\Controllers\CommentController@addThreadComment')->name('threadcomment.store');
 Route::put('comment/update/status/{id}','App\Http\Controllers\CommentController@updateStatus')->name('comment.statusUpdate');
@@ -51,6 +53,11 @@ Route::post('comment/like', 'App\Http\Controllers\LikeController@likeIt')->name(
 Route::post('comment/unLike', 'App\Http\Controllers\LikeController@unLikeIt')->name('unLikeIt');
 
 Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('admindashboard');
+
+Route::get('/admin', function () {
+    return redirect('/admin/dashboard');
+});
+
 Route::get('admin/users', [App\Http\Controllers\AdminController::class, 'getUsers'])->name('users');
 Route::get('admin/searchUsers', [App\Http\Controllers\AdminController::class, 'searchUsers'])->name('searchUsers');
 Route::delete('/users/{id}', [App\Http\Controllers\AdminController::class, 'deleteUser'])->name('deleteUser');

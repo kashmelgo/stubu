@@ -149,4 +149,12 @@ class ThreadController extends Controller
         return view('thread.index', ['threads' => $posts]);
     }
 
+    public function updateStatus(Request $request){
+        $comment = Thread::findorFail($request->id);
+        $comment->status = $request->status;
+
+        $comment->save();
+        return back();
+    }
+
 }

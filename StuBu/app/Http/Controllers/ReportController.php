@@ -25,7 +25,7 @@ class ReportController extends Controller
 
         $report->save();
 
-        if($report->reportable_type = "App\Models\Thread"){
+        if($report->reportable_type == "App\Models\Thread" || $report->reportable_type == "App\Models\Comment"){
             $comment = Comment::FindOrFail($report->reportable_id);
             $comment->status = "Pending";
             $comment->save();
@@ -45,6 +45,9 @@ class ReportController extends Controller
         $threads = Thread::where('status', '=', "Pending")->get();
         $comments = Comment::where('status', '=', "Pending")->get();
 
-        return view('admin/adminreports', ['threads' => $threads , 'comments' => $comments]);
+        $flagThreads = Thread::where('status', '=', "Flagged")->get();
+        $flagComments = Comment::where('status', '=', "Flagged")->get();
+
+        return view('admin/adminreports', ['threads' => $threads , 'comments' => $comments, 'flagThreads' => $flagThreads, 'flagComments' => $flagComments]);
     }
 }
