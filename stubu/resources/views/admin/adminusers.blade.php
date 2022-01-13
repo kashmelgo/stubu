@@ -25,7 +25,6 @@
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Reputation</th>
                         <th scope="col">User Type</th>
                         <th scope="col">Delete User</th>
                       </tr>
@@ -36,7 +35,7 @@
                             <th scope="row">{{$user->id}}</th>
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
-                            <td>{{$user->reputation}}</td>
+
                             <td>
                                 <form method="post" action="{{route('editUser', $user->id)}}">
                                     @csrf
